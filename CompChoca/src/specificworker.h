@@ -26,8 +26,6 @@
 
 
 
-
-
 #ifndef SPECIFICWORKER_H
 #define SPECIFICWORKER_H
 
@@ -43,7 +41,7 @@ public:
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	
 	void setPick(const Pick &myPick);
-
+	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
 
 public slots:
 	void compute(); 	

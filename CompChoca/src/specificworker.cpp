@@ -87,9 +87,14 @@ void SpecificWorker::compute()
 
 
 void SpecificWorker::setPick(const Pick &myPick){
-  
+  qDebug()<<myPick.x;
+  qDebug()<<myPick.y;
+  qDebug()<<"----------";
   
 }
+
+
+
 
 
 
