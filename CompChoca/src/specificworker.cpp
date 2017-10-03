@@ -52,9 +52,11 @@ void SpecificWorker::compute()
     qDebug()<< "hola";
     TLaserData data ;
     data = laser_proxy->getLaserData();
+    std::sort(data.begin()+20,data.end()-20,[](auto a, auto b){return a.dist<b.dist;});
   
     for(auto d:data)
         qDebug()<<d.angle<<d.dist;
+    
   
 // 	try
 // 	{
