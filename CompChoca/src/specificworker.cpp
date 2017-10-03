@@ -18,6 +18,7 @@
  */
 #include "specificworker.h"
 
+
 /**
 * \brief Default constructor
 */
@@ -41,22 +42,19 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 	
 	timer.start(Period);
-	
+    
 
 	return true;
 }
-
 void SpecificWorker::compute()
 {
-  qdebug << "Holaaaa";
-  laser_proxy->getLaserData();
-  TLaserData data;
-  data = getLaserData();
+//   printf("Holaaaa\n");
+    qDebug()<< "hola";
+    TLaserData data ;
+    data = laser_proxy->getLaserData();
   
-  for(auto d:data)
-     qdebug<<d.angle<<d.dist;
-  
-  
+    for(auto d:data)
+        qDebug()<<d.angle<<d.dist;
   
 // 	try
 // 	{

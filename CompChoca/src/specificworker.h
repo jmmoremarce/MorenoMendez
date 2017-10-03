@@ -33,7 +33,7 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
-
+ 
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
