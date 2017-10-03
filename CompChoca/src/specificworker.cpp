@@ -63,6 +63,9 @@ void SpecificWorker::compute()
     }
     
     
+    
+
+    
 /*  
     for(auto d:data)
         qDebug()<<d.angle<<d.dist;
@@ -78,6 +81,14 @@ void SpecificWorker::compute()
 // 	{
 // 		std::cout << "Error reading from Camera" << e << std::endl;
 // 	}
+
+}
+
+
+
+void SpecificWorker::setPick(const Pick &myPick){
+  
+  
 }
 
 

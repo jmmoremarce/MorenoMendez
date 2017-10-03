@@ -41,6 +41,8 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
+	
+	void setPick(const Pick &myPick);
 
 
 public slots:

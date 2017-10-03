@@ -76,6 +76,20 @@ Ice/Object.h
 IceUtil/Iterator.h
 -
 
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp
+RCISMousePicker.h
+-
+Ice/LocalException.h
+-
+Ice/ObjectFactory.h
+-
+Ice/BasicStream.h
+-
+Ice/Object.h
+-
+IceUtil/Iterator.h
+-
+
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp
 commonbehaviorI.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.h
@@ -133,6 +147,8 @@ CommonBehavior.h
 -
 DifferentialRobot.h
 -
+RCISMousePicker.h
+-
 Laser.h
 -
 
@@ -165,9 +181,13 @@ specificmonitor.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.h
 commonbehaviorI.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.h
+rcismousepickerI.h
+-
 Laser.h
 -
 DifferentialRobot.h
+-
+RCISMousePicker.h
 -
 
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_commonbehaviorI.cpp
@@ -182,6 +202,10 @@ genericmonitor.h
 genericworker.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.h
 
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_rcismousepickerI.cpp
+rcismousepickerI.h
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.h
+
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_specificmonitor.cpp
 specificmonitor.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.h
@@ -189,6 +213,22 @@ specificmonitor.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_specificworker.cpp
 specificworker.h
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificworker.h
+
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp
+rcismousepickerI.h
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.h
+
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.h
+QtCore/QObject
+-
+Ice/Ice.h
+-
+RCISMousePicker.h
+-
+config.h
+-
+genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.h
 
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp
 specificmonitor.h
@@ -215,6 +255,8 @@ moc_genericmonitor.cpp
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_genericmonitor.cpp
 moc_genericworker.cpp
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_genericworker.cpp
+moc_rcismousepickerI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_rcismousepickerI.cpp
 moc_specificmonitor.cpp
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/moc_specificmonitor.cpp
 moc_specificworker.cpp
@@ -4288,6 +4330,38 @@ DifferentialRobot.h
 Ice/UndefSysMacros.h
 -
 
+src/RCISMousePicker.h
+Ice/ProxyF.h
+-
+Ice/ObjectF.h
+-
+Ice/Exception.h
+-
+Ice/LocalObject.h
+-
+Ice/StreamHelpers.h
+-
+Ice/Proxy.h
+-
+Ice/Object.h
+-
+Ice/Outgoing.h
+-
+Ice/OutgoingAsync.h
+-
+Ice/Incoming.h
+-
+Ice/Direct.h
+-
+IceUtil/ScopedArray.h
+-
+IceUtil/Optional.h
+-
+Ice/StreamF.h
+-
+Ice/UndefSysMacros.h
+-
+
 src/config.h
 
 src/genericworker.h
@@ -4305,8 +4379,22 @@ CommonBehavior.h
 -
 DifferentialRobot.h
 -
+RCISMousePicker.h
+-
 Laser.h
 -
+
+src/rcismousepickerI.h
+QtCore/QObject
+-
+Ice/Ice.h
+-
+RCISMousePicker.h
+-
+config.h
+-
+genericworker.h
+src/genericworker.h
 
 src/ui_mainUI.h
 QtCore/QVariant

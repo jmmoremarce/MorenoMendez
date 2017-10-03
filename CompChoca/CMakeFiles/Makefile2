@@ -85,7 +85,7 @@ src/preinstall:
 src/CMakeFiles/torpedo.dir/all: src/CMakeFiles/torpedo_automoc.dir/all
 	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/depend
 	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17 "Built target torpedo"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20 "Built target torpedo"
 .PHONY : src/CMakeFiles/torpedo.dir/all
 
 # Include target in all.
@@ -95,7 +95,7 @@ all: src/CMakeFiles/torpedo.dir/all
 
 # Build rule for subdir invocation for target.
 src/CMakeFiles/torpedo.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles 18
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles 21
 	$(MAKE) -f CMakeFiles/Makefile2 src/CMakeFiles/torpedo.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles 0
 .PHONY : src/CMakeFiles/torpedo.dir/rule
@@ -122,7 +122,7 @@ clean: src/CMakeFiles/torpedo.dir/clean
 src/CMakeFiles/torpedo_automoc.dir/all:
 	$(MAKE) -f src/CMakeFiles/torpedo_automoc.dir/build.make src/CMakeFiles/torpedo_automoc.dir/depend
 	$(MAKE) -f src/CMakeFiles/torpedo_automoc.dir/build.make src/CMakeFiles/torpedo_automoc.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=18 "Built target torpedo_automoc"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=21 "Built target torpedo_automoc"
 .PHONY : src/CMakeFiles/torpedo_automoc.dir/all
 
 # Build rule for subdir invocation for target.

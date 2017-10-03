@@ -28,6 +28,7 @@
 
 #include <CommonBehavior.h>
 #include <DifferentialRobot.h>
+#include <RCISMousePicker.h>
 #include <Laser.h>
 
 
@@ -40,6 +41,7 @@ typedef map <string,::IceProxy::Ice::Object*> MapPrx;
 using namespace std;
 
 using namespace RoboCompDifferentialRobot;
+using namespace RoboCompRCISMousePicker;
 using namespace RoboCompLaser;
 
 
@@ -66,6 +68,7 @@ public:
 	DifferentialRobotPrx differentialrobot_proxy;
 	LaserPrx laser_proxy;
 
+	virtual void setPick(const Pick &myPick) = 0;
 
 
 protected:
