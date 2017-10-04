@@ -46,6 +46,10 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 	return true;
 }
+
+
+//
+
 void SpecificWorker::compute()
 {
 //   printf("Holaaaa\n");
