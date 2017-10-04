@@ -48,7 +48,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 }
 
 
-//
+//Decala x y z dentro de  la estructura, despues un bool para comprobar si esta llena o no 
 
 void SpecificWorker::compute()
 {
@@ -65,6 +65,8 @@ void SpecificWorker::compute()
       int tiempo = rand() % 10 + 1;
       usleep(tiempo*100000);
     }
+    
+    
     
     
     
@@ -94,6 +96,7 @@ void SpecificWorker::setPick(const Pick &myPick){
   qDebug()<<myPick.x;
   qDebug()<<myPick.y;
   qDebug()<<"----------";
+  qDebug()<<"Error push";
   
 }
 
