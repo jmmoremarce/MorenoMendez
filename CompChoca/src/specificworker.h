@@ -31,6 +31,7 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
+using namespace std;
  
 class SpecificWorker : public GenericWorker
 {
@@ -40,11 +41,13 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 	
-	void setPick(const Pick &myPick);
-	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
+	
+	
 
 public slots:
 	void compute(); 	
+	void setPick(const Pick &myPick);
+	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
 
 private:
 	

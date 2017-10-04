@@ -64,14 +64,14 @@ void SpecificWorker::compute()
       differentialrobot_proxy->setSpeedBase(0,0.3);
       int tiempo = rand() % 10 + 1;
       usleep(tiempo*100000);
+      
     }
     
     
     
     
     
-
-    
+ 
 /*  
     for(auto d:data)
         qDebug()<<d.angle<<d.dist;
@@ -93,10 +93,14 @@ void SpecificWorker::compute()
 
 
 void SpecificWorker::setPick(const Pick &myPick){
-  qDebug()<<myPick.x;
+ 
+  std::cout<<myPick.x<<myPick.y<<endl;
+  
+  /*qDebug()<<myPick.x;
   qDebug()<<myPick.y;
   qDebug()<<"----------";
-  qDebug()<<"Error push";
+  qDebug()<<"Error push";*/
+  
   
 }
 
