@@ -50,7 +50,27 @@ public slots:
 	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
 
 private:
+	struct Target{
+	    mutable QMutex mutex;
+	    QVec posicion = QVec::zeros(3);
+	    
+	    void setCopy (float x, float z){
+	      
+		QMutexLocker block (&mutex);
+		
+		posicion.setItem(0, x);
+		posicion.setItem(1, 0);
+		posicion.setItem(2, z);
+	    }
+	    
+	    QVec getPosicion(){
+	      
+		QMutexLocker block (&mutex);
+		return posicion;
+	    }
+	};
 	
+	Target pick;
 };
 
 #endif

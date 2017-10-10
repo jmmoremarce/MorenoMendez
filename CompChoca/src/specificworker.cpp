@@ -49,11 +49,16 @@ void SpecificWorker::compute()
 {
 //    qDebug()<< "hola";
 //    differentialrobot_proxy->setSpeedBase(200,0);
+  
+  differentialrobot_proxy->getBaseState(BState bState);
+  InnerModel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+  
 }
 
 void SpecificWorker::setPick(const Pick &myPick){
  
   std::cout<<myPick.x<<myPick.y<<endl;
+  pick.setCopy(myPick.x, myPick.z);
   
   /*qDebug()<<myPick.x;
   qDebug()<<myPick.y;
