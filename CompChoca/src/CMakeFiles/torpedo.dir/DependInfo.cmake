@@ -4,20 +4,20 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/Laser.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/genericworker.cpp.o"
-  "/home/salabeta/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
-  "/home/salabeta/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/main.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/main.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/specificworker.cpp.o"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/Laser.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/genericworker.cpp.o"
+  "/home/josemi/robocomp/classes/qlog/qlog.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o"
+  "/home/josemi/robocomp/classes/rapplication/rapplication.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/main.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/main.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/specificworker.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -26,7 +26,6 @@ set(CMAKE_TARGET_DEFINITIONS_CXX
   "QT_CORE_LIB"
   "QT_DLL"
   "QT_GUI_LIB"
-  "QT_NO_DEBUG"
   "QT_OPENGL_LIB"
   "QT_XML_LIB"
   )
@@ -43,18 +42,18 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/robocomp/include"
   "/classes"
   "."
-  "/home/salabeta/robocomp/classes"
-  "/home/salabeta/robocomp/libs"
-  "/home/salabeta/robocomp/interfaces"
+  "/home/josemi/robocomp/classes"
+  "/home/josemi/robocomp/libs"
+  "/home/josemi/robocomp/interfaces"
   "/include"
   )
 
 # Pairs of files generated by the same build rule.
 set(CMAKE_MULTIPLE_OUTPUT_PAIRS
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.h" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.h" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.h" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp"
-  "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.h" "/home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.h" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.h" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.h" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp"
+  "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.h" "/home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp"
   )
 
 

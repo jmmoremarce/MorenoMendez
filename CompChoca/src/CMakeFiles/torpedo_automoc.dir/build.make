@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/salabeta/robocomp/components/MorenoMendez/CompChoca
+CMAKE_SOURCE_DIR = /home/josemi/robocomp/components/MorenoMendez/CompChoca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/MorenoMendez/CompChoca
+CMAKE_BINARY_DIR = /home/josemi/robocomp/components/MorenoMendez/CompChoca
 
 # Utility rule file for torpedo_automoc.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/MorenoMendez/CompChoca
 include src/CMakeFiles/torpedo_automoc.dir/progress.make
 
 src/CMakeFiles/torpedo_automoc:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic moc for target torpedo"
-	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/cmake -E cmake_autogen /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/ ""
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic moc for target torpedo"
+	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/cmake -E cmake_autogen /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/ Debug
 
 torpedo_automoc: src/CMakeFiles/torpedo_automoc
 torpedo_automoc: src/CMakeFiles/torpedo_automoc.dir/build.make
@@ -68,10 +68,10 @@ src/CMakeFiles/torpedo_automoc.dir/build: torpedo_automoc
 .PHONY : src/CMakeFiles/torpedo_automoc.dir/build
 
 src/CMakeFiles/torpedo_automoc.dir/clean:
-	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -P CMakeFiles/torpedo_automoc.dir/cmake_clean.cmake
+	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -P CMakeFiles/torpedo_automoc.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/torpedo_automoc.dir/clean
 
 src/CMakeFiles/torpedo_automoc.dir/depend:
-	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/salabeta/robocomp/components/MorenoMendez/CompChoca /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src /home/salabeta/robocomp/components/MorenoMendez/CompChoca /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/josemi/robocomp/components/MorenoMendez/CompChoca /home/josemi/robocomp/components/MorenoMendez/CompChoca/src /home/josemi/robocomp/components/MorenoMendez/CompChoca /home/josemi/robocomp/components/MorenoMendez/CompChoca/src /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/torpedo_automoc.dir/depend
 

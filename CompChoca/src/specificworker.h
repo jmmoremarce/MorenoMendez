@@ -70,7 +70,7 @@ private:
 	    }
 	};
 	
-	Target pick;
+	Target t;
 };
 
 #endif

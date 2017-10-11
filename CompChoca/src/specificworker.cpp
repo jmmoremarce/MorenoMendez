@@ -50,8 +50,24 @@ void SpecificWorker::compute()
 //    qDebug()<< "hola";
 //    differentialrobot_proxy->setSpeedBase(200,0);
   
-  differentialrobot_proxy->getBaseState(BState bState);
-  InnerModel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    differentialrobot_proxy->getBaseState(BState bState);
+    InnerModel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    if(Target.isEmpty() == false){
+        QVec tR = InnerModel->transform("robot", QVec::vec3(t.x, 0 , t.z, "world");
+        float d;
+        tR.novm2();
+        if( nebellegadel()){
+            vdav = d;
+            if(vdav > MAX_ADV)
+                vadv = MAX_ADV;
+            vrot = atan2(tR.x(), tR.z());
+            if(vrot > 0,5)
+        }
+        else{
+            DifferentialRobot->setSpeedBase(0, 0);
+            
+        }
+    }
   
 }
 
