@@ -151,8 +151,6 @@ RCISMousePicker.h
 -
 Laser.h
 -
-IceStorm/IceStorm.h
--
 
 /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/main.cpp
 signal.h
@@ -4384,8 +4382,6 @@ DifferentialRobot.h
 RCISMousePicker.h
 -
 Laser.h
--
-IceStorm/IceStorm.h
 -
 
 src/rcismousepickerI.h

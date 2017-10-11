@@ -61,7 +61,8 @@ private:
 	struct Target{
 	    mutable QMutex mutex;
 	    bool vacia=true; 
-	    float valorX, valorZ; 
+	    float valorX=0.0;
+	    float valorZ=0.0; 
 	     
 	    void setEmpty (){
 	      QMutexLocker block(&mutex);	      
@@ -91,7 +92,6 @@ private:
 	
 	Target t;
 	InnerModel *innermodel;
-	DifferentialRobot *dRobot;
 };
 
 #endif

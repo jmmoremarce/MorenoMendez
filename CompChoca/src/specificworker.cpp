@@ -38,6 +38,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
+	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/simpleworld.xml");
 	timer.start(Period);
 	return true;
 }
@@ -47,17 +48,20 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-//    qDebug()<< "hola";
+  
+
+ //    qDebug()<< "hola";
 //    differentialrobot_proxy->setSpeedBase(200,0);
+     
       RoboCompDifferentialRobot::TBaseState bState;
+      float adv, vrot;
   
-  
+    std::pair<float, float> tr = t.getValores();
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
-    if(t.isEmpty() == false){
-      std::pair<float, float> tr = t.getValores();
-        QVec tR = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
-	float adv, vrot;
+
+    if(t.isEmpty() == false){     
+        QVec tR = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
         float d=tR.norm2();        
         if(d > 50){
             adv = d;
@@ -66,10 +70,10 @@ void SpecificWorker::compute()
             vrot = atan2(tR.x(), tR.z());
             if(vrot > MAX_VROT)
 	        vrot = MAX_VROT;
-	    dRobot->setSpeedBase(adv,vrot);
+	    differentialrobot_proxy->setSpeedBase(adv,vrot);
         }
         else{
-            dRobot->setSpeedBase(0, 0);
+            differentialrobot_proxy->setSpeedBase(0, 0);
             t.setEmpty();
 	    
         }
