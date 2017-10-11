@@ -49,24 +49,31 @@ void SpecificWorker::compute()
 {
 //    qDebug()<< "hola";
 //    differentialrobot_proxy->setSpeedBase(200,0);
+      RoboCompDifferentialRobot::TBaseState bState;
   
-    differentialrobot_proxy->getBaseState(BState bState);
-    InnerModel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
-    if(Target.isEmpty() == false){
-        QVec tR = InnerModel->transform("robot", QVec::vec3(t.x, 0 , t.z, "world");
-        float d;
-        tR.novm2();
-        if( nebellegadel()){
-            vdav = d;
-            if(vdav > MAX_ADV)
-                vadv = MAX_ADV;
+  
+    differentialrobot_proxy->getBaseState(bState);
+    innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    if(t.isEmpty() == false){
+      std::pair<float, float> tr = t.getValores();
+        QVec tR = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
+	float adv, vrot;
+        float d=tR.norm2();        
+        if(d > 50){
+            adv = d;
+            if(adv > MAX_ADV)
+                adv = MAX_ADV;
             vrot = atan2(tR.x(), tR.z());
-            if(vrot > 0,5)
+            if(vrot > MAX_VROT)
+	        vrot = MAX_VROT;
+	    dRobot->setSpeedBase(adv,vrot);
         }
         else{
-            DifferentialRobot->setSpeedBase(0, 0);
-            
+            dRobot->setSpeedBase(0, 0);
+            t.setEmpty();
+	    
         }
+        
     }
   
 }
@@ -74,18 +81,15 @@ void SpecificWorker::compute()
 void SpecificWorker::setPick(const Pick &myPick){
  
   std::cout<<myPick.x<<myPick.y<<endl;
-  pick.setCopy(myPick.x, myPick.z);
+  t.setCopy(myPick.x, myPick.z);
+  
+  
+} 
   
   /*qDebug()<<myPick.x;
   qDebug()<<myPick.y;
   qDebug()<<"----------";
   qDebug()<<"Error push";*/
-}
-
-
-
-
-
 
 
 /*  

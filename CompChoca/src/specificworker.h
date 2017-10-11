@@ -31,6 +31,14 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
+
+
+
+#define MAX_ADV 400
+#define MAX_VROT 0.5
+
+
+
 using namespace std;
  
 class SpecificWorker : public GenericWorker
@@ -52,25 +60,38 @@ public slots:
 private:
 	struct Target{
 	    mutable QMutex mutex;
-	    QVec posicion = QVec::zeros(3);
+	    bool vacia=true; 
+	    float valorX, valorZ; 
+	     
+	    void setEmpty (){
+	      QMutexLocker block(&mutex);	      
+	      vacia=true;
+	    }
+	    
+	    bool isEmpty(){
+	      QMutexLocker block(&mutex);
+	      return vacia;
+	    } 
 	    
 	    void setCopy (float x, float z){
 	      
 		QMutexLocker block (&mutex);
-		
-		posicion.setItem(0, x);
-		posicion.setItem(1, 0);
-		posicion.setItem(2, z);
+		vacia=false;		
+		valorX=x;
+		valorZ=z;
 	    }
 	    
-	    QVec getPosicion(){
-	      
+	    std::pair<float, float> getValores(){
 		QMutexLocker block (&mutex);
-		return posicion;
+		return std::make_pair(valorX, valorZ);
 	    }
+				  
+	    
 	};
 	
 	Target t;
+	InnerModel *innermodel;
+	DifferentialRobot *dRobot;
 };
 
 #endif
