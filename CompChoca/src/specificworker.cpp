@@ -48,39 +48,56 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-  
-
- //    qDebug()<< "hola";
-//    differentialrobot_proxy->setSpeedBase(200,0);
      
-      RoboCompDifferentialRobot::TBaseState bState;
-      float adv, vrot;
+    RoboCompDifferentialRobot::TBaseState bState;
+    float adv, vrot;
   
     std::pair<float, float> tr = t.getValores();
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
 
-    if(t.isEmpty() == false){     
+    if(t.isEmpty() == false)
+    {     
         QVec tR = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
         float d=tR.norm2();        
-        if(d > 50){
-            adv = d;
-            if(adv > MAX_ADV)
-                adv = MAX_ADV;
+        if(d > 50)
+	{
+            //adv = d;
+            //if(adv > MAX_ADV)  adv = MAX_ADV;
+	  
             vrot = atan2(tR.x(), tR.z());
-            if(vrot > MAX_VROT)
-	        vrot = MAX_VROT;
+            if(vrot > MAX_VROT) vrot = MAX_VROT;
+	    if(vrot < -MAX_VROT) vrot = -MAX_VROT;
+	    
+	    adv = MAX_ADV * sigmoid(d)  * gaussian(vrot, 0.5, 1);
 	    differentialrobot_proxy->setSpeedBase(adv,vrot);
         }
-        else{
+        else
+	{
             differentialrobot_proxy->setSpeedBase(0, 0);
-            t.setEmpty();
-	    
+            t.setEmpty();    
         }
-        
     }
   
 }
+
+float SpecificWorker::sigmoid(float d)
+{	
+  return (1.f / (1.f + exp(-d))) - 0.5;
+}
+
+float SpecificWorker::gaussian(float vr, float vx, float h)
+{
+  float landa = -(vx*vx)/log(h);
+  return exp(-(vr*vr)/landa);
+}
+
+
+
+
+////////////////////////////
+/// FROM COMPONENT INTERFACE
+////////////////////////////
 
 void SpecificWorker::setPick(const Pick &myPick){
  

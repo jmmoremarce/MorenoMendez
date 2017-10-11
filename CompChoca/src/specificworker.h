@@ -92,6 +92,9 @@ private:
 	
 	Target t;
 	InnerModel *innermodel;
+	
+	float gaussian(float vr, float vx, float h);
+	float sigmoid(float d);
 };
 
 #endif
