@@ -48,9 +48,6 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
-	
-	
-	
 
 public slots:
 	void compute(); 	
@@ -64,9 +61,9 @@ private:
 	    float valorX=0.0;
 	    float valorZ=0.0; 
 	     
-	    void setEmpty (){
+	    void setEmpty (bool vaciar){
 	      QMutexLocker block(&mutex);	      
-	      vacia=true;
+	      vacia=vaciar;
 	    }
 	    
 	    bool isEmpty(){
@@ -92,9 +89,16 @@ private:
 	
 	Target t;
 	InnerModel *innermodel;
+    enum State {IDLE, GOTO, BUG};
+    State state = State::IDLE;
 	
-	float gaussian(float vr, float vx, float h);
+    float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);
+    
+    void gotoTarget();
+    void bug();
+    bool obstacle();
+    bool targetAtSight();
 };
 
 #endif

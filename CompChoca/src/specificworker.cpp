@@ -50,36 +50,95 @@ void SpecificWorker::compute()
 {
      
     RoboCompDifferentialRobot::TBaseState bState;
-    float adv, vrot;
+//     float adv, vrot;
   
-    std::pair<float, float> tr = t.getValores();
+    
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
 
-    if(t.isEmpty() == false)
-    {     
-        QVec tR = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
-        float d=tR.norm2();        
-        if(d > 50)
-	{
-            //adv = d;
-            //if(adv > MAX_ADV)  adv = MAX_ADV;
-	  
-            vrot = atan2(tR.x(), tR.z());
-            if(vrot > MAX_VROT) vrot = MAX_VROT;
-	    if(vrot < -MAX_VROT) vrot = -MAX_VROT;
-	    
-	    adv = MAX_ADV * sigmoid(d)  * gaussian(vrot, 0.5, 1);
-	    differentialrobot_proxy->setSpeedBase(adv,vrot);
-        }
-        else
-	{
-            differentialrobot_proxy->setSpeedBase(0, 0);
-            t.setEmpty();    
-        }
+    switch( state ) {
+        case State::IDLE:
+            if ( t.isEmpty() )
+                state = State::GOTO;
+        break;
+
+        case State::GOTO:
+            gotoTarget();
+        break;
+
+        case State::BUG:
+            bug();
+        break;
     }
+
+//     if(t.isEmpty() == false)
+//     {     
+//         QVec tR = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
+//         float d=tR.norm2();        
+//         if(d > 50)
+// 	{
+//             //adv = d;
+//             //if(adv > MAX_ADV)  adv = MAX_ADV;
+// 	  
+//             vrot = atan2(tR.x(), tR.z());
+//             if(vrot > MAX_VROT) vrot = MAX_VROT;
+// 	    if(vrot < -MAX_VROT) vrot = -MAX_VROT;
+// 	    
+// 	    adv = MAX_ADV * sigmoid(d)  * gaussian(vrot, 0.5, 1);
+// 	    differentialrobot_proxy->setSpeedBase(adv,vrot);
+//         }
+//         else
+// 	{
+//             differentialrobot_proxy->setSpeedBase(0, 0);
+//             t.setEmpty();    
+//         }
+//     }
   
 }
+
+void SpecificWorker::gotoTarget(){
+
+    if( obstacle() == true){   // If ther is an obstacle ahead, then transit to BUG
+        state = State::BUG;
+        return;
+        
+    }
+    std::pair<float, float> tr = t.getValores();
+    QVec rt = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
+    float dist = rt.norm2();
+    float ang  = atan2(rt.x(), rt.z());
+
+    if(dist < 100){         // If close to obstacle stop and transit to IDLE
+        state = State::IDLE;
+
+        t.setEmpty(true);
+
+        return;
+    }
+
+    float adv = dist;
+
+    if ( fabs(ang) > 0.05 )
+        adv = 0;
+
+ }
+
+void SpecificWorker::bug()
+{
+
+}
+
+bool SpecificWorker::obstacle()
+{
+    return true;
+}
+
+bool SpecificWorker::targetAtSight()
+
+{
+    return true;
+}
+
 
 float SpecificWorker::sigmoid(float d)
 {	
