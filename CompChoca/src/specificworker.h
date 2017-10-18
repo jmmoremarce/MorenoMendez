@@ -89,7 +89,9 @@ private:
 	
 	Target t;
 	InnerModel *innermodel;
+    
     enum State {IDLE, GOTO, BUG};
+    
     State state = State::IDLE;
 	
     float gaussian(float vr, float vx, float h);

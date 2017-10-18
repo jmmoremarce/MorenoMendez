@@ -55,7 +55,7 @@ include src/CMakeFiles/torpedo_automoc.dir/progress.make
 
 src/CMakeFiles/torpedo_automoc:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Automatic moc for target torpedo"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/cmake -E cmake_autogen /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/ Debug
+	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/cmake -E cmake_autogen /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo_automoc.dir/ ""
 
 torpedo_automoc: src/CMakeFiles/torpedo_automoc
 torpedo_automoc: src/CMakeFiles/torpedo_automoc.dir/build.make

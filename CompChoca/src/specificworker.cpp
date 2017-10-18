@@ -60,15 +60,15 @@ void SpecificWorker::compute()
         case State::IDLE:
             if ( t.isEmpty() )
                 state = State::GOTO;
-        break;
+            break;
 
         case State::GOTO:
             gotoTarget();
-        break;
+            break;
 
         case State::BUG:
             bug();
-        break;
+            break;
     }
 
 //     if(t.isEmpty() == false)
@@ -120,17 +120,33 @@ void SpecificWorker::gotoTarget(){
 
     if ( fabs(ang) > 0.05 )
         adv = 0;
-
- }
+    
+    if(ang > MAX_VROT) 
+        ang = MAX_VROT;
+    
+    if(ang < -MAX_VROT) 
+        ang = -MAX_VROT;
+	    
+    differentialrobot_proxy->setSpeedBase(adv,ang);       
+}
 
 void SpecificWorker::bug()
 {
-
+      differentialrobot_proxy->setSpeedBase(0,0.3);
+      int tiempo = rand() % 10 + 1;
+      usleep(tiempo*100000); 
 }
 
 bool SpecificWorker::obstacle()
 {
-    return true;
+    TLaserData data ;
+    
+    data = laser_proxy->getLaserData();
+    std::sort(data.begin()+20,data.end()-20,[](auto a, auto b){return a.dist<b.dist;});
+          
+    if (data[20].dist < 300)
+        return true;
+    return false;
 }
 
 bool SpecificWorker::targetAtSight()
