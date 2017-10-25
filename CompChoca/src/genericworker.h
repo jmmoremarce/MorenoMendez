@@ -68,7 +68,7 @@ public:
 
 	DifferentialRobotPrx differentialrobot_proxy;
 	LaserPrx laser_proxy;
-	IceStorm::TopicManagerPrx topicmanager_proxy;
+// 	IceStorm::TopicManagerPrx topicmanager_proxy;
 
 	virtual void setPick(const Pick &myPick) = 0;
 
@@ -78,7 +78,7 @@ protected:
 	int Period;
 
 	QTimer storm_timer;
-	int storm_period;
+// 	int storm_period;
 
 public slots:
 	virtual void compute() = 0;

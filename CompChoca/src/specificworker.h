@@ -73,21 +73,21 @@ private:
 	    
 	    void setCopy (float x, float z){
 	      
-		QMutexLocker block (&mutex);
-		vacia=false;		
-		valorX=x;
-		valorZ=z;
+            QMutexLocker block (&mutex);
+            vacia=false;		
+            valorX=x;
+            valorZ=z;
 	    }
 	    
 	    std::pair<float, float> getValores(){
-		QMutexLocker block (&mutex);
-		return std::make_pair(valorX, valorZ);
+            QMutexLocker block (&mutex);
+            return std::make_pair(valorX, valorZ);
 	    }
 				  
 	    
 	};
 	
-	Target t;
+	Target target;
 	InnerModel *innermodel;
     
     enum State {IDLE, GOTO, BUG};
