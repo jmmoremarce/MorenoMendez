@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/josemi/robocomp/components/MorenoMendez/CompChoca
+CMAKE_SOURCE_DIR = /home/salabeta/robocomp/components/MorenoMendez/CompChoca
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/josemi/robocomp/components/MorenoMendez/CompChoca
+CMAKE_BINARY_DIR = /home/salabeta/robocomp/components/MorenoMendez/CompChoca
 
 # Include any dependencies generated for this target.
 include src/CMakeFiles/torpedo.dir/depend.make
@@ -58,49 +58,49 @@ include src/CMakeFiles/torpedo.dir/progress.make
 include src/CMakeFiles/torpedo.dir/flags.make
 
 src/CommonBehavior.cpp: /opt/robocomp/interfaces/CommonBehavior.ice
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating CommonBehavior.cpp and CommonBehavior.h from CommonBehavior.ice"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/josemi/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/CommonBehavior.ice --output-dir .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating CommonBehavior.cpp and CommonBehavior.h from CommonBehavior.ice"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/CommonBehavior.ice --output-dir .
 
 src/CommonBehavior.h: src/CommonBehavior.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/CommonBehavior.h
 
 src/Laser.cpp: /opt/robocomp/interfaces/Laser.ice
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Laser.cpp and Laser.h from Laser.ice"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/josemi/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/Laser.ice --output-dir .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Generating Laser.cpp and Laser.h from Laser.ice"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/Laser.ice --output-dir .
 
 src/Laser.h: src/Laser.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/Laser.h
 
 src/DifferentialRobot.cpp: /opt/robocomp/interfaces/DifferentialRobot.ice
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating DifferentialRobot.cpp and DifferentialRobot.h from DifferentialRobot.ice"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/josemi/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/DifferentialRobot.ice --output-dir .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Generating DifferentialRobot.cpp and DifferentialRobot.h from DifferentialRobot.ice"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/DifferentialRobot.ice --output-dir .
 
 src/DifferentialRobot.h: src/DifferentialRobot.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/DifferentialRobot.h
 
 src/RCISMousePicker.cpp: /opt/robocomp/interfaces/RCISMousePicker.ice
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating RCISMousePicker.cpp and RCISMousePicker.h from RCISMousePicker.ice"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/josemi/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/RCISMousePicker.ice --output-dir .
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Generating RCISMousePicker.cpp and RCISMousePicker.h from RCISMousePicker.ice"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && slice2cpp -I/home/salabeta/robocomp//interfaces/ -I/opt/robocomp/interfaces -I. /opt/robocomp/interfaces/RCISMousePicker.ice --output-dir .
 
 src/RCISMousePicker.h: src/RCISMousePicker.cpp
 	@$(CMAKE_COMMAND) -E touch_nocreate src/RCISMousePicker.h
 
 src/ui_mainUI.h: src/mainUI.ui
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ui_mainUI.h"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/lib/x86_64-linux-gnu/qt4/bin/uic -o /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/ui_mainUI.h /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/mainUI.ui
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --blue --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Generating ui_mainUI.h"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/lib/x86_64-linux-gnu/qt4/bin/uic -o /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/ui_mainUI.h /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/mainUI.ui
 
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/specificworker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/torpedo.dir/specificworker.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/specificworker.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object src/CMakeFiles/torpedo.dir/specificworker.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/specificworker.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp
 
 src/CMakeFiles/torpedo.dir/specificworker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/specificworker.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp > CMakeFiles/torpedo.dir/specificworker.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp > CMakeFiles/torpedo.dir/specificworker.cpp.i
 
 src/CMakeFiles/torpedo.dir/specificworker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/specificworker.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp -o CMakeFiles/torpedo.dir/specificworker.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificworker.cpp -o CMakeFiles/torpedo.dir/specificworker.cpp.s
 
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o.requires:
 
@@ -115,16 +115,16 @@ src/CMakeFiles/torpedo.dir/specificworker.cpp.o.provides.build: src/CMakeFiles/t
 
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/specificmonitor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/specificmonitor.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/specificmonitor.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp
 
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/specificmonitor.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp > CMakeFiles/torpedo.dir/specificmonitor.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp > CMakeFiles/torpedo.dir/specificmonitor.cpp.i
 
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/specificmonitor.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp -o CMakeFiles/torpedo.dir/specificmonitor.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/specificmonitor.cpp -o CMakeFiles/torpedo.dir/specificmonitor.cpp.s
 
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o.requires:
 
@@ -137,66 +137,66 @@ src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o.provides: src/CMakeFiles/torped
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o.provides.build: src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o
 
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o: /home/josemi/robocomp/classes/rapplication/rapplication.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o -c /home/josemi/robocomp/classes/rapplication/rapplication.cpp
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o: /home/salabeta/robocomp/classes/rapplication/rapplication.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o -c /home/salabeta/robocomp/classes/rapplication/rapplication.cpp
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/classes/rapplication/rapplication.cpp > CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.i
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/classes/rapplication/rapplication.cpp > CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.i
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/classes/rapplication/rapplication.cpp -o CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.s
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/classes/rapplication/rapplication.cpp -o CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.s
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.requires:
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires:
 
-.PHONY : src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.requires
+.PHONY : src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.provides: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.provides.build
-.PHONY : src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.provides
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides.build
+.PHONY : src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.provides.build: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.provides.build: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
 
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o: /home/josemi/robocomp/classes/qlog/qlog.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o -c /home/josemi/robocomp/classes/qlog/qlog.cpp
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o: /home/salabeta/robocomp/classes/qlog/qlog.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o -c /home/salabeta/robocomp/classes/qlog/qlog.cpp
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/classes/qlog/qlog.cpp > CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.i
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/classes/qlog/qlog.cpp > CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.i
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/classes/qlog/qlog.cpp -o CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.s
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/classes/qlog/qlog.cpp -o CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.s
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.requires:
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires:
 
-.PHONY : src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.requires
+.PHONY : src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.provides: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.requires
-	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.provides.build
-.PHONY : src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.provides
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
+	$(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides.build
+.PHONY : src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides
 
-src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.provides.build: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o
+src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.provides.build: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
 
 
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/main.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/torpedo.dir/main.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/main.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/main.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object src/CMakeFiles/torpedo.dir/main.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/main.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/main.cpp
 
 src/CMakeFiles/torpedo.dir/main.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/main.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/main.cpp > CMakeFiles/torpedo.dir/main.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/main.cpp > CMakeFiles/torpedo.dir/main.cpp.i
 
 src/CMakeFiles/torpedo.dir/main.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/main.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/main.cpp -o CMakeFiles/torpedo.dir/main.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/main.cpp -o CMakeFiles/torpedo.dir/main.cpp.s
 
 src/CMakeFiles/torpedo.dir/main.cpp.o.requires:
 
@@ -211,16 +211,16 @@ src/CMakeFiles/torpedo.dir/main.cpp.o.provides.build: src/CMakeFiles/torpedo.dir
 
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/genericmonitor.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/genericmonitor.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/genericmonitor.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp
 
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/genericmonitor.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp > CMakeFiles/torpedo.dir/genericmonitor.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp > CMakeFiles/torpedo.dir/genericmonitor.cpp.i
 
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/genericmonitor.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp -o CMakeFiles/torpedo.dir/genericmonitor.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericmonitor.cpp -o CMakeFiles/torpedo.dir/genericmonitor.cpp.s
 
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o.requires:
 
@@ -235,16 +235,16 @@ src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o.provides.build: src/CMakeFiles/t
 
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/commonbehaviorI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Building CXX object src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp
 
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/commonbehaviorI.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp > CMakeFiles/torpedo.dir/commonbehaviorI.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp > CMakeFiles/torpedo.dir/commonbehaviorI.cpp.i
 
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/commonbehaviorI.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp -o CMakeFiles/torpedo.dir/commonbehaviorI.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/commonbehaviorI.cpp -o CMakeFiles/torpedo.dir/commonbehaviorI.cpp.s
 
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o.requires:
 
@@ -259,16 +259,16 @@ src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o.provides.build: src/CMakeFiles/
 
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/genericworker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/torpedo.dir/genericworker.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/genericworker.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object src/CMakeFiles/torpedo.dir/genericworker.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/genericworker.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp
 
 src/CMakeFiles/torpedo.dir/genericworker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/genericworker.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp > CMakeFiles/torpedo.dir/genericworker.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp > CMakeFiles/torpedo.dir/genericworker.cpp.i
 
 src/CMakeFiles/torpedo.dir/genericworker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/genericworker.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp -o CMakeFiles/torpedo.dir/genericworker.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/genericworker.cpp -o CMakeFiles/torpedo.dir/genericworker.cpp.s
 
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o.requires:
 
@@ -283,16 +283,16 @@ src/CMakeFiles/torpedo.dir/genericworker.cpp.o.provides.build: src/CMakeFiles/to
 
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/rcismousepickerI.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Building CXX object src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp
 
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/rcismousepickerI.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp > CMakeFiles/torpedo.dir/rcismousepickerI.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp > CMakeFiles/torpedo.dir/rcismousepickerI.cpp.i
 
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/rcismousepickerI.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp -o CMakeFiles/torpedo.dir/rcismousepickerI.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/rcismousepickerI.cpp -o CMakeFiles/torpedo.dir/rcismousepickerI.cpp.s
 
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o.requires:
 
@@ -307,16 +307,16 @@ src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o.provides.build: src/CMakeFiles
 
 src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o: src/CommonBehavior.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/CommonBehavior.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_15) "Building CXX object src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/CommonBehavior.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp
 
 src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/CommonBehavior.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp > CMakeFiles/torpedo.dir/CommonBehavior.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp > CMakeFiles/torpedo.dir/CommonBehavior.cpp.i
 
 src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/CommonBehavior.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp -o CMakeFiles/torpedo.dir/CommonBehavior.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp -o CMakeFiles/torpedo.dir/CommonBehavior.cpp.s
 
 src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o.requires:
 
@@ -331,16 +331,16 @@ src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o.provides.build: src/CMakeFiles/t
 
 src/CMakeFiles/torpedo.dir/Laser.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/Laser.cpp.o: src/Laser.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/CMakeFiles/torpedo.dir/Laser.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/Laser.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_16) "Building CXX object src/CMakeFiles/torpedo.dir/Laser.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/Laser.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp
 
 src/CMakeFiles/torpedo.dir/Laser.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/Laser.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp > CMakeFiles/torpedo.dir/Laser.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp > CMakeFiles/torpedo.dir/Laser.cpp.i
 
 src/CMakeFiles/torpedo.dir/Laser.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/Laser.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp -o CMakeFiles/torpedo.dir/Laser.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp -o CMakeFiles/torpedo.dir/Laser.cpp.s
 
 src/CMakeFiles/torpedo.dir/Laser.cpp.o.requires:
 
@@ -355,16 +355,16 @@ src/CMakeFiles/torpedo.dir/Laser.cpp.o.provides.build: src/CMakeFiles/torpedo.di
 
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_17) "Building CXX object src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp
 
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/DifferentialRobot.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp > CMakeFiles/torpedo.dir/DifferentialRobot.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp > CMakeFiles/torpedo.dir/DifferentialRobot.cpp.i
 
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/DifferentialRobot.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp -o CMakeFiles/torpedo.dir/DifferentialRobot.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp -o CMakeFiles/torpedo.dir/DifferentialRobot.cpp.s
 
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o.requires:
 
@@ -379,16 +379,16 @@ src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o.provides.build: src/CMakeFile
 
 src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o: src/RCISMousePicker.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_18) "Building CXX object src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp
 
 src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/RCISMousePicker.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp > CMakeFiles/torpedo.dir/RCISMousePicker.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp > CMakeFiles/torpedo.dir/RCISMousePicker.cpp.i
 
 src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/RCISMousePicker.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp -o CMakeFiles/torpedo.dir/RCISMousePicker.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/RCISMousePicker.cpp -o CMakeFiles/torpedo.dir/RCISMousePicker.cpp.s
 
 src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o.requires:
 
@@ -403,16 +403,16 @@ src/CMakeFiles/torpedo.dir/RCISMousePicker.cpp.o.provides.build: src/CMakeFiles/
 
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/CMakeFiles/torpedo.dir/flags.make
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/torpedo_automoc.cpp
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o -c /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o -c /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp
 
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.i: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/torpedo.dir/torpedo_automoc.cpp.i"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp > CMakeFiles/torpedo.dir/torpedo_automoc.cpp.i
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp > CMakeFiles/torpedo.dir/torpedo_automoc.cpp.i
 
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/torpedo.dir/torpedo_automoc.cpp.s"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp -o CMakeFiles/torpedo.dir/torpedo_automoc.cpp.s
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && /usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/torpedo_automoc.cpp -o CMakeFiles/torpedo.dir/torpedo_automoc.cpp.s
 
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o.requires:
 
@@ -429,8 +429,8 @@ src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o.provides.build: src/CMakeFiles/
 torpedo_OBJECTS = \
 "CMakeFiles/torpedo.dir/specificworker.cpp.o" \
 "CMakeFiles/torpedo.dir/specificmonitor.cpp.o" \
-"CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o" \
-"CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o" \
+"CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o" \
+"CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o" \
 "CMakeFiles/torpedo.dir/main.cpp.o" \
 "CMakeFiles/torpedo.dir/genericmonitor.cpp.o" \
 "CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o" \
@@ -447,8 +447,8 @@ torpedo_EXTERNAL_OBJECTS =
 
 bin/torpedo: src/CMakeFiles/torpedo.dir/specificworker.cpp.o
 bin/torpedo: src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o
-bin/torpedo: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o
-bin/torpedo: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o
+bin/torpedo: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o
+bin/torpedo: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o
 bin/torpedo: src/CMakeFiles/torpedo.dir/main.cpp.o
 bin/torpedo: src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o
 bin/torpedo: src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o
@@ -469,8 +469,8 @@ bin/torpedo: /usr/lib/x86_64-linux-gnu/libQtGui.so
 bin/torpedo: /usr/lib/x86_64-linux-gnu/libQtXml.so
 bin/torpedo: /usr/lib/x86_64-linux-gnu/libQtCore.so
 bin/torpedo: src/CMakeFiles/torpedo.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/josemi/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ../bin/torpedo"
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/torpedo.dir/link.txt --verbose=$(VERBOSE)
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/salabeta/robocomp/components/MorenoMendez/CompChoca/CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Linking CXX executable ../bin/torpedo"
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/torpedo.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.
 src/CMakeFiles/torpedo.dir/build: bin/torpedo
@@ -479,8 +479,8 @@ src/CMakeFiles/torpedo.dir/build: bin/torpedo
 
 src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/specificworker.cpp.o.requires
 src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o.requires
-src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o.requires
-src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o.requires
+src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o.requires
+src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o.requires
 src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/main.cpp.o.requires
 src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o.requires
 src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o.requires
@@ -495,7 +495,7 @@ src/CMakeFiles/torpedo.dir/requires: src/CMakeFiles/torpedo.dir/torpedo_automoc.
 .PHONY : src/CMakeFiles/torpedo.dir/requires
 
 src/CMakeFiles/torpedo.dir/clean:
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -P CMakeFiles/torpedo.dir/cmake_clean.cmake
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src && $(CMAKE_COMMAND) -P CMakeFiles/torpedo.dir/cmake_clean.cmake
 .PHONY : src/CMakeFiles/torpedo.dir/clean
 
 src/CMakeFiles/torpedo.dir/depend: src/CommonBehavior.cpp
@@ -507,6 +507,6 @@ src/CMakeFiles/torpedo.dir/depend: src/DifferentialRobot.h
 src/CMakeFiles/torpedo.dir/depend: src/RCISMousePicker.cpp
 src/CMakeFiles/torpedo.dir/depend: src/RCISMousePicker.h
 src/CMakeFiles/torpedo.dir/depend: src/ui_mainUI.h
-	cd /home/josemi/robocomp/components/MorenoMendez/CompChoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/josemi/robocomp/components/MorenoMendez/CompChoca /home/josemi/robocomp/components/MorenoMendez/CompChoca/src /home/josemi/robocomp/components/MorenoMendez/CompChoca /home/josemi/robocomp/components/MorenoMendez/CompChoca/src /home/josemi/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/salabeta/robocomp/components/MorenoMendez/CompChoca && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/salabeta/robocomp/components/MorenoMendez/CompChoca /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src /home/salabeta/robocomp/components/MorenoMendez/CompChoca /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src /home/salabeta/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : src/CMakeFiles/torpedo.dir/depend
 

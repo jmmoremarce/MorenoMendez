@@ -93,10 +93,10 @@
 using namespace std;
 using namespace RoboCompCommonBehavior;
 
-
+using namespace RoboCompLaser;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompRCISMousePicker;
-using namespace RoboCompLaser;
+
 
 
 class torpedo : public RoboComp::Application
@@ -179,13 +179,7 @@ int ::torpedo::run(int argc, char* argv[])
 	rInfo("LaserProxy initialized Ok!");
 	mprx["LaserProxy"] = (::IceProxy::Ice::Object*)(&laser_proxy);//Remote server proxy creation example
 
-	IceStorm::TopicManagerPrx topicManager;
-	try{
-	topicManager = IceStorm::TopicManagerPrx::checkedCast(communicator()->propertyToProxy("TopicManager.Proxy"));
-	} catch(const Ice::Exception& ex){
-		cout << "[" << PROGRAM_NAME << "]: Exception: STORM not running: " << ex << endl;
-		return EXIT_FAILURE;
-	}
+	IceStorm::TopicManagerPrx topicManager = IceStorm::TopicManagerPrx::checkedCast(communicator()->propertyToProxy("TopicManager.Proxy"));
 
 
 	SpecificWorker *worker = new SpecificWorker(mprx);

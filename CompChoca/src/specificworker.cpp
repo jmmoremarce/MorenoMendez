@@ -56,7 +56,8 @@ void SpecificWorker::compute()
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
-    
+
+     
     switch( state ) {
         case State::IDLE:
             if ( !target.isEmpty() )
@@ -111,6 +112,7 @@ void SpecificWorker::gotoTarget(){
     float ang  = atan2(rt.x(), rt.z());
     float adv;
     
+       
     if( obstacle() == true){   // If ther is an obstacle ahead, then transit to BUG
         state = State::BUG;
         return;
@@ -144,29 +146,30 @@ void SpecificWorker::bug()
     laser = laser_proxy->getLaserData();
     
     if(obstacle() == true){
-        differentialrobot_proxy->setSpeedBase(0,0.3);
+        differentialrobot_proxy->setSpeedBase(25,0.3);
         state = State::BUG;
         std::cout<<"giro derecha"<<endl;
+ 
     }
     if(obstacle() == false){
-        std::sort(laser.end()-20,laser.end()-10,[](auto a, auto b){return a.dist<b.dist;});
-        if (laser[20].dist < 600){
-            std::cout<<"movimiento"<<endl;
-            differentialrobot_proxy->setSpeedBase(60,0);
-        }
-        else{
-            differentialrobot_proxy->setSpeedBase(0,-0.1);
-            std::cout<<"giro izquierda"<<endl;
-        }
+//       differentialrobot_proxy->setSpeedBase(100,-0.1);
+	std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
+	std::cout<<laser[19].dist<<endl;
+	
+    if(laser[19].dist>250 && laser[19].dist<500)
+      
+      differentialrobot_proxy->setSpeedBase(100,0);
+    
+    
+    if(laser[19].dist>500)
+      
+      differentialrobot_proxy->setSpeedBase(100,-0.1);
+      
         state = State::BUG;
     }
-//     if(targetAtSight() == true)
-//         state = State::IDLE;
+    if(targetAtSight() == true)
+        state = State::IDLE;
 }
-//       target.setEmpty(true);
-//          int tiempo = rand() % 10 + 1;
-//         usleep(tiempo*100000);
-
 
 bool SpecificWorker::obstacle()
 {
@@ -175,7 +178,7 @@ bool SpecificWorker::obstacle()
     laser = laser_proxy->getLaserData();
     std::sort(laser.begin()+20,laser.end()-20,[](auto a, auto b){return a.dist<b.dist;});
     
-       if (laser[20].dist < 300)
+       if (laser[20].dist < 400)
         return true;
 
     return false;
