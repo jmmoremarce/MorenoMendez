@@ -96,11 +96,13 @@ private:
 	
     float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);
+    bool giro;
     
     void gotoTarget();
     void bug();
     bool obstacle();
     bool targetAtSight();
+    float distObstacle(float dist);
 };
 
 #endif
