@@ -56,8 +56,8 @@ void SpecificWorker::compute()
      
     switch( state ) {
         case State::IDLE:
-            
             if ( !target.isEmpty() ){
+                target.calcularPuntos(bState.x, bState.z);
                 state = State::GOTO;
             }
             break;
@@ -152,8 +152,6 @@ void SpecificWorker::bug()
     }
 
     if(targetAtSight() == true && laser[18].dist>500){
-        for(int i = 0; i <50; i++)
-            std::cout<<laser[i].dist<<endl;
         state = State::IDLE;
         return;
     }
@@ -208,6 +206,9 @@ bool SpecificWorker::targetAtSight()
     TLaserData lasercopy ;
     QPolygonF polygon;
     
+    int i = 0;
+    bool existe = false;
+    
     lasercopy = laser_proxy->getLaserData();
     
     for (auto l: lasercopy)
@@ -215,9 +216,14 @@ bool SpecificWorker::targetAtSight()
         QVec lr = innermodel->laserTo("world", "laser", l.dist, l.angle);
             polygon << QPointF(lr.x(), lr.z());
     }
-    std::pair<float, float> tr = target.getValores();
+//     std::pair<float, float> tr = target.getValores();
     
-    return  polygon.containsPoint( QPointF(tr.first, tr.second ), Qt::WindingFill ) ;
+    while(i < 50 && existe == false){
+        existe = polygon.containsPoint( target.getLineaPuntos(i), Qt::WindingFill );
+        i++;
+    }
+    return existe;
+//     return  polygon.containsPoint( QPointF(tr.first, tr.second ), Qt::WindingFill ) ;
 }
 
 

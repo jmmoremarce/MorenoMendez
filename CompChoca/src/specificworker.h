@@ -60,6 +60,7 @@ private:
 	    bool vacia=true; 
 	    float valorX=0.0;
 	    float valorZ=0.0; 
+        float vectorPuntos[100];
 	     
 	    void setEmpty (bool vaciar){
 	      QMutexLocker block(&mutex);	      
@@ -83,8 +84,32 @@ private:
             QMutexLocker block (&mutex);
             return std::make_pair(valorX, valorZ);
 	    }
-				  
 	    
+	    void calcularPuntos(float x, float z){
+            float m = (valorZ - z) / (valorX - x);
+            float aux = valorX - x;
+            if(aux != 0){
+                aux = aux / 50;
+                for(int i = 0; i < 100; i = i+2){
+                    x = x + aux;
+                    vectorPuntos[i] = x;
+                    vectorPuntos[i+1] = m * ( valorX - x) + z; 
+                }
+            }
+            if(aux == 0){
+                aux = valorZ - z;
+                aux = aux / 50;
+                for(int i = 0; i < 100; i = i+2){
+                    z = z + aux;
+                    vectorPuntos[i] = ((valorZ - z) / m) + x;
+                    vectorPuntos[i+1] = z; 
+                }
+            }
+        }
+	    
+	    QPointF getLineaPuntos(int i){
+            return QPointF(vectorPuntos[i], vectorPuntos[i+1]);
+        }
 	};
 	
 	Target target;
@@ -102,6 +127,7 @@ private:
     void bug();
     bool obstacle();
     bool targetAtSight();
+    
     float distObstacle(float dist);
 };
 
