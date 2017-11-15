@@ -27,6 +27,7 @@
 #include <ui_mainUI.h>
 
 #include <CommonBehavior.h>
+#include <GotoPoint.h>
 #include <DifferentialRobot.h>
 #include <RCISMousePicker.h>
 #include <Laser.h>
@@ -41,6 +42,7 @@ typedef map <string,::IceProxy::Ice::Object*> MapPrx;
 
 using namespace std;
 
+using namespace RoboCompGotoPoint;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompRCISMousePicker;
 using namespace RoboCompLaser;
@@ -66,10 +68,14 @@ public:
 	QMutex *mutex;
 	
 
-	DifferentialRobotPrx differentialrobot_proxy;
 	LaserPrx laser_proxy;
+	DifferentialRobotPrx differentialrobot_proxy;
 // 	IceStorm::TopicManagerPrx topicmanager_proxy;
 
+	virtual void go(const string &nodo, const float x, const float y, const float alpha) = 0;
+	virtual void turn(const float speed) = 0;
+	virtual bool atTarget() = 0;
+	virtual void stop() = 0;
 	virtual void setPick(const Pick &myPick) = 0;
 
 

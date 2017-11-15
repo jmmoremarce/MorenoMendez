@@ -121,7 +121,7 @@ private:
 	
     float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);
-    bool giro;
+    bool activo;
     
     void gotoTarget();
     void bug();
@@ -129,6 +129,11 @@ private:
     bool targetAtSight();
     
     float distObstacle(float dist);
+    
+    void go(const string &nodo, const float x, const float y, const float alpha);
+	void turn(const float speed);
+	bool atTarget();
+	void stop();
 };
 
 #endif

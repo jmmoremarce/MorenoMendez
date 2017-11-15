@@ -250,6 +250,29 @@ void SpecificWorker::setPick(const Pick &myPick){
   
   
 } 
+
+void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
+{
+    target.setCopy(x, y);
+    activo = true;
+}
+
+void SpecificWorker::turn(const float speed)
+{
+    differentialrobot_proxy->setSpeedBase(0,0.3);
+}
+
+bool SpecificWorker::atTarget()
+{
+    return activo;
+}
+
+void SpecificWorker::stop()
+{
+    differentialrobot_proxy->setSpeedBase(0,0);
+    activo = false;
+}
+
   
 // 	try
 // 	{
