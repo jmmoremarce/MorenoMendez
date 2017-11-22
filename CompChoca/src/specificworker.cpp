@@ -69,36 +69,7 @@ void SpecificWorker::compute()
         case State::BUG:
             bug();
             break;
-    }
-//     TLaserData laser ; 
-//     
-//     laser = laser_proxy->getLaserData();
-//     std::sort(laser.end()-20,laser.end()-10,[](auto a, auto b){return a.dist>b.dist;});
-//     std::cout<<laser[20].dist<<endl;
-//     if(t.isEmpty() == false)
-//     {     
-//         QVec tR = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
-//         float d=tR.norm2();        
-//         if(d > 50)
-//         {
-//             //adv = d;
-//             //if(adv > MAX_ADV)  adv = MAX_ADV;
-// 	  
-//             vrot = atan2(tR.x(), tR.z());
-//             std::cout<<vrot<<endl;
-//             if(vrot > MAX_VROT) vrot = MAX_VROT;
-// 	    if(vrot < -MAX_VROT) vrot = -MAX_VROT;
-// 	    
-// 	    adv = MAX_ADV * sigmoid(d)  * gaussian(vrot, 0.5, 1);
-// 	    differentialrobot_proxy->setSpeedBase(adv,vrot);
-//         }
-//         else
-//         {
-//             differentialrobot_proxy->setSpeedBase(0, 0);
-//             t.setEmpty(true);    
-//         }
-//     }
-  
+    }  
 }
 
 void SpecificWorker::gotoTarget(){
@@ -109,8 +80,14 @@ void SpecificWorker::gotoTarget(){
     float dist = rt.norm2();
     float ang  = atan2(rt.x(), rt.z());
     float adv;
-    
+
     if( obstacle() == true){   // If ther is an obstacle ahead, then transit to BUG
+        if(dist < 100){         // If close to obstacle stop and transit to IDLE
+            state = State::IDLE;
+            target.setEmpty(true);
+            differentialrobot_proxy->setSpeedBase(0,0); 
+            return;
+        }
         state = State::BUG;
         return;
     }
@@ -122,7 +99,7 @@ void SpecificWorker::gotoTarget(){
         return;
     }
     
-    dist = distObstacle(dist);
+   dist = distObstacle(dist);
     
     if ( fabs(ang) > 0.05 )
         adv = 0;
@@ -151,13 +128,12 @@ void SpecificWorker::bug()
         return;
     }
 
-    if(targetAtSight() == true && laser[18].dist>500){
+    if(targetAtSight() == true && laser[17].dist>450){
         state = State::IDLE;
         return;
     }
     
     if(obstacle() == false){
-        
        
         state = State::BUG;
         
@@ -174,7 +150,6 @@ void SpecificWorker::bug()
     }
 
 }
-
 
 float SpecificWorker::distObstacle(float dist)
 {
@@ -216,14 +191,12 @@ bool SpecificWorker::targetAtSight()
         QVec lr = innermodel->laserTo("world", "laser", l.dist, l.angle);
             polygon << QPointF(lr.x(), lr.z());
     }
-//     std::pair<float, float> tr = target.getValores();
     
     while(i < 50 && existe == false){
         existe = polygon.containsPoint( target.getLineaPuntos(i), Qt::WindingFill );
         i++;
     }
     return existe;
-//     return  polygon.containsPoint( QPointF(tr.first, tr.second ), Qt::WindingFill ) ;
 }
 
 
@@ -238,39 +211,32 @@ float SpecificWorker::gaussian(float vr, float vx, float h)
   return exp(-(vr*vr)/landa);
 }
 
-
 ////////////////////////////
 /// FROM COMPONENT INTERFACE
 ////////////////////////////
 
 void SpecificWorker::setPick(const Pick &myPick){
- 
-  std::cout<<myPick.x<<myPick.y<<endl;
-  target.setCopy(myPick.x, myPick.z);
-  
-  
+  target.setCopy(myPick.x, myPick.z);  
 } 
 
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
-    target.setCopy(x, y);
-    activo = true;
+    target.setCopy(x, y);    
 }
 
 void SpecificWorker::turn(const float speed)
 {
-    differentialrobot_proxy->setSpeedBase(0,0.3);
+    differentialrobot_proxy->setSpeedBase(0,speed);
 }
 
 bool SpecificWorker::atTarget()
 {
-    return activo;
+    return target.isEmpty();
 }
 
 void SpecificWorker::stop()
 {
     differentialrobot_proxy->setSpeedBase(0,0);
-    activo = false;
 }
 
   

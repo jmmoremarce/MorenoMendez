@@ -48,7 +48,12 @@ public:
 	SpecificWorker(MapPrx& mprx);	
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
-
+    
+    void go(const string &nodo, const float x, const float y, const float alpha);
+	void turn(const float speed);
+	bool atTarget();
+	void stop();
+    
 public slots:
 	void compute(); 	
 	void setPick(const Pick &myPick);
@@ -129,11 +134,6 @@ private:
     bool targetAtSight();
     
     float distObstacle(float dist);
-    
-    void go(const string &nodo, const float x, const float y, const float alpha);
-	void turn(const float speed);
-	bool atTarget();
-	void stop();
 };
 
 #endif

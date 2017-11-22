@@ -7,13 +7,14 @@ set(CMAKE_DEPENDS_CHECK_CXX
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/AprilTags.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/AprilTags.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/CommonBehavior.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/DifferentialRobot.cpp.o"
+  "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/GotoPoint.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/apriltagsI.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/commonbehaviorI.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericmonitor.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericworker.cpp.o"
+  "/home/josemi/robocomp/classes/qlog/qlog.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o"
+  "/home/josemi/robocomp/classes/rapplication/rapplication.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/main.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/main.cpp.o"
-  "/opt/robocomp/classes/qlog/qlog.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/opt/robocomp/classes/qlog/qlog.cpp.o"
-  "/opt/robocomp/classes/rapplication/rapplication.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificmonitor.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificworker.cpp.o"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/supervisor_automoc.cpp.o"
@@ -42,9 +43,9 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/robocomp/include"
   "/classes"
   "."
-  "/opt/robocomp/classes"
-  "/opt/robocomp/libs"
-  "/opt/robocomp/interfaces"
+  "/home/josemi/robocomp/classes"
+  "/home/josemi/robocomp/libs"
+  "/home/josemi/robocomp/interfaces"
   "/include"
   )
 
@@ -53,6 +54,7 @@ set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/AprilTags.h" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/AprilTags.cpp"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.h" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp"
   "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.h" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp"
+  "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.h" "/home/josemi/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp"
   )
 
 

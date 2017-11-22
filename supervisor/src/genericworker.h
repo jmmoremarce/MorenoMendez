@@ -27,6 +27,7 @@
 #include <ui_mainUI.h>
 
 #include <CommonBehavior.h>
+#include <GotoPoint.h>
 #include <DifferentialRobot.h>
 #include <AprilTags.h>
 
@@ -40,6 +41,7 @@ typedef map <string,::IceProxy::Ice::Object*> MapPrx;
 
 using namespace std;
 
+using namespace RoboCompGotoPoint;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompAprilTags;
 
@@ -65,6 +67,7 @@ public:
 	
 
 	DifferentialRobotPrx differentialrobot_proxy;
+	GotoPointPrx gotopoint_proxy;
 // 	IceStorm::TopicManagerPrx topicmanager_proxy;
 
 	virtual void newAprilTag(const tagsList &tags) = 0;

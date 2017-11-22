@@ -36,18 +36,56 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-
-
-
-	
+    innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/simpleworld.xml");	
 	timer.start(Period);
 	
-
 	return true;
 }
 
 void SpecificWorker::compute()
 {
+    RoboCompDifferentialRobot::TBaseState bState;
+    
+    differentialrobot_proxy->getBaseState(bState);
+    
+    innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    
+     switch( state ) {
+         case State::BUSCAR:
+             gotopoint_proxy->turn(0.2);
+                std::cout<<"buscando cuadro"<<endl;
+                if(tag.emptyId(actual)){
+                    gotopoint_proxy->stop();
+                    state = State::GOTO;
+                    std::cout<<"manda parar al robot"<<endl;
+                    std::cout<<"valor x: "<<tag.getValorX()<<"  valor y: "<< tag.getValorY()<<endl;
+                }
+             
+             break;
+             
+         case State::GOTO:
+             sendGoTo();
+             state = State::WAIT;
+             break;
+             
+         case State::WAIT:
+             if(tag.emptyId(actual)){
+                
+                actual = actual + 1;
+                actual = actual % 4;
+                std::cout<<"manda mover al robot"<<endl;
+             }
+            
+             if(gotopoint_proxy->atTarget()){
+
+                tag.setVacia(true);
+                std::cout<<"cambio de cuadro"<<endl;
+                std::cout<<actual<<endl;
+                state = State::BUSCAR;
+                 
+             }
+             break;
+     }
 // 	try
 // 	{
 // 		camera_proxy->getYImage(0,img, cState, bState);
@@ -60,10 +98,17 @@ void SpecificWorker::compute()
 // 	}
 }
 
+void SpecificWorker::sendGoTo(){
+    
+    std::pair<float, float> tr = tag.getValores();
+    QVec rt = innermodel->transform("world", QVec::vec3(tr.first, 0 , tr.second), "base");
+  
+    gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
+}
 
 void SpecificWorker::newAprilTag(const tagsList &tags)
 {
-    std::cout<<tags[0].id<<endl;
+    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
 }
 
 

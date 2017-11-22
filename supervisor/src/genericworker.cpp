@@ -29,6 +29,7 @@ QObject()
 
 {
 	differentialrobot_proxy = (*(DifferentialRobotPrx*)mprx["DifferentialRobotProxy"]);
+	gotopoint_proxy = (*(GotoPointPrx*)mprx["GotoPointProxy"]);
 
 // 	topicmanager_proxy = (*(IceStorm::TopicManagerPrx*)mprx["topicManager"]);
 

@@ -265,6 +265,33 @@ DifferentialRobot.cpp.s:
 	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/DifferentialRobot.cpp.s
 .PHONY : DifferentialRobot.cpp.s
 
+GotoPoint.o: GotoPoint.cpp.o
+
+.PHONY : GotoPoint.o
+
+# target to build an object file
+GotoPoint.cpp.o:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/GotoPoint.cpp.o
+.PHONY : GotoPoint.cpp.o
+
+GotoPoint.i: GotoPoint.cpp.i
+
+.PHONY : GotoPoint.i
+
+# target to preprocess a source file
+GotoPoint.cpp.i:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/GotoPoint.cpp.i
+.PHONY : GotoPoint.cpp.i
+
+GotoPoint.s: GotoPoint.cpp.s
+
+.PHONY : GotoPoint.s
+
+# target to generate assembly for a file
+GotoPoint.cpp.s:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/GotoPoint.cpp.s
+.PHONY : GotoPoint.cpp.s
+
 apriltagsI.o: apriltagsI.cpp.o
 
 .PHONY : apriltagsI.o
@@ -373,6 +400,60 @@ genericworker.cpp.s:
 	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/genericworker.cpp.s
 .PHONY : genericworker.cpp.s
 
+home/josemi/robocomp/classes/qlog/qlog.o: home/josemi/robocomp/classes/qlog/qlog.cpp.o
+
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.o
+
+# target to build an object file
+home/josemi/robocomp/classes/qlog/qlog.cpp.o:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.o
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.cpp.o
+
+home/josemi/robocomp/classes/qlog/qlog.i: home/josemi/robocomp/classes/qlog/qlog.cpp.i
+
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.i
+
+# target to preprocess a source file
+home/josemi/robocomp/classes/qlog/qlog.cpp.i:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.i
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.cpp.i
+
+home/josemi/robocomp/classes/qlog/qlog.s: home/josemi/robocomp/classes/qlog/qlog.cpp.s
+
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.s
+
+# target to generate assembly for a file
+home/josemi/robocomp/classes/qlog/qlog.cpp.s:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/qlog/qlog.cpp.s
+.PHONY : home/josemi/robocomp/classes/qlog/qlog.cpp.s
+
+home/josemi/robocomp/classes/rapplication/rapplication.o: home/josemi/robocomp/classes/rapplication/rapplication.cpp.o
+
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.o
+
+# target to build an object file
+home/josemi/robocomp/classes/rapplication/rapplication.cpp.o:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.o
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.cpp.o
+
+home/josemi/robocomp/classes/rapplication/rapplication.i: home/josemi/robocomp/classes/rapplication/rapplication.cpp.i
+
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.i
+
+# target to preprocess a source file
+home/josemi/robocomp/classes/rapplication/rapplication.cpp.i:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.i
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.cpp.i
+
+home/josemi/robocomp/classes/rapplication/rapplication.s: home/josemi/robocomp/classes/rapplication/rapplication.cpp.s
+
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.s
+
+# target to generate assembly for a file
+home/josemi/robocomp/classes/rapplication/rapplication.cpp.s:
+	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/home/josemi/robocomp/classes/rapplication/rapplication.cpp.s
+.PHONY : home/josemi/robocomp/classes/rapplication/rapplication.cpp.s
+
 main.o: main.cpp.o
 
 .PHONY : main.o
@@ -399,60 +480,6 @@ main.s: main.cpp.s
 main.cpp.s:
 	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/main.cpp.s
 .PHONY : main.cpp.s
-
-opt/robocomp/classes/qlog/qlog.o: opt/robocomp/classes/qlog/qlog.cpp.o
-
-.PHONY : opt/robocomp/classes/qlog/qlog.o
-
-# target to build an object file
-opt/robocomp/classes/qlog/qlog.cpp.o:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/qlog/qlog.cpp.o
-.PHONY : opt/robocomp/classes/qlog/qlog.cpp.o
-
-opt/robocomp/classes/qlog/qlog.i: opt/robocomp/classes/qlog/qlog.cpp.i
-
-.PHONY : opt/robocomp/classes/qlog/qlog.i
-
-# target to preprocess a source file
-opt/robocomp/classes/qlog/qlog.cpp.i:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/qlog/qlog.cpp.i
-.PHONY : opt/robocomp/classes/qlog/qlog.cpp.i
-
-opt/robocomp/classes/qlog/qlog.s: opt/robocomp/classes/qlog/qlog.cpp.s
-
-.PHONY : opt/robocomp/classes/qlog/qlog.s
-
-# target to generate assembly for a file
-opt/robocomp/classes/qlog/qlog.cpp.s:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/qlog/qlog.cpp.s
-.PHONY : opt/robocomp/classes/qlog/qlog.cpp.s
-
-opt/robocomp/classes/rapplication/rapplication.o: opt/robocomp/classes/rapplication/rapplication.cpp.o
-
-.PHONY : opt/robocomp/classes/rapplication/rapplication.o
-
-# target to build an object file
-opt/robocomp/classes/rapplication/rapplication.cpp.o:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/rapplication/rapplication.cpp.o
-.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.o
-
-opt/robocomp/classes/rapplication/rapplication.i: opt/robocomp/classes/rapplication/rapplication.cpp.i
-
-.PHONY : opt/robocomp/classes/rapplication/rapplication.i
-
-# target to preprocess a source file
-opt/robocomp/classes/rapplication/rapplication.cpp.i:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/rapplication/rapplication.cpp.i
-.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.i
-
-opt/robocomp/classes/rapplication/rapplication.s: opt/robocomp/classes/rapplication/rapplication.cpp.s
-
-.PHONY : opt/robocomp/classes/rapplication/rapplication.s
-
-# target to generate assembly for a file
-opt/robocomp/classes/rapplication/rapplication.cpp.s:
-	cd /home/josemi/robocomp/components/MorenoMendez/supervisor && $(MAKE) -f src/CMakeFiles/supervisor.dir/build.make src/CMakeFiles/supervisor.dir/opt/robocomp/classes/rapplication/rapplication.cpp.s
-.PHONY : opt/robocomp/classes/rapplication/rapplication.cpp.s
 
 specificmonitor.o: specificmonitor.cpp.o
 
@@ -558,6 +585,9 @@ help:
 	@echo "... DifferentialRobot.o"
 	@echo "... DifferentialRobot.i"
 	@echo "... DifferentialRobot.s"
+	@echo "... GotoPoint.o"
+	@echo "... GotoPoint.i"
+	@echo "... GotoPoint.s"
 	@echo "... apriltagsI.o"
 	@echo "... apriltagsI.i"
 	@echo "... apriltagsI.s"
@@ -570,15 +600,15 @@ help:
 	@echo "... genericworker.o"
 	@echo "... genericworker.i"
 	@echo "... genericworker.s"
+	@echo "... home/josemi/robocomp/classes/qlog/qlog.o"
+	@echo "... home/josemi/robocomp/classes/qlog/qlog.i"
+	@echo "... home/josemi/robocomp/classes/qlog/qlog.s"
+	@echo "... home/josemi/robocomp/classes/rapplication/rapplication.o"
+	@echo "... home/josemi/robocomp/classes/rapplication/rapplication.i"
+	@echo "... home/josemi/robocomp/classes/rapplication/rapplication.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"
-	@echo "... opt/robocomp/classes/qlog/qlog.o"
-	@echo "... opt/robocomp/classes/qlog/qlog.i"
-	@echo "... opt/robocomp/classes/qlog/qlog.s"
-	@echo "... opt/robocomp/classes/rapplication/rapplication.o"
-	@echo "... opt/robocomp/classes/rapplication/rapplication.i"
-	@echo "... opt/robocomp/classes/rapplication/rapplication.s"
 	@echo "... specificmonitor.o"
 	@echo "... specificmonitor.i"
 	@echo "... specificmonitor.s"

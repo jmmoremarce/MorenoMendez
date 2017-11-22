@@ -34,6 +34,8 @@
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
 
+using namespace std;
+
 class SpecificWorker : public GenericWorker
 {
 Q_OBJECT
@@ -49,14 +51,58 @@ public slots:
 
 private:
 	struct Tag {
-        int id;
-        float tx;
-        float ty;
-        float tz;
-        float rx;
-        float ry;
-        float rz;
+        mutable QMutex mutex;
+        bool vacia = true;
+        
+        int id = 5;
+        float valorX = 0.0;
+        float valorY = 0.0;
+        
+        
+        void copiaValores(int id_, float x, float y){
+            QMutexLocker block (&mutex);
+            id = id_;
+            valorX = x;
+            valorY = y;
+            vacia = false;
+        }
+        
+        std::pair<float, float> getValores(){
+            QMutexLocker block (&mutex);
+            return std::make_pair(valorX, valorY);
+	    }
+        float getValorX(){
+            return valorX;
+        }
+        
+        float getValorY(){
+            return valorY;
+        }
+        
+	    bool emptyId(int _id){
+            if(id == _id)
+                return true;
+            return false;
+        }
+        
+	    bool getVacia(){
+            return vacia;
+        }
+        
+        void setVacia(bool v){
+            vacia = false;
+        }
     };
+    
+    Tag tag;
+    InnerModel *innermodel;
+    
+    enum State {BUSCAR, WAIT, GOTO};
+    
+    State state = State::BUSCAR;
+    void sendGoTo();
+    
+    int actual = 0;
 };
 
 #endif
