@@ -1,4 +1,4 @@
 [Project]
 CreatedFrom=CMakeLists.txt
-Manager=KDevCMakeManager
+Manager=KDevCustomMakeManager
 Name=supervisor

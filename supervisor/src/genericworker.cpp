@@ -28,10 +28,8 @@ QObject()
 #endif
 
 {
-	differentialrobot_proxy = (*(DifferentialRobotPrx*)mprx["DifferentialRobotProxy"]);
 	gotopoint_proxy = (*(GotoPointPrx*)mprx["GotoPointProxy"]);
-
-// 	topicmanager_proxy = (*(IceStorm::TopicManagerPrx*)mprx["topicManager"]);
+	differentialrobot_proxy = (*(DifferentialRobotPrx*)mprx["DifferentialRobotProxy"]);
 
 
 	mutex = new QMutex(QMutex::Recursive);
@@ -42,10 +40,6 @@ QObject()
 	#endif
 	Period = BASIC_PERIOD;
 	connect(&timer, SIGNAL(timeout()), this, SLOT(compute()));
-	connect(&storm_timer, SIGNAL(timeout()), this, SLOT(check_storm()));
-	storm_timer.start(storm_period);
-
-
 // 	timer.start(Period);
 }
 
@@ -70,15 +64,5 @@ void GenericWorker::setPeriod(int p)
 	rDebug("Period changed"+QString::number(p));
 	Period = p;
 	timer.start(Period);
-}
-
-
-void GenericWorker::check_storm()
-{
-	try {
-// 		topicmanager_proxy->ice_ping();
-	} catch(const Ice::Exception& ex) {
-		cout <<"Exception: STORM not running: " << ex << endl;
-	}
 }
 

@@ -160,7 +160,7 @@ bool SpecificWorker::salida(){
     laser = laser_proxy->getLaserData();
     
     bool exit = true;
-    for(int i = 8; i < 91; i++){
+    for(int i = 7; i < 92; i++){
         if(laser[i].dist < 350)
             exit = false;
     }
@@ -253,14 +253,15 @@ void SpecificWorker::setPick(const Pick &myPick){
 
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
-    if( x > 0 && y > 0)
+   /* if( x > 0 && y > 0)
         target.setCopy(x - 300, y - 300);    
     if(x > 0 && y < 0)
         target.setCopy(x - 300, y + 300); 
     if( x < 0 && y > 0)
         target.setCopy(x + 300, y - 300);    
     if(x < 0 && y < 0)
-        target.setCopy(x + 300, y + 300);  
+        target.setCopy(x + 300, y + 300);  */
+    target.setCopy(x , y );
 }
 
 void SpecificWorker::turn(const float speed)

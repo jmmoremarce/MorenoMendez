@@ -6,13 +6,13 @@
 
 #IncludeRegexTransform: 
 
-/home/josemi/robocomp/classes/qlog/qlog.cpp
+/home/salabeta/robocomp/classes/qlog/qlog.cpp
 qlog.h
-/home/josemi/robocomp/classes/qlog/qlog.h
+/home/salabeta/robocomp/classes/qlog/qlog.h
 
-/home/josemi/robocomp/classes/qlog/qlog.h
+/home/salabeta/robocomp/classes/qlog/qlog.h
 config.h
-/home/josemi/robocomp/classes/qlog/config.h
+/home/salabeta/robocomp/classes/qlog/config.h
 QtCore
 -
 iostream
@@ -20,11 +20,11 @@ iostream
 Logger.h
 -
 
-/home/josemi/robocomp/classes/rapplication/rapplication.cpp
+/home/salabeta/robocomp/classes/rapplication/rapplication.cpp
 rapplication.h
-/home/josemi/robocomp/classes/rapplication/rapplication.h
+/home/salabeta/robocomp/classes/rapplication/rapplication.h
 
-/home/josemi/robocomp/classes/rapplication/rapplication.h
+/home/salabeta/robocomp/classes/rapplication/rapplication.h
 Ice/Ice.h
 -
 Ice/Application.h
@@ -34,7 +34,7 @@ IceUtil/IceUtil.h
 QtCore
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/AprilTags.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/AprilTags.cpp
 AprilTags.h
 -
 Ice/LocalException.h
@@ -48,7 +48,7 @@ Ice/Object.h
 IceUtil/Iterator.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp
 CommonBehavior.h
 -
 Ice/LocalException.h
@@ -62,7 +62,7 @@ Ice/Object.h
 IceUtil/Iterator.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp
 DifferentialRobot.h
 -
 Ice/LocalException.h
@@ -76,7 +76,7 @@ Ice/Object.h
 IceUtil/Iterator.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp
 GotoPoint.h
 -
 Ice/LocalException.h
@@ -90,11 +90,11 @@ Ice/Object.h
 IceUtil/Iterator.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.cpp
 apriltagsI.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
 QtCore/QObject
 -
 Ice/Ice.h
@@ -104,13 +104,13 @@ AprilTags.h
 config.h
 -
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.cpp
 commonbehaviorI.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
 QtCore/QObject
 -
 Ice/Ice.h
@@ -120,37 +120,37 @@ CommonBehavior.h
 config.h
 -
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 genericmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/config.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/config.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.cpp
 genericmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 Ice/Ice.h
 -
 QtCore
 -
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 config.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/config.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/config.h
 qlog/qlog.h
 -
 CommonBehavior.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.cpp
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 config.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/config.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/config.h
 QtGui
 -
 stdint.h
@@ -167,10 +167,8 @@ DifferentialRobot.h
 -
 AprilTags.h
 -
-IceStorm/IceStorm.h
--
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/main.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/main.cpp
 signal.h
 -
 QtCore
@@ -188,17 +186,17 @@ rapplication/rapplication.h
 qlog/qlog.h
 -
 config.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/config.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/config.h
 genericmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 specificworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
 specificmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
 commonbehaviorI.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
 apriltagsI.h
 -
 AprilTags.h
@@ -208,61 +206,61 @@ DifferentialRobot.h
 GotoPoint.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_apriltagsI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_apriltagsI.cpp
 apriltagsI.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/apriltagsI.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_commonbehaviorI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_commonbehaviorI.cpp
 commonbehaviorI.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_genericmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_genericmonitor.cpp
 genericmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_genericworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_genericworker.cpp
 genericworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_specificmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_specificmonitor.cpp
 specificmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_specificworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_specificworker.cpp
 specificworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.cpp
 specificmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.h
 genericmonitor.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.cpp
 specificworker.h
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.h
 genericworker.h
 -
 innermodel/innermodel.h
 -
 
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp
 moc_apriltagsI.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_apriltagsI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_apriltagsI.cpp
 moc_commonbehaviorI.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_commonbehaviorI.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_commonbehaviorI.cpp
 moc_genericmonitor.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_genericmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_genericmonitor.cpp
 moc_genericworker.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_genericworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_genericworker.cpp
 moc_specificmonitor.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_specificmonitor.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_specificmonitor.cpp
 moc_specificworker.cpp
-/home/josemi/robocomp/components/MorenoMendez/supervisor/src/moc_specificworker.cpp
+/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/moc_specificworker.cpp
 
 /opt/robocomp/include/innermodel/innermodel.h
 stdexcept
@@ -4392,8 +4390,6 @@ GotoPoint.h
 DifferentialRobot.h
 -
 AprilTags.h
--
-IceStorm/IceStorm.h
 -
 
 src/ui_mainUI.h
