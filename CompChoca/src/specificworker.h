@@ -36,7 +36,7 @@
 
 #define MAX_ADV 400
 #define MAX_VROT 0.5
-
+#define VECTOR 25
 
 
 using namespace std;
@@ -94,8 +94,8 @@ private:
             float m = (valorZ - z) / (valorX - x);
             float aux = valorX - x;
             if(aux != 0){
-                aux = aux / 50;
-                for(int i = 0; i < 100; i = i+2){
+                aux = aux / VECTOR;
+                for(int i = 0; i < 2*VECTOR; i = i+2){
                     x = x + aux;
                     vectorPuntos[i] = x;
                     vectorPuntos[i+1] = m * ( valorX - x) + z; 
@@ -104,7 +104,7 @@ private:
             if(aux == 0){
                 aux = valorZ - z;
                 aux = aux / 50;
-                for(int i = 0; i < 100; i = i+2){
+                for(int i = 0; i < 2*VECTOR; i = i+2){
                     z = z + aux;
                     vectorPuntos[i] = ((valorZ - z) / m) + x;
                     vectorPuntos[i+1] = z; 
@@ -134,6 +134,8 @@ private:
     bool targetAtSight();
     
     float distObstacle(float dist);
+    bool salida();
+    float stopDist(float dist);
 };
 
 #endif

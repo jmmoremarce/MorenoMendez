@@ -53,8 +53,9 @@ void SpecificWorker::compute()
      switch( state ) {
          case State::BUSCAR:
              gotopoint_proxy->turn(0.2);
-                std::cout<<"buscando cuadro"<<endl;
                 if(tag.emptyId(actual)){
+                    actual = actual + 1;
+                    actual = actual % 4;
                     gotopoint_proxy->stop();
                     state = State::GOTO;
                     std::cout<<"manda parar al robot"<<endl;
@@ -69,20 +70,9 @@ void SpecificWorker::compute()
              break;
              
          case State::WAIT:
-             if(tag.emptyId(actual)){
-                
-                actual = actual + 1;
-                actual = actual % 4;
-                std::cout<<"manda mover al robot"<<endl;
-             }
-            
              if(gotopoint_proxy->atTarget()){
-
                 tag.setVacia(true);
-                std::cout<<"cambio de cuadro"<<endl;
-                std::cout<<actual<<endl;
                 state = State::BUSCAR;
-                 
              }
              break;
      }
