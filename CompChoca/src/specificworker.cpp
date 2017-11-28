@@ -92,15 +92,15 @@ void SpecificWorker::gotoTarget(){
         state = State::BUG;
         return;
     }
-    
-     if(stopDist(dist) < 100){         // If close to obstacle stop and transit to IDLE
+          
+    if(dist < 100){// If close to obstacle stop and transit to IDLE
         state = State::IDLE;
         target.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
         return;
     }
     
-   dist = distObstacle(dist);
+    dist = distObstacle(dist);
     
     if ( fabs(ang) > 0.05 )
         adv = 0;
@@ -119,20 +119,34 @@ void SpecificWorker::gotoTarget(){
 void SpecificWorker::bug()
 {
     TLaserData laser ; 
-    float giro;
     laser = laser_proxy->getLaserData();
     
-    std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
+    std::pair<float, float> tr = target.getValores();
+    QVec rt = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
     
-    if(laser[19].angle > 0 ){
-        giro = -0.1;
-
+    float dist = rt.norm2();
+    
+    std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
+        
+    if(dist < 400){
+        state = State::IDLE;
+        giro = 0.0;
+        target.setEmpty(true);
+        differentialrobot_proxy->setSpeedBase(0,0); 
+        return;
     }
-    else{
-        giro = 0.1;
+    if(giro == 0.0){
+        if( laser[20].angle > 0 ){
+            giro = -0.1;
+        }
+        else{
+            giro = 0.1;
+        }
     }
+    
     if(salida() == true){
         state = State::IDLE;
+        giro = 0.0;
         return;
     }
     
@@ -152,6 +166,7 @@ void SpecificWorker::bug()
     if(laser[15].dist>350){
         differentialrobot_proxy->setSpeedBase(100,-2*giro);
     }
+    
 }
 
 bool SpecificWorker::salida(){
@@ -165,8 +180,10 @@ bool SpecificWorker::salida(){
             exit = false;
     }
     
-    if(exit == true && targetAtSight() == true)
+    if(exit == true && targetAtSight() == true){
+        std::cout<<"salida ok"<<endl;
         return true;
+    }
     return false;
 }
 
@@ -193,19 +210,6 @@ bool SpecificWorker::obstacle()
         return true;
 
     return false;
-}
-
-float SpecificWorker::stopDist(float dist){
-    TLaserData laser ; 
-    
-    laser = laser_proxy->getLaserData();
-    std::sort(laser.begin()+20,laser.end()-20,[](auto a, auto b){return a.dist<b.dist;});
-    
-    if (laser[20].dist < 400){
-        if(dist < 600)
-            return 50;
-    }
-    return dist;
 }
 
 bool SpecificWorker::targetAtSight()
@@ -253,14 +257,6 @@ void SpecificWorker::setPick(const Pick &myPick){
 
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
-   /* if( x > 0 && y > 0)
-        target.setCopy(x - 300, y - 300);    
-    if(x > 0 && y < 0)
-        target.setCopy(x - 300, y + 300); 
-    if( x < 0 && y > 0)
-        target.setCopy(x + 300, y - 300);    
-    if(x < 0 && y < 0)
-        target.setCopy(x + 300, y + 300);  */
     target.setCopy(x , y );
 }
 

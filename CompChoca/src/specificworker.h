@@ -120,14 +120,16 @@ private:
 	Target target;
 	InnerModel *innermodel;
     
+    float giro = 0.0;
+    bool activo;
+    
     enum State {IDLE, GOTO, BUG};
     
     State state = State::IDLE;
 	
     float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);
-    bool activo;
-    
+        
     void gotoTarget();
     void bug();
     bool obstacle();
@@ -135,7 +137,6 @@ private:
     
     float distObstacle(float dist);
     bool salida();
-    float stopDist(float dist);
 };
 
 #endif
