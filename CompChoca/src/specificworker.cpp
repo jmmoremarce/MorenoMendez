@@ -87,9 +87,11 @@ void SpecificWorker::gotoTarget(){
             state = State::IDLE;
             target.setEmpty(true);
             differentialrobot_proxy->setSpeedBase(0,0); 
+	    std::cout<<"HA LLEGADO"<<endl;
             return;
         }
         state = State::BUG;
+	
         return;
     }
           
@@ -97,6 +99,7 @@ void SpecificWorker::gotoTarget(){
         state = State::IDLE;
         target.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
+	std::cout<<"HA LLEGADO EN EL MENOR DE 100"<<endl;
         return;
     }
     
@@ -133,7 +136,8 @@ void SpecificWorker::bug()
         giro = 0.0;
         target.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
-        return;
+        std::cout<<"HA LLEGADO-------- BUG"<<endl;
+	return;
     }
     if(giro == 0.0){
         if( laser[20].angle > 0 ){
@@ -274,6 +278,21 @@ void SpecificWorker::stop()
 {
     differentialrobot_proxy->setSpeedBase(0,0);
 }
+
+
+void SpecificWorker::Picking_box()
+{
+  
+
+}
+
+
+void SpecificWorker::releasing_box()
+{
+  
+
+}
+
 
   
 // 	try

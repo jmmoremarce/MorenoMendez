@@ -97,12 +97,14 @@ private:
     Tag tag;
     InnerModel *innermodel;
     
-    enum State {BUSCAR, WAIT, GOTO};
+    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO};
     
-    State state = State::BUSCAR;
+    State state = State::BUSCARTAZA;
+    State stateLast = State::BUSCARTAZA;
     void sendGoTo();
     
-    int actual = 0;
+    int actualPared = 0;
+    int actualTaza=11;
 };
 
 #endif

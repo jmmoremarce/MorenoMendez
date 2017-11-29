@@ -53,6 +53,8 @@ public:
 	void turn(const float speed);
 	bool atTarget();
 	void stop();
+	void Picking_box();
+	void releasing_box();
     
 public slots:
 	void compute(); 	

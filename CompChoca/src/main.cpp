@@ -87,6 +87,7 @@
 #include <DifferentialRobot.h>
 #include <RCISMousePicker.h>
 #include <GotoPoint.h>
+#include <JointMotor.h>
 
 
 // User includes here
@@ -99,6 +100,7 @@ using namespace RoboCompLaser;
 using namespace RoboCompDifferentialRobot;
 using namespace RoboCompRCISMousePicker;
 using namespace RoboCompGotoPoint;
+using namespace RoboCompJointMotor;
 
 
 
@@ -143,6 +145,7 @@ int ::torpedo::run(int argc, char* argv[])
 	int status=EXIT_SUCCESS;
 
 	DifferentialRobotPrx differentialrobot_proxy;
+	JointMotorPrx jointmotor_proxy;
 	LaserPrx laser_proxy;
 
 	string proxy, tmp;
@@ -164,6 +167,23 @@ int ::torpedo::run(int argc, char* argv[])
 	}
 	rInfo("DifferentialRobotProxy initialized Ok!");
 	mprx["DifferentialRobotProxy"] = (::IceProxy::Ice::Object*)(&differentialrobot_proxy);//Remote server proxy creation example
+
+
+	try
+	{
+		if (not GenericMonitor::configGetString(communicator(), prefix, "JointMotorProxy", proxy, ""))
+		{
+			cout << "[" << PROGRAM_NAME << "]: Can't read configuration for proxy JointMotorProxy\n";
+		}
+		jointmotor_proxy = JointMotorPrx::uncheckedCast( communicator()->stringToProxy( proxy ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("JointMotorProxy initialized Ok!");
+	mprx["JointMotorProxy"] = (::IceProxy::Ice::Object*)(&jointmotor_proxy);//Remote server proxy creation example
 
 
 	try

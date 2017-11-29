@@ -51,18 +51,32 @@ void SpecificWorker::compute()
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
      switch( state ) {
-         case State::BUSCAR:
+         case State::BUSCARPARED:
              gotopoint_proxy->turn(0.2);
-                if(tag.emptyId(actual)){
-                    actual = actual + 1;
-                    actual = actual % 4;
+                if(tag.emptyId(actualPared)){
+                    actualPared = actualPared + 1;
+                    actualPared = actualPared % 4;
                     gotopoint_proxy->stop();
                     state = State::GOTO;
-                    std::cout<<"manda parar al robot"<<endl;
-                    std::cout<<"valor x: "<<tag.getValorX()<<"  valor y: "<< tag.getValorY()<<endl;
-                }
-             
+		     std::cout<<"GO TO DE PARED!!!"<<endl;
+		    stateLast=State::BUSCARPARED;
+               }             
              break;
+	     
+	case State::BUSCARTAZA :
+           gotopoint_proxy->turn(0.2);
+	    std::cout<<"Valor actual taza "<<actualTaza<<endl;
+             if(tag.emptyId(actualTaza)){
+                    actualTaza = actualTaza + 1 ;
+                   // actualTaza = actualTaza % 4;
+                    gotopoint_proxy->stop();
+                    state = State::GOTO;
+		    stateLast=State::BUSCARTAZA;
+                    std::cout<<"GO TO DE TAZA!!!"<<endl;
+		    std::cout<<"Valor actual taza "<<actualTaza<<endl;
+               }             
+	    break;   
+	     
              
          case State::GOTO:
              sendGoTo();
@@ -70,11 +84,27 @@ void SpecificWorker::compute()
              break;
              
          case State::WAIT:
-             if(gotopoint_proxy->atTarget()){
-                tag.setVacia(true);
-                state = State::BUSCAR;
-             }
+          
+              switch( stateLast ){
+		case State::BUSCARPARED:
+		     if(gotopoint_proxy->atTarget()){
+			tag.setVacia(true);
+			state = State::BUSCARTAZA;
+			std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
+		
+		    }
+		break;   
+		
+		case State::BUSCARTAZA:
+		     if(gotopoint_proxy->atTarget()){
+			tag.setVacia(true);
+			state = State::BUSCARPARED;	
+			std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
+		    }
+		break;
+	      }
              break;
+	 
      }
 // 	try
 // 	{
@@ -99,6 +129,8 @@ void SpecificWorker::sendGoTo(){
 void SpecificWorker::newAprilTag(const tagsList &tags)
 {
     tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+    std::cout<<"Tag ID: "<<tags[0].id<<endl;
+
 }
 
 
