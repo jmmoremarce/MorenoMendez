@@ -125,9 +125,11 @@ private:
     float giro = 0.0;
     bool activo;
     
-    enum State {IDLE, GOTO, BUG};
+    enum State {IDLE, GOTO, BUG, PATRULLA};
+    enum patrulla {PUNTO_0, PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
     
     State state = State::IDLE;
+    patrulla patru = patrulla::PUNTO_0;
 	
     float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);
@@ -139,6 +141,7 @@ private:
     
     float distObstacle(float dist);
     bool salida();
+    void Patrulla();
 };
 
 #endif

@@ -38,7 +38,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
     innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/simpleworld.xml");	
 	timer.start(Period);
-	
+	    
 	return true;
 }
 
@@ -51,60 +51,81 @@ void SpecificWorker::compute()
     innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
      switch( state ) {
-         case State::BUSCARPARED:
-             gotopoint_proxy->turn(0.2);
-                if(tag.emptyId(actualPared)){
-                    actualPared = actualPared + 1;
-                    actualPared = actualPared % 4;
-                    gotopoint_proxy->stop();
-                    state = State::GOTO;
-		     std::cout<<"GO TO DE PARED!!!"<<endl;
-		    stateLast=State::BUSCARPARED;
-               }             
-             break;
+        case State::BUSCARPARED:
+            gotopoint_proxy->turn(0.3);
+            if(tag.emptyId(actualPared)){
+                actualPared = actualPared + 1;
+                actualPared = actualPared % 4;
+                gotopoint_proxy->stop();
+                state = State::GOTO;
+            std::cout<<"GO TO DE PARED!!!"<<endl;
+            }             
+            break;
 	     
-	case State::BUSCARTAZA :
-           gotopoint_proxy->turn(0.2);
-	    std::cout<<"Valor actual taza "<<actualTaza<<endl;
-             if(tag.emptyId(actualTaza)){
-                    actualTaza = actualTaza + 1 ;
-                   // actualTaza = actualTaza % 4;
-                    gotopoint_proxy->stop();
-                    state = State::GOTO;
-		    stateLast=State::BUSCARTAZA;
-                    std::cout<<"GO TO DE TAZA!!!"<<endl;
-		    std::cout<<"Valor actual taza "<<actualTaza<<endl;
-               }             
-	    break;   
-	     
+        case State::BUSCARTAZA :
+            gotopoint_proxy->turn(0.3);
+            if(tag.emptyId(actualTaza)){
+                std::cout<<"Valor actual taza "<<actualTaza<<endl;
+                actualTaza = actualTaza + 1 ;
+                gotopoint_proxy->stop();
+                state = State::GOTO;
+                std::cout<<"GO TO DE TAZA!!!"<<endl;                
+            } 
+            t_fin = clock();
+            std::cout<<(t_fin - t_init)<<endl;
+            if((t_fin - t_init) > 9000000){ //para que el robot pueda dar una vuelta completa
+                state = State::PATRULLA;
+                std::cout<<"SE VA DE PATRULLA"<<endl;
+            }
+            break;   
+	                 
+        case State::GOTO:
+            sendGoTo();
+            std::cout<<"GOTO"<<endl;
+            if(patrulla == true){
+                std::cout<<"GOTO ---- PATRULLA"<<endl;
+                patrulla = false;
+                state = State::WAIT_PATRULLA;                
+            }
+            else
+                state = State::WAIT;
+            break;
              
-         case State::GOTO:
-             sendGoTo();
-             state = State::WAIT;
-             break;
-             
-         case State::WAIT:
-          
-              switch( stateLast ){
-		case State::BUSCARPARED:
-		     if(gotopoint_proxy->atTarget()){
-			tag.setVacia(true);
-			state = State::BUSCARTAZA;
-			std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
-		
-		    }
-		break;   
-		
-		case State::BUSCARTAZA:
-		     if(gotopoint_proxy->atTarget()){
-			tag.setVacia(true);
-			state = State::BUSCARPARED;	
-			std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
-		    }
-		break;
-	      }
-             break;
-	 
+        case State::WAIT:
+            if(Taza == false){
+                if(gotopoint_proxy->atTarget()){
+                    tag.setVacia(true);
+                    std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
+                    Taza = true;
+                    t_init = clock();
+                    state = State::BUSCARTAZA;
+                }
+            }
+            else{
+                if(gotopoint_proxy->atTarget()){
+                    tag.setVacia(true);
+                    state = State::BUSCARPARED;	
+                    Taza = false;
+                    std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
+                }
+            }
+            break;
+            
+        case State::PATRULLA:
+            patrulla = true;
+            state = State::GOTO;
+            break;
+                
+        case State::WAIT_PATRULLA:
+            if(tag.emptyId(actualTaza)){
+                gotopoint_proxy->stop();
+                state = State::GOTO;
+            }
+            if(gotopoint_proxy->atTarget()){
+                t_init = clock();
+                state = State::BUSCARTAZA;
+            }
+            break;
      }
 // 	try
 // 	{
@@ -122,14 +143,16 @@ void SpecificWorker::sendGoTo(){
     
     std::pair<float, float> tr = tag.getValores();
     QVec rt = innermodel->transform("world", QVec::vec3(tr.first, 0 , tr.second), "base");
-  
-    gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
+    
+    if(patrulla == true)
+        gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),1.0);
+    else
+        gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
 }
 
 void SpecificWorker::newAprilTag(const tagsList &tags)
 {
     tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
-    std::cout<<"Tag ID: "<<tags[0].id<<endl;
 
 }
 

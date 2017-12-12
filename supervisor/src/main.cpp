@@ -93,10 +93,10 @@
 using namespace std;
 using namespace RoboCompCommonBehavior;
 
-using namespace RoboCompAprilTags;
-using namespace RoboCompDifferentialRobot;
-using namespace RoboCompGotoPoint;
 
+using namespace RoboCompGotoPoint;
+using namespace RoboCompDifferentialRobot;
+using namespace RoboCompAprilTags;
 
 
 class supervisor : public RoboComp::Application
@@ -139,28 +139,11 @@ int ::supervisor::run(int argc, char* argv[])
 
 	int status=EXIT_SUCCESS;
 
-	GotoPointPrx gotopoint_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
+	GotoPointPrx gotopoint_proxy;
 
 	string proxy, tmp;
 	initialize();
-
-
-	try
-	{
-		if (not GenericMonitor::configGetString(communicator(), prefix, "GotoPointProxy", proxy, ""))
-		{
-			cout << "[" << PROGRAM_NAME << "]: Can't read configuration for proxy GotoPointProxy\n";
-		}
-		gotopoint_proxy = GotoPointPrx::uncheckedCast( communicator()->stringToProxy( proxy ) );
-	}
-	catch(const Ice::Exception& ex)
-	{
-		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
-		return EXIT_FAILURE;
-	}
-	rInfo("GotoPointProxy initialized Ok!");
-	mprx["GotoPointProxy"] = (::IceProxy::Ice::Object*)(&gotopoint_proxy);//Remote server proxy creation example
 
 
 	try
@@ -179,7 +162,30 @@ int ::supervisor::run(int argc, char* argv[])
 	rInfo("DifferentialRobotProxy initialized Ok!");
 	mprx["DifferentialRobotProxy"] = (::IceProxy::Ice::Object*)(&differentialrobot_proxy);//Remote server proxy creation example
 
-	IceStorm::TopicManagerPrx topicManager = IceStorm::TopicManagerPrx::checkedCast(communicator()->propertyToProxy("TopicManager.Proxy"));
+
+	try
+	{
+		if (not GenericMonitor::configGetString(communicator(), prefix, "GotoPointProxy", proxy, ""))
+		{
+			cout << "[" << PROGRAM_NAME << "]: Can't read configuration for proxy GotoPointProxy\n";
+		}
+		gotopoint_proxy = GotoPointPrx::uncheckedCast( communicator()->stringToProxy( proxy ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("GotoPointProxy initialized Ok!");
+	mprx["GotoPointProxy"] = (::IceProxy::Ice::Object*)(&gotopoint_proxy);//Remote server proxy creation example
+
+	IceStorm::TopicManagerPrx topicManager;
+	try{
+	topicManager = IceStorm::TopicManagerPrx::checkedCast(communicator()->propertyToProxy("TopicManager.Proxy"));
+	} catch(const Ice::Exception& ex){
+		cout << "[" << PROGRAM_NAME << "]: Exception: STORM not running: " << ex << endl;
+		return EXIT_FAILURE;
+	}
 
 
 	SpecificWorker *worker = new SpecificWorker(mprx);

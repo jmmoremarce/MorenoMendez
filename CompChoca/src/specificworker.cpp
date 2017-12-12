@@ -59,7 +59,6 @@ void SpecificWorker::compute()
             if ( !target.isEmpty() ){
                 target.calcularPuntos(bState.x, bState.z);
                 state = State::GOTO;
-                
             }
             break;
 
@@ -69,6 +68,9 @@ void SpecificWorker::compute()
 
         case State::BUG:
             bug();
+            break;
+        case State::PATRULLA:
+            Patrulla();
             break;
     }  
 }
@@ -131,7 +133,7 @@ void SpecificWorker::bug()
     
     std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
         
-    if(dist < 400){
+    if(dist < 600){
         state = State::IDLE;
         giro = 0.0;
         target.setEmpty(true);
@@ -154,7 +156,7 @@ void SpecificWorker::bug()
         return;
     }
     
-    if(laser[19].dist<300){
+    if(laser[19].dist<400){
         differentialrobot_proxy->setSpeedBase(0,3*giro);
         return;
     }
@@ -210,7 +212,7 @@ bool SpecificWorker::obstacle()
     laser = laser_proxy->getLaserData();
     std::sort(laser.begin()+20,laser.end()-20,[](auto a, auto b){return a.dist<b.dist;});
  
-    if (laser[20].dist < 300)
+    if (laser[20].dist < 400)
         return true;
 
     return false;
@@ -259,9 +261,39 @@ void SpecificWorker::setPick(const Pick &myPick){
   target.setCopy(myPick.x, myPick.z);  
 } 
 
+void SpecificWorker::Patrulla()
+{
+    state = State::IDLE;
+    switch(patru){
+        case patrulla::PUNTO_0:
+            target.setCopy(0.0, 0.0);
+            patru = patrulla::PUNTO_1;
+            break;
+        case patrulla::PUNTO_1:
+            target.setCopy(-1178.8, 1084.05);
+            patru = patrulla::PUNTO_2;
+            break;
+        case patrulla::PUNTO_2:
+            target.setCopy(-1389.98, -1560.17);
+            patru = patrulla::PUNTO_3;
+            break;
+        case patrulla::PUNTO_3:
+            target.setCopy(1450.61, -1425.51);
+            patru = patrulla::PUNTO_4;
+            break;
+        case patrulla::PUNTO_4:
+            target.setCopy(1336.79, 1626.18);
+            patru = patrulla::PUNTO_0;
+            break;
+    }
+}
+
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
-    target.setCopy(x , y );
+    if(alpha == 1.0)
+        state = State::PATRULLA;
+    else
+        target.setCopy(x , y );
 }
 
 void SpecificWorker::turn(const float speed)

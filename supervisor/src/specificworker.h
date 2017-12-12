@@ -33,6 +33,7 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
+#include <time.h>
 
 using namespace std;
 
@@ -97,14 +98,18 @@ private:
     Tag tag;
     InnerModel *innermodel;
     
-    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO};
-    
+    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO, PATRULLA, WAIT_PATRULLA};
     State state = State::BUSCARTAZA;
-    State stateLast = State::BUSCARTAZA;
+    
+    bool Taza = true;
+    bool patrulla = false;
+
     void sendGoTo();
     
     int actualPared = 0;
-    int actualTaza=11;
+    int actualTaza = 11;
+    
+    clock_t t_init = clock(), t_fin;
 };
 
 #endif

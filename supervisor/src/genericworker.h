@@ -31,6 +31,7 @@
 #include <DifferentialRobot.h>
 #include <AprilTags.h>
 
+#include <IceStorm/IceStorm.h>
 
 
 #define CHECK_PERIOD 5000
@@ -65,8 +66,8 @@ public:
 	QMutex *mutex;
 	
 
-	GotoPointPrx gotopoint_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
+	GotoPointPrx gotopoint_proxy;
 
 	virtual void newAprilTag(const tagsList &tags) = 0;
 
@@ -75,8 +76,12 @@ protected:
 	QTimer timer;
 	int Period;
 
+	QTimer storm_timer;
+	int storm_period;
+
 public slots:
 	virtual void compute() = 0;
+
 signals:
 	void kill();
 };
