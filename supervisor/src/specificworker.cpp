@@ -50,6 +50,9 @@ void SpecificWorker::compute()
     
     innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
+    auto tags = getapriltags_proxy->checkMarcas();
+    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+    
      switch( state ) {
         case State::BUSCARPARED:
             gotopoint_proxy->turn(0.3);

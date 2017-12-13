@@ -48,7 +48,9 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-     
+    auto tags = getapriltags_proxy->checkMarcas();
+    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+    
     RoboCompDifferentialRobot::TBaseState bState;
     
     differentialrobot_proxy->getBaseState(bState);
