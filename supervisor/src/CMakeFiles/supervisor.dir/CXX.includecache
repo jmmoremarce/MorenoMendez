@@ -269,8 +269,6 @@ genericworker.h
 -
 innermodel/innermodel.h
 -
-time.h
--
 
 /home/robocomp/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp
 moc_apriltagsI.cpp

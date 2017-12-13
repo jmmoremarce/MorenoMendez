@@ -27,11 +27,12 @@
 #include <ui_mainUI.h>
 
 #include <CommonBehavior.h>
-#include <GotoPoint.h>
 #include <DifferentialRobot.h>
-#include <RCISMousePicker.h>
-#include <Laser.h>
+#include <GotoPoint.h>
 #include <JointMotor.h>
+#include <Laser.h>
+#include <RCISMousePicker.h>
+#include <AprilTags.h>
 
 #include <IceStorm/IceStorm.h>
 
@@ -43,11 +44,12 @@ typedef map <string,::IceProxy::Ice::Object*> MapPrx;
 
 using namespace std;
 
-using namespace RoboCompGotoPoint;
 using namespace RoboCompDifferentialRobot;
-using namespace RoboCompRCISMousePicker;
-using namespace RoboCompLaser;
+using namespace RoboCompGotoPoint;
 using namespace RoboCompJointMotor;
+using namespace RoboCompLaser;
+using namespace RoboCompRCISMousePicker;
+using namespace RoboCompAprilTags;
 
 
 
@@ -73,6 +75,7 @@ public:
 	DifferentialRobotPrx differentialrobot_proxy;
 	JointMotorPrx jointmotor_proxy;
 	LaserPrx laser_proxy;
+	IceStorm::TopicManagerPrx topicmanager_proxy;
 
 	virtual void Picking_box() = 0;
 	virtual void releasing_box() = 0;
@@ -81,6 +84,7 @@ public:
 	virtual void turn(const float speed) = 0;
 	virtual void go(const string &nodo, const float x, const float y, const float alpha) = 0;
 	virtual void setPick(const Pick &myPick) = 0;
+	virtual void newAprilTag(const tagsList &tags) = 0;
 
 
 protected:
@@ -92,7 +96,7 @@ protected:
 
 public slots:
 	virtual void compute() = 0;
-
+	void check_storm();
 
 signals:
 	void kill();

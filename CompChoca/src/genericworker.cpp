@@ -32,6 +32,9 @@ QObject()
 	differentialrobot_proxy = (*(DifferentialRobotPrx*)mprx["DifferentialRobotProxy"]);
 	jointmotor_proxy = (*(JointMotorPrx*)mprx["JointMotorProxy"]);
 
+	topicmanager_proxy = (*(IceStorm::TopicManagerPrx*)mprx["topicManager"]);
+
+
 	mutex = new QMutex(QMutex::Recursive);
 
 	#ifdef USE_QTGUI
@@ -71,4 +74,12 @@ void GenericWorker::setPeriod(int p)
 }
 
 
+void GenericWorker::check_storm()
+{
+	try {
+		topicmanager_proxy->ice_ping();
+	} catch(const Ice::Exception& ex) {
+		cout <<"Exception: STORM not running: " << ex << endl;
+	}
+}
 

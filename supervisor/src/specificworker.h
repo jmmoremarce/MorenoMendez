@@ -33,7 +33,6 @@
 
 #include <genericworker.h>
 #include <innermodel/innermodel.h>
-#include <time.h>
 
 using namespace std;
 
@@ -54,8 +53,8 @@ private:
 	struct Tag {
         mutable QMutex mutex;
         bool vacia = true;
-        
-        int id = 5;
+        bool vector[10]={false,false,false,false,false,false,false,false,false,false};
+        int id = -1;
         float valorX = 0.0;
         float valorY = 0.0;
         
@@ -72,6 +71,16 @@ private:
             QMutexLocker block (&mutex);
             return std::make_pair(valorX, valorY);
 	    }
+    
+        void marcarCaja(){
+            vector[id -11] = true;
+        }
+        
+	    bool CajasCogidas(){
+            if(id > 10)
+                return !vector[id - 11];
+            return false;
+        }
         float getValorX(){
             return valorX;
         }
@@ -107,9 +116,8 @@ private:
     void sendGoTo();
     
     int actualPared = 0;
-    int actualTaza = 11;
-    
-    clock_t t_init = clock(), t_fin;
+    int stopGiro = 0;
+    int salidaGiro = 0;
 };
 
 #endif
