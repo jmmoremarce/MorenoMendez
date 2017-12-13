@@ -82,14 +82,13 @@
 
 #include <gotopointI.h>
 #include <rcismousepickerI.h>
-#include <apriltagsI.h>
 
 #include <Laser.h>
 #include <DifferentialRobot.h>
 #include <RCISMousePicker.h>
 #include <GotoPoint.h>
 #include <JointMotor.h>
-#include <AprilTags.h>
+#include <GetAprilTags.h>
 
 
 // User includes here
@@ -100,11 +99,11 @@ using namespace RoboCompCommonBehavior;
 
 
 using namespace RoboCompDifferentialRobot;
+using namespace RoboCompGetAprilTags;
 using namespace RoboCompGotoPoint;
 using namespace RoboCompJointMotor;
 using namespace RoboCompLaser;
 using namespace RoboCompRCISMousePicker;
-using namespace RoboCompAprilTags;
 
 
 class torpedo : public RoboComp::Application
@@ -150,6 +149,7 @@ int ::torpedo::run(int argc, char* argv[])
 	DifferentialRobotPrx differentialrobot_proxy;
 	LaserPrx laser_proxy;
 	JointMotorPrx jointmotor_proxy;
+	GetAprilTagsPrx getapriltags_proxy;
 
 	string proxy, tmp;
 	initialize();
@@ -204,6 +204,23 @@ int ::torpedo::run(int argc, char* argv[])
 	}
 	rInfo("JointMotorProxy initialized Ok!");
 	mprx["JointMotorProxy"] = (::IceProxy::Ice::Object*)(&jointmotor_proxy);//Remote server proxy creation example
+
+
+	try
+	{
+		if (not GenericMonitor::configGetString(communicator(), prefix, "GetAprilTagsProxy", proxy, ""))
+		{
+			cout << "[" << PROGRAM_NAME << "]: Can't read configuration for proxy GetAprilTagsProxy\n";
+		}
+		getapriltags_proxy = GetAprilTagsPrx::uncheckedCast( communicator()->stringToProxy( proxy ) );
+	}
+	catch(const Ice::Exception& ex)
+	{
+		cout << "[" << PROGRAM_NAME << "]: Exception: " << ex;
+		return EXIT_FAILURE;
+	}
+	rInfo("GetAprilTagsProxy initialized Ok!");
+	mprx["GetAprilTagsProxy"] = (::IceProxy::Ice::Object*)(&getapriltags_proxy);//Remote server proxy creation example
 
 	IceStorm::TopicManagerPrx topicManager;
 	try{
@@ -286,34 +303,6 @@ int ::torpedo::run(int argc, char* argv[])
 		rcismousepicker_topic->subscribeAndGetPublisher(qos, rcismousepicker);
 		}
 		RCISMousePicker_adapter->activate();
-
-		// Server adapter creation and publication
-		if (not GenericMonitor::configGetString(communicator(), prefix, "AprilTagsTopic.Endpoints", tmp, ""))
-		{
-			cout << "[" << PROGRAM_NAME << "]: Can't read configuration for proxy AprilTagsProxy";
-		}
-		Ice::ObjectAdapterPtr AprilTags_adapter = communicator()->createObjectAdapterWithEndpoints("apriltags", tmp);
-		AprilTagsPtr apriltagsI_ = new AprilTagsI(worker);
-		Ice::ObjectPrx apriltags = AprilTags_adapter->addWithUUID(apriltagsI_)->ice_oneway();
-		IceStorm::TopicPrx apriltags_topic;
-		if(!apriltags_topic){
-		try {
-			apriltags_topic = topicManager->create("AprilTags");
-		}
-		catch (const IceStorm::TopicExists&) {
-		//Another client created the topic
-		try{
-			apriltags_topic = topicManager->retrieve("AprilTags");
-		}
-		catch(const IceStorm::NoSuchTopic&)
-		{
-			//Error. Topic does not exist
-			}
-		}
-		IceStorm::QoS qos;
-		apriltags_topic->subscribeAndGetPublisher(qos, apriltags);
-		}
-		AprilTags_adapter->activate();
 
 		// Server adapter creation and publication
 		cout << SERVER_FULL_NAME " started" << endl;

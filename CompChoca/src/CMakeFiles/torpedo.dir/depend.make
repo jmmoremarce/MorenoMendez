@@ -7,6 +7,9 @@ src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.cpp
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o: src/DifferentialRobot.h
 
+src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.o: src/GetAprilTags.cpp
+src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.o: src/GetAprilTags.h
+
 src/CMakeFiles/torpedo.dir/GotoPoint.cpp.o: src/GotoPoint.cpp
 src/CMakeFiles/torpedo.dir/GotoPoint.cpp.o: src/GotoPoint.h
 
@@ -452,6 +455,7 @@ src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/qworksp
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o: src/Laser.h
@@ -891,6 +895,7 @@ src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/qworkspa
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o: src/Laser.h
@@ -1328,6 +1333,7 @@ src/CMakeFiles/torpedo.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/qworkspac
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/genericworker.cpp.o: src/Laser.h
@@ -1765,6 +1771,7 @@ src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: /usr/include/qt4/QtGui/qworkspace.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/gotopointI.cpp.o: src/Laser.h
@@ -2574,6 +2581,7 @@ src/CMakeFiles/torpedo.dir/main.cpp.o: /usr/include/qt4/QtGui/qworkspace.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/main.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/main.cpp.o: src/Laser.h
@@ -3013,6 +3021,7 @@ src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: /usr/include/qt4/QtGui/qworks
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o: src/Laser.h
@@ -3453,6 +3462,7 @@ src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/qworksp
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o: src/Laser.h
@@ -3904,6 +3914,7 @@ src/CMakeFiles/torpedo.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/qworkspa
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/specificworker.cpp.o: src/Laser.h
@@ -4370,6 +4381,7 @@ src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: /usr/include/qt4/QtGui/qworksp
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: /usr/include/qt4/QtGui/qwsembedwidget.h
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/CommonBehavior.h
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/GotoPoint.h
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/JointMotor.h
 src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o: src/Laser.h

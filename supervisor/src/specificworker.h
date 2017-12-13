@@ -44,7 +44,6 @@ public:
 	~SpecificWorker();
 	bool setParams(RoboCompCommonBehavior::ParameterList params);
 
-	void newAprilTag(const tagsList &tags);
 
 public slots:
 	void compute(); 	

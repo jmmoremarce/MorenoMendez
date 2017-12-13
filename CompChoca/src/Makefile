@@ -238,6 +238,33 @@ DifferentialRobot.cpp.s:
 	cd /home/robocomp/robocomp/components/MorenoMendez/CompChoca && $(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.s
 .PHONY : DifferentialRobot.cpp.s
 
+GetAprilTags.o: GetAprilTags.cpp.o
+
+.PHONY : GetAprilTags.o
+
+# target to build an object file
+GetAprilTags.cpp.o:
+	cd /home/robocomp/robocomp/components/MorenoMendez/CompChoca && $(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.o
+.PHONY : GetAprilTags.cpp.o
+
+GetAprilTags.i: GetAprilTags.cpp.i
+
+.PHONY : GetAprilTags.i
+
+# target to preprocess a source file
+GetAprilTags.cpp.i:
+	cd /home/robocomp/robocomp/components/MorenoMendez/CompChoca && $(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.i
+.PHONY : GetAprilTags.cpp.i
+
+GetAprilTags.s: GetAprilTags.cpp.s
+
+.PHONY : GetAprilTags.s
+
+# target to generate assembly for a file
+GetAprilTags.cpp.s:
+	cd /home/robocomp/robocomp/components/MorenoMendez/CompChoca && $(MAKE) -f src/CMakeFiles/torpedo.dir/build.make src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.s
+.PHONY : GetAprilTags.cpp.s
+
 GotoPoint.o: GotoPoint.cpp.o
 
 .PHONY : GotoPoint.o
@@ -663,6 +690,9 @@ help:
 	@echo "... DifferentialRobot.o"
 	@echo "... DifferentialRobot.i"
 	@echo "... DifferentialRobot.s"
+	@echo "... GetAprilTags.o"
+	@echo "... GetAprilTags.i"
+	@echo "... GetAprilTags.s"
 	@echo "... GotoPoint.o"
 	@echo "... GotoPoint.i"
 	@echo "... GotoPoint.s"

@@ -60,7 +60,7 @@ public slots:
 	void compute(); 	
 	void setPick(const Pick &myPick);
 	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
-
+   
 private:
 	struct Target{
 	    mutable QMutex mutex;
@@ -119,6 +119,44 @@ private:
         }
 	};
 	
+    struct Tag {
+        mutable QMutex mutex;
+        bool vacia = true;
+        int id = -1;
+        float valorX = 0.0;
+        float valorY = 0.0;
+        
+        
+        void copiaValores(int id_, float x, float y){
+            QMutexLocker block (&mutex);
+            id = id_;
+            valorX = x;
+            valorY = y;
+            vacia = false;
+        }
+        
+        std::pair<float, float> getValores(){
+            QMutexLocker block (&mutex);
+            return std::make_pair(valorX, valorY);
+	    }
+        
+	    bool emptyId(int _id){
+            if(id == _id)
+                return true;
+            return false;
+        }
+        
+	    bool getVacia(){
+            return vacia;
+        }
+        
+        void setVacia(bool v){
+            vacia = false;
+        }
+    };
+    
+    Tag tag;
+
 	Target target;
 	InnerModel *innermodel;
     

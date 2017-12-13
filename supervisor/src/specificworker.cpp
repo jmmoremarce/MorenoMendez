@@ -36,7 +36,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-    innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/simpleworld.xml");	
+    innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/betaWorldArm.xml");	
 	timer.start(Period);
 	    
 	return true;
@@ -48,7 +48,7 @@ void SpecificWorker::compute()
     
     differentialrobot_proxy->getBaseState(bState);
     
-    innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
      switch( state ) {
         case State::BUSCARPARED:
@@ -156,13 +156,7 @@ void SpecificWorker::sendGoTo(){
         gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
 }
 
-void SpecificWorker::newAprilTag(const tagsList &tags)
-{
-    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
-    if(stopGiro == -1 && tags[0].id < 11){
-        stopGiro = tags[0].id;
-    }
-}
+
 
 
 

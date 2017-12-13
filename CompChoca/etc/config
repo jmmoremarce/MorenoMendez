@@ -5,6 +5,8 @@ GotoPoint.Endpoints=tcp -p 13000
 
 
 RCISMousePickerTopic.Endpoints=tcp -p 15000
+GetAprilTagsProxy = getapriltags:tcp -h localhost -p 14311
+
 
 # Proxies for required interfaces
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004

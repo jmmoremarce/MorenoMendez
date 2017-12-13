@@ -7,6 +7,9 @@ src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o
 src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o
  /home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp
  src/DifferentialRobot.h
+src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.o
+ /home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GetAprilTags.cpp
+ src/GetAprilTags.h
 src/CMakeFiles/torpedo.dir/GotoPoint.cpp.o
  /home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GotoPoint.cpp
  src/GotoPoint.h
@@ -453,6 +456,7 @@ src/CMakeFiles/torpedo.dir/commonbehaviorI.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -892,6 +896,7 @@ src/CMakeFiles/torpedo.dir/genericmonitor.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -1329,6 +1334,7 @@ src/CMakeFiles/torpedo.dir/genericworker.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -1766,6 +1772,7 @@ src/CMakeFiles/torpedo.dir/gotopointI.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -2575,6 +2582,7 @@ src/CMakeFiles/torpedo.dir/main.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -3014,6 +3022,7 @@ src/CMakeFiles/torpedo.dir/rcismousepickerI.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -3454,6 +3463,7 @@ src/CMakeFiles/torpedo.dir/specificmonitor.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -3905,6 +3915,7 @@ src/CMakeFiles/torpedo.dir/specificworker.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h
@@ -4371,6 +4382,7 @@ src/CMakeFiles/torpedo.dir/torpedo_automoc.cpp.o
  /usr/include/qt4/QtGui/qwsembedwidget.h
  src/CommonBehavior.h
  src/DifferentialRobot.h
+ src/GetAprilTags.h
  src/GotoPoint.h
  src/JointMotor.h
  src/Laser.h

@@ -38,7 +38,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
-	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/simpleworld.xml");
+	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/betaWorldArm.xml");
 	timer.start(Period);
 	return true;
 }
@@ -52,7 +52,7 @@ void SpecificWorker::compute()
     RoboCompDifferentialRobot::TBaseState bState;
     
     differentialrobot_proxy->getBaseState(bState);
-    innermodel->updateTransformValues( "base", bState.x, 0, bState.z, 0, bState.alpha, 0);
+    innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
      
     switch( state ) {
         case State::IDLE:
@@ -97,7 +97,7 @@ void SpecificWorker::gotoTarget(){
         return;
     }
           
-    if(dist < 100){// If close to obstacle stop and transit to IDLE
+    if(dist < 100 || tag.getVacia() == false){// If close to obstacle stop and transit to IDLE
         state = State::IDLE;
         target.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 

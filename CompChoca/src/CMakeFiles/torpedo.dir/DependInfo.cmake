@@ -6,6 +6,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 set(CMAKE_DEPENDS_CHECK_CXX
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/CommonBehavior.cpp.o"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/DifferentialRobot.cpp.o"
+  "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GetAprilTags.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/GetAprilTags.cpp.o"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GotoPoint.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/GotoPoint.cpp.o"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/JointMotor.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/JointMotor.cpp.o"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CMakeFiles/torpedo.dir/Laser.cpp.o"
@@ -56,6 +57,7 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
 set(CMAKE_MULTIPLE_OUTPUT_PAIRS
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/CommonBehavior.cpp"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/DifferentialRobot.cpp"
+  "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GetAprilTags.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GetAprilTags.cpp"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GotoPoint.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/GotoPoint.cpp"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/JointMotor.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/JointMotor.cpp"
   "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/Laser.h" "/home/robocomp/robocomp/components/MorenoMendez/CompChoca/src/Laser.cpp"

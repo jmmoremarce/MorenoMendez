@@ -2,8 +2,7 @@ CommonBehavior.Endpoints=tcp -p 16000
 
 
 # Endpoints for subscriptions
-AprilTagsTopic.Endpoints=tcp -p 14000
-
+GetAprilTagsProxy = getapriltags:tcp -h localhost -p 14310
 
 # Proxies for required interfaces
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 10004

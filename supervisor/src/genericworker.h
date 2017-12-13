@@ -29,9 +29,8 @@
 #include <CommonBehavior.h>
 #include <GotoPoint.h>
 #include <DifferentialRobot.h>
-#include <AprilTags.h>
+#include <GetAprilTags.h>
 
-#include <IceStorm/IceStorm.h>
 
 
 #define CHECK_PERIOD 5000
@@ -43,7 +42,7 @@ using namespace std;
 
 using namespace RoboCompGotoPoint;
 using namespace RoboCompDifferentialRobot;
-using namespace RoboCompAprilTags;
+using namespace RoboCompGetAprilTags;
 
 
 
@@ -67,17 +66,15 @@ public:
 	
 
 	DifferentialRobotPrx differentialrobot_proxy;
+	GetAprilTagsPrx getapriltags_proxy;
 	GotoPointPrx gotopoint_proxy;
 
-	virtual void newAprilTag(const tagsList &tags) = 0;
 
 
 protected:
 	QTimer timer;
 	int Period;
 
-	QTimer storm_timer;
-	int storm_period;
 
 public slots:
 	virtual void compute() = 0;
