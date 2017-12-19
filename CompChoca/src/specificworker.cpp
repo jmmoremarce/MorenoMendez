@@ -38,6 +38,7 @@ SpecificWorker::~SpecificWorker()
 
 bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
+    
 	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/betaWorldArm.xml");
 	timer.start(Period);
 	return true;
@@ -48,17 +49,29 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
-    auto tags = getapriltags_proxy->checkMarcas();
-    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
-    
+    try
+    {
+        RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
+        if(tags.size() > 0)
+        {
+            caja.setCopy(tags[0].id, tags[0].tx, tags[0].tz);
+            std::cout<<"id: "<<tags[0].id<<" valor x: "<< tags[0].tx<<" valor y: "<< tags[0].tz<<endl;
+        }
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+
     RoboCompDifferentialRobot::TBaseState bState;
     
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
-     
-    switch( state ) {
+    switch( state ) 
+    {
         case State::IDLE:
-            if ( !target.isEmpty() ){
+            if ( !target.isEmpty())
+            {
                 target.calcularPuntos(bState.x, bState.z);
                 state = State::GOTO;
             }
@@ -77,19 +90,23 @@ void SpecificWorker::compute()
     }  
 }
 
-void SpecificWorker::gotoTarget(){
+void SpecificWorker::gotoTarget()
+{
 
     std::pair<float, float> tr = target.getValores();
-    QVec rt = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
+    QVec rt = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
     
     float dist = rt.norm2();
     float ang  = atan2(rt.x(), rt.z());
     float adv;
 
-    if( obstacle() == true){   // If ther is an obstacle ahead, then transit to BUG
-        if(dist < 100){         // If close to obstacle stop and transit to IDLE
+    if( obstacle() == true)
+    {   // If ther is an obstacle ahead, then transit to BUG
+        if(dist < 100 || caja.isEmpty() == false)
+        {  
             state = State::IDLE;
             target.setEmpty(true);
+            caja.setEmpty(true);
             differentialrobot_proxy->setSpeedBase(0,0); 
 	    std::cout<<"HA LLEGADO"<<endl;
             return;
@@ -98,10 +115,12 @@ void SpecificWorker::gotoTarget(){
 	
         return;
     }
-          
-    if(dist < 100 || tag.getVacia() == false){// If close to obstacle stop and transit to IDLE
+    
+    if(dist < 100 || caja.isEmpty() == false)
+    {
         state = State::IDLE;
         target.setEmpty(true);
+        caja.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
 	std::cout<<"HA LLEGADO EN EL MENOR DE 100"<<endl;
         return;
@@ -126,72 +145,102 @@ void SpecificWorker::gotoTarget(){
 void SpecificWorker::bug()
 {
     TLaserData laser ; 
-    laser = laser_proxy->getLaserData();
+    try
+    {
+        laser = laser_proxy->getLaserData();
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+    
     
     std::pair<float, float> tr = target.getValores();
-    QVec rt = innermodel->transform("base", QVec::vec3(tr.first, 0 , tr.second), "world");
-    
-    float dist = rt.norm2();
+    QVec rt = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
     
     std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
+       
+    float dist = rt.norm2();
+    bool noObstaculo = true;
         
-    if(dist < 600){
-        state = State::IDLE;
+    if(dist < 400)
+    {
         giro = 0.0;
         target.setEmpty(true);
+        caja.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
+        noObstaculo = false;
+        state = State::IDLE;
         std::cout<<"HA LLEGADO-------- BUG"<<endl;
 	return;
     }
-    if(giro == 0.0){
-        if( laser[20].angle > 0 ){
+    if(giro == 0.0)
+    {
+        if( laser[20].angle > 0 )
+        {
             giro = -0.1;
         }
-        else{
+        else
+        {
             giro = 0.1;
         }
     }
     
-    if(salida() == true){
-        state = State::IDLE;
-        giro = 0.0;
-        return;
-    }
-    
-    if(laser[19].dist<400){
+    if(laser[19].dist<400)
+    {
         differentialrobot_proxy->setSpeedBase(0,3*giro);
+        noObstaculo = false;
         return;
     }
     
-    if(laser[19].dist>250 && laser[19].dist<300){
+    if(laser[19].dist>250 && laser[19].dist<300)
+    {
             differentialrobot_proxy->setSpeedBase(100,2*giro);
+            noObstaculo = false;
     }
     
-    if(laser[19].dist>300 && laser[19].dist<350){
+    if(laser[19].dist>300 && laser[19].dist<350)
+    {
         differentialrobot_proxy->setSpeedBase(100,0);
+        noObstaculo = false;
     }
         
-    if(laser[15].dist>350){
+    if(laser[15].dist>350)
+    {
         differentialrobot_proxy->setSpeedBase(100,-2*giro);
     }
     
+    if(noObstaculo == true && salida() == true)
+    {
+        giro = 0.0;
+        state = State::IDLE;
+        return;
+    }
 }
 
-bool SpecificWorker::salida(){
+bool SpecificWorker::salida()
+{
     TLaserData laser ; 
     
-    laser = laser_proxy->getLaserData();
+    try
+    {
+        laser = laser_proxy->getLaserData();
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
     
     bool exit = true;
-    for(int i = 7; i < 92; i++){
+    for(int i = 7; i < 92; i++)
+    {
         if(laser[i].dist < 350)
             exit = false;
     }
     
-    if(exit == true && targetAtSight() == true){
-        std::cout<<"salida ok"<<endl;
+    if(exit == true && targetAtSight() == true)
         return true;
-    }
+    
     return false;
 }
 
@@ -199,7 +248,15 @@ float SpecificWorker::distObstacle(float dist)
 {
     TLaserData laser ; 
     
-    laser = laser_proxy->getLaserData();
+    try
+    {
+        laser = laser_proxy->getLaserData();
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+    
     std::sort(laser.begin()+45,laser.end()-45,[](auto a, auto b){return a.dist<b.dist;}); 
 
     if(laser[20].dist < dist)
@@ -211,7 +268,15 @@ bool SpecificWorker::obstacle()
 {
     TLaserData laser ; 
     
-    laser = laser_proxy->getLaserData();
+    try
+    {
+        laser = laser_proxy->getLaserData();
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+    
     std::sort(laser.begin()+20,laser.end()-20,[](auto a, auto b){return a.dist<b.dist;});
  
     if (laser[20].dist < 400)
@@ -228,7 +293,14 @@ bool SpecificWorker::targetAtSight()
     int i = 0;
     bool existe = false;
     
-    lasercopy = laser_proxy->getLaserData();
+    try
+    {
+        lasercopy = laser_proxy->getLaserData();
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
     
     for (auto l: lasercopy)
     {
@@ -266,7 +338,8 @@ void SpecificWorker::setPick(const Pick &myPick){
 void SpecificWorker::Patrulla()
 {
     state = State::IDLE;
-    switch(patru){
+    switch(patru)
+    {
         case patrulla::PUNTO_0:
             target.setCopy(0.0, 0.0);
             patru = patrulla::PUNTO_1;
@@ -293,9 +366,11 @@ void SpecificWorker::Patrulla()
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
     if(alpha == 1.0)
+    {
         state = State::PATRULLA;
+    }
     else
-        target.setCopy(x , y );
+        target.setCopy(x , y);
 }
 
 void SpecificWorker::turn(const float speed)
@@ -311,6 +386,8 @@ bool SpecificWorker::atTarget()
 void SpecificWorker::stop()
 {
     differentialrobot_proxy->setSpeedBase(0,0);
+    state = State::IDLE;
+    target.setEmpty(true);
 }
 
 

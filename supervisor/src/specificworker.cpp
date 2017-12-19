@@ -44,14 +44,35 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 
 void SpecificWorker::compute()
 {
+    try
+    {
+        RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
+        if(tags.size() > 0)
+        {
+            tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+            if(stopGiro == -1 && tags[0].id < 11)
+            {
+                stopGiro = tags[0].id;
+            }
+        }
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+    
     RoboCompDifferentialRobot::TBaseState bState;
+    try
+    {
+        differentialrobot_proxy->getBaseState(bState);
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
     
-    differentialrobot_proxy->getBaseState(bState);
-    
-    innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
-    
-    auto tags = getapriltags_proxy->checkMarcas();
-    tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+  
+    innermodel->updateTransformValues("robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
     
      switch( state ) {
         case State::BUSCARPARED:
@@ -151,7 +172,7 @@ void SpecificWorker::compute()
 void SpecificWorker::sendGoTo(){
     
     std::pair<float, float> tr = tag.getValores();
-    QVec rt = innermodel->transform("world", QVec::vec3(tr.first, 0 , tr.second), "base");
+    QVec rt = innermodel->transform("world", QVec::vec3(tr.first, 0 , tr.second), "robot");
     
     if(patrulla == true)
         gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),1.0);

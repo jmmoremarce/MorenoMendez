@@ -115,7 +115,7 @@ private:
     void sendGoTo();
     
     int actualPared = 0;
-    int stopGiro = 0;
+    int stopGiro = -1;
     int salidaGiro = 0;
 };
 

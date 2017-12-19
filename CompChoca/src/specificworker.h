@@ -64,7 +64,7 @@ public slots:
 private:
 	struct Target{
 	    mutable QMutex mutex;
-	    bool vacia=true; 
+	    bool vacia = true; 
 	    float valorX=0.0;
 	    float valorZ=0.0; 
         float vectorPuntos[100];
@@ -118,45 +118,34 @@ private:
             return QPointF(vectorPuntos[i], vectorPuntos[i+1]);
         }
 	};
-	
-    struct Tag {
+	struct Caja{
         mutable QMutex mutex;
-        bool vacia = true;
+	    bool vacia = true; 
+	    float valorX=0.0;
+	    float valorZ=0.0; 
         int id = -1;
-        float valorX = 0.0;
-        float valorY = 0.0;
         
-        
-        void copiaValores(int id_, float x, float y){
+        void setCopy (int i, float x, float z){
+	      
             QMutexLocker block (&mutex);
-            id = id_;
-            valorX = x;
-            valorY = y;
-            vacia = false;
-        }
-        
-        std::pair<float, float> getValores(){
-            QMutexLocker block (&mutex);
-            return std::make_pair(valorX, valorY);
+            vacia=false;		
+            valorX=x;
+            valorZ=z;
+            id = i;
 	    }
-        
-	    bool emptyId(int _id){
-            if(id == _id)
-                return true;
-            return false;
-        }
-        
-	    bool getVacia(){
-            return vacia;
-        }
-        
-        void setVacia(bool v){
-            vacia = false;
-        }
+	    
+	    void setEmpty (bool vaciar){
+	      QMutexLocker block(&mutex);	      
+	      vacia=vaciar;
+	    }
+	    
+        bool isEmpty(){
+	      QMutexLocker block(&mutex);
+	      return vacia;
+	    }
     };
     
-    Tag tag;
-
+    Caja caja;
 	Target target;
 	InnerModel *innermodel;
     
