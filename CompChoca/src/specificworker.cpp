@@ -131,6 +131,9 @@ void SpecificWorker::compute()
             {
                 stopBrazo();
                 Picking_box();
+		subirCaja();
+		bajarCaja();
+		releasing_box();
                 state = State::IDLE;
             }
             break;
@@ -483,6 +486,9 @@ void SpecificWorker::MoverBrazo()
     
         QVec incs = jacobian.invert() * error;	
         int i = 0;
+	
+	chapu.append(incs);
+	
         for(auto m: joints)
         {
             RoboCompJointMotor::MotorGoalVelocity vg{FACTOR*incs[i], 1.0, m.toStdString()};
@@ -510,17 +516,17 @@ void SpecificWorker::Picking_box()
     RoboCompJointMotor::MotorStateMap mMap;
 	try
 	{
-		jointmotor_proxy->getAllMotorState(mMap);
-		for(auto m: mMap)
-		{
+	  jointmotor_proxy->getAllMotorState(mMap);
+	  for(auto m: mMap)
+	  {
             RoboCompJointMotor::MotorGoalPosition mg;
             if(m.first == "finger_right_1")
-                mg = { 1.4, 1.0, m.first };
+                mg = { -0.6, 1.0, m.first };
             if(m.first == "finger_right_2")
-                mg = { -1.4, 1.0, m.first };
-			jointmotor_proxy->setPosition(mg);
-		}
-		sleep(1);
+                mg = { 0.6, 1.0, m.first };
+	    jointmotor_proxy->setPosition(mg);
+	  }
+	  sleep(1);
 	}
 	catch(const Ice::Exception &e)
 	{	std::cout << e.what() << std::endl;}	
@@ -530,8 +536,78 @@ void SpecificWorker::Picking_box()
 void SpecificWorker::releasing_box()
 {
   
-
+    RoboCompJointMotor::MotorStateMap mMap;
+	try
+	{
+	  jointmotor_proxy->getAllMotorState(mMap);
+	  for(auto m: mMap)
+	  {
+            RoboCompJointMotor::MotorGoalPosition mg;
+            if(m.first == "finger_right_1")
+                mg = { 0.0, 1.0, m.first };
+            if(m.first == "finger_right_2")
+                mg = { -0.0, 1.0, m.first };
+	    jointmotor_proxy->setPosition(mg);
+	  }
+	  sleep(1);
+	}
+	catch(const Ice::Exception &e)
+	{	std::cout << e.what() << std::endl;}	 
 }
+
+
+
+void SpecificWorker::subirCaja()
+{
+	RoboCompJointMotor::MotorStateMap mMap;
+	try
+	{
+		jointmotor_proxy->getAllMotorState(mMap);
+		for(auto m: mMap)
+		{
+		    RoboCompJointMotor::MotorGoalPosition mg;
+		    if(m.first != "wrist_right_2" && m.first !="finger_right_1" && m.first !="finger_right_2")
+			mg = { innermodel->getJoint(m.first)->home, 1.0, m.first };
+		    jointmotor_proxy->setPosition(mg);
+		}
+		sleep(1);
+	}
+	catch(const Ice::Exception &e)
+	{	std::cout << e.what() << std::endl;}	
+}
+
+
+void SpecificWorker::bajarCaja()
+{
+    RoboCompJointMotor::MotorGoalVelocityList vl;
+    int j = 0;
+    for(auto c: chapu)
+    {
+      QVec incs = chapu[j];
+      int i = 0;
+      for(auto m: joints)
+      {
+	RoboCompJointMotor::MotorGoalVelocity vg{FACTOR*incs[i], 1.0, m.toStdString()};
+	vl.push_back(vg);
+	i++;
+      }
+      chapu.remove(j);
+
+      try
+      {
+	  jointmotor_proxy->setSyncVelocity(vl);
+      }
+      catch(const Ice::Exception &e)
+      {
+	  std::cout<<e<<endl;
+      }
+    }
+    usleep(1000200);
+    stopBrazo();
+    std::cout <<"CHAPU EN ACCION!!!!!!!!!!!"<< std::endl;
+}
+
+
 
 void SpecificWorker::goHome()
 {
@@ -553,6 +629,7 @@ void SpecificWorker::goHome()
 	catch(const Ice::Exception &e)
 	{	std::cout << e.what() << std::endl;}	
 }
+
 
 void SpecificWorker::stopBrazo(){
     RoboCompJointMotor::MotorGoalVelocityList vl;

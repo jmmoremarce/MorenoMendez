@@ -53,6 +53,7 @@ public:
 	void stop();
 	void Picking_box();
 	void releasing_box();
+	
     
 public slots:
 	void compute(); 	
@@ -201,6 +202,9 @@ private:
     void MoverBrazo();
     bool ColocarBrazo();
     void stopBrazo();
+    void subirCaja();
+    void bajarCaja();
+    QVector <QVec> chapu;
 };
 
 #endif

@@ -1,5 +1,5 @@
 /*
- *    Copyright (C) 2017 by YOUR NAME HERE
+ *    Copyright (C) 2018 by YOUR NAME HERE
  *
  *    This file is part of RoboComp
  *
@@ -42,10 +42,6 @@ QObject()
 	#endif
 	Period = BASIC_PERIOD;
 	connect(&timer, SIGNAL(timeout()), this, SLOT(compute()));
-	connect(&storm_timer, SIGNAL(timeout()), this, SLOT(check_storm()));
-	storm_timer.start(storm_period);
-
-
 // 	timer.start(Period);
 }
 
