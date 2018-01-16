@@ -33,11 +33,9 @@
 #include <innermodel/innermodel.h>
 
 
-
 #define MAX_ADV 400
 #define MAX_VROT 0.5
 #define VECTOR 25
-
 
 using namespace std;
  
@@ -59,6 +57,13 @@ public:
 public slots:
 	void compute(); 	
 	void setPick(const Pick &myPick);
+    void goHome();
+    void leftSlot();
+	void rightSlot();
+	void upSlot();
+	void downSlot();
+	void frontSlot();
+	void backSlot();
 	//coger coordenadas del rat´on y mostrarla y luego cuando tenemos las coordenadas decirle al robot que vaya a esas coordenadas 
    
 private:
@@ -121,16 +126,18 @@ private:
 	struct Caja{
         mutable QMutex mutex;
 	    bool vacia = true; 
-	    float valorX=0.0;
-	    float valorZ=0.0; 
+	    float valorX = 0.0;
+	    float valorZ = 0.0; 
+        float valorY = 0.0;
         int id = -1;
         
-        void setCopy (int i, float x, float z){
+        void setCopy (int i, float x, float y, float z){
 	      
             QMutexLocker block (&mutex);
-            vacia=false;		
-            valorX=x;
-            valorZ=z;
+            vacia = false;		
+            valorX = x;
+            valorY = y;
+            valorZ = z;
             id = i;
 	    }
 	    
@@ -143,6 +150,19 @@ private:
 	      QMutexLocker block(&mutex);
 	      return vacia;
 	    }
+	    
+	    float getZ(){
+            return valorZ;
+        }
+        
+        float getX(){
+            return valorX;
+        }
+        
+        float getY(){
+            return valorY;
+        }
+        
     };
     
     Caja caja;
@@ -152,10 +172,11 @@ private:
     float giro = 0.0;
     bool activo;
     
-    enum State {IDLE, GOTO, BUG, PATRULLA};
+    enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, BAJAR_BRAZO};
     enum patrulla {PUNTO_0, PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
     
-    State state = State::IDLE;
+//     State state = State::IDLE;
+    State state = State::COLOCAR_BOX;
     patrulla patru = patrulla::PUNTO_0;
 	
     float gaussian(float vr, float vx, float h);
@@ -169,6 +190,17 @@ private:
     float distObstacle(float dist);
     bool salida();
     void Patrulla();
+    
+    QStringList joints, listaBoxes;
+	QVec motores;
+    QVec error;
+    RoboCompJointMotor::MotorParamsList mList;
+    bool pushedButton = false;
+    int const FACTOR = 1;
+    
+    void MoverBrazo();
+    bool ColocarBrazo();
+    void stopBrazo();
 };
 
 #endif

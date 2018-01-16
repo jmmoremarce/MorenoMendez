@@ -40,6 +40,22 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 {
     
 	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/betaWorldArm.xml");
+    
+    goHome();
+    sleep(2);
+    
+    try 
+	{ 
+        mList = jointmotor_proxy->getAllMotorParams();
+        
+    }
+	catch(const Ice::Exception &e){ std::cout << e << std::endl;}
+	
+	joints << "shoulder_right_1"<<"shoulder_right_2"<<"shoulder_right_3"<<"elbow_right"<<"wrist_right_1"<<"wrist_right_2";
+    listaBoxes << "C11"<<"C12";
+	// Check that these names are in mList
+	motores = QVec::zeros(joints.size());
+    
 	timer.start(Period);
 	return true;
 }
@@ -54,19 +70,23 @@ void SpecificWorker::compute()
         RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
         if(tags.size() > 0)
         {
-            caja.setCopy(tags[0].id, tags[0].tx, tags[0].tz);
-            std::cout<<"id: "<<tags[0].id<<" valor x: "<< tags[0].tx<<" valor y: "<< tags[0].tz<<endl;
+            caja.setCopy(tags[0].id, tags[0].tx, tags[0].ty, tags[0].tz);
+//             std::cout<<"id: "<<tags[0].id<<" valor x: "<< tags[0].tx<<" valor y: "<< tags[0].ty<<" Valor z: "<<tags[0].tz<<endl;
+        }
+        else{
+            caja.setEmpty(true);
         }
     }
     catch(const Ice::Exception &e)
     {
         std::cout<<e<<endl;
     }
-
+    
     RoboCompDifferentialRobot::TBaseState bState;
     
     differentialrobot_proxy->getBaseState(bState);
     innermodel->updateTransformValues( "robot", bState.x, 0, bState.z, 0, bState.alpha, 0);
+
     switch( state ) 
     {
         case State::IDLE:
@@ -84,8 +104,35 @@ void SpecificWorker::compute()
         case State::BUG:
             bug();
             break;
+            
         case State::PATRULLA:
             Patrulla();
+            break;
+            
+        case State::COLOCAR_BOX:
+            if(ColocarBrazo() == true)
+            {
+                stopBrazo();
+                state = State::BAJAR_BRAZO;
+            }
+            else
+            {
+                MoverBrazo();
+            }
+            break;
+            
+        case State::BAJAR_BRAZO:
+            if(ColocarBrazo() == true)
+            {
+                downSlot();   
+            }
+            MoverBrazo();
+            if(caja.isEmpty() == true)
+            {
+                stopBrazo();
+                Picking_box();
+                state = State::IDLE;
+            }
             break;
     }  
 }
@@ -390,11 +437,93 @@ void SpecificWorker::stop()
     target.setEmpty(true);
 }
 
+bool SpecificWorker::ColocarBrazo()
+{
+    if(abs(caja.getX()) > 10.0)
+    {
+        std::cout<<caja.getX()<<endl;
+        if(caja.getX() > 0.0)
+            rightSlot();
+        else
+            leftSlot();
+            
+        return false;
+    }
+    if(abs(caja.getY()) > 10.0)
+    {
+        if(caja.getY() > 0.0)
+            backSlot();
+        else
+            frontSlot();
+        return false;
+    }
+    return true;
+}
+
+void SpecificWorker::MoverBrazo()
+{
+    RoboCompJointMotor::MotorStateMap mMap;
+    RoboCompJointMotor::MotorGoalVelocityList vl;
+    
+ 	try
+	{
+		jointmotor_proxy->getAllMotorState(mMap);
+        
+		for(auto m: mMap)
+		{
+			innermodel->updateJointValue(QString::fromStdString(m.first),m.second.pos);//m.first nombre y m.sencond.pos posicion
+		}
+	}
+	catch(const Ice::Exception &e)
+	{	std::cout << e.what() << std::endl;}
+
+	try 
+	{
+        QMat jacobian = innermodel->jacobian(joints, motores, "cameraHand");
+    
+        QVec incs = jacobian.invert() * error;	
+        int i = 0;
+        for(auto m: joints)
+        {
+            RoboCompJointMotor::MotorGoalVelocity vg{FACTOR*incs[i], 1.0, m.toStdString()};
+            vl.push_back(vg);
+            i++;
+        }
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e.what() << endl;
+    }
+
+    try
+    {
+        jointmotor_proxy->setSyncVelocity(vl);
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+}
 
 void SpecificWorker::Picking_box()
 {
-  
-
+    RoboCompJointMotor::MotorStateMap mMap;
+	try
+	{
+		jointmotor_proxy->getAllMotorState(mMap);
+		for(auto m: mMap)
+		{
+            RoboCompJointMotor::MotorGoalPosition mg;
+            if(m.first == "finger_right_1")
+                mg = { 1.4, 1.0, m.first };
+            if(m.first == "finger_right_2")
+                mg = { -1.4, 1.0, m.first };
+			jointmotor_proxy->setPosition(mg);
+		}
+		sleep(1);
+	}
+	catch(const Ice::Exception &e)
+	{	std::cout << e.what() << std::endl;}	
 }
 
 
@@ -404,6 +533,74 @@ void SpecificWorker::releasing_box()
 
 }
 
+void SpecificWorker::goHome()
+{
+	RoboCompJointMotor::MotorStateMap mMap;
+	try
+	{
+		jointmotor_proxy->getAllMotorState(mMap);
+		for(auto m: mMap)
+		{
+            RoboCompJointMotor::MotorGoalPosition mg;
+            if(m.first == "wrist_right_2")
+                mg = { 1.4, 1.0, m.first };
+            else
+                mg = { innermodel->getJoint(m.first)->home, 1.0, m.first };
+			jointmotor_proxy->setPosition(mg);
+		}
+		sleep(1);
+	}
+	catch(const Ice::Exception &e)
+	{	std::cout << e.what() << std::endl;}	
+}
+
+void SpecificWorker::stopBrazo(){
+    RoboCompJointMotor::MotorGoalVelocityList vl;
+    
+    for(auto m: joints)
+	{
+		RoboCompJointMotor::MotorGoalVelocity vg{0.0, 1.0, m.toStdString()};
+		vl.push_back(vg);
+	}
+    try
+	{ 
+		jointmotor_proxy->setSyncVelocity(vl);
+	}
+	catch(const Ice::Exception &e)
+	{
+        std::cout << e.what() << std::endl;
+    }
+}
+
+void SpecificWorker::leftSlot()
+{
+	error = QVec::vec6(-caja.getX(),0,0,0,0,0);
+}
+
+void SpecificWorker::rightSlot()
+{
+	error = QVec::vec6(-caja.getX(),0,0,0,0,0);
+}
+
+void SpecificWorker::frontSlot()
+{
+	error = QVec::vec6(0,-caja.getY(),0,0,0,0);
+}
+
+void SpecificWorker::backSlot()
+{
+	error = QVec::vec6(0,-caja.getY(),0,0,0,0);
+}
+
+void SpecificWorker::upSlot()
+{
+	error = QVec::vec6(0,0,-caja.getZ(),0,0,0);
+}
+
+void SpecificWorker::downSlot()
+{
+	error = QVec::vec6(0,0,-caja.getZ(),0,0,0);
+}
 
   
 // 	try

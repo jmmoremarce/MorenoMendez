@@ -22,7 +22,7 @@ static const uint qt_meta_data_SpecificWorker[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       2,   14, // methods
+       9,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -32,13 +32,22 @@ static const uint qt_meta_data_SpecificWorker[] = {
  // slots: signature, parameters, type, tag, flags
       16,   15,   15,   15, 0x0a,
       33,   26,   15,   15, 0x0a,
+      47,   15,   15,   15, 0x0a,
+      56,   15,   15,   15, 0x0a,
+      67,   15,   15,   15, 0x0a,
+      79,   15,   15,   15, 0x0a,
+      88,   15,   15,   15, 0x0a,
+      99,   15,   15,   15, 0x0a,
+     111,   15,   15,   15, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_SpecificWorker[] = {
     "SpecificWorker\0\0compute()\0myPick\0"
-    "setPick(Pick)\0"
+    "setPick(Pick)\0goHome()\0leftSlot()\0"
+    "rightSlot()\0upSlot()\0downSlot()\0"
+    "frontSlot()\0backSlot()\0"
 };
 
 void SpecificWorker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -49,6 +58,13 @@ void SpecificWorker::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _
         switch (_id) {
         case 0: _t->compute(); break;
         case 1: _t->setPick((*reinterpret_cast< const Pick(*)>(_a[1]))); break;
+        case 2: _t->goHome(); break;
+        case 3: _t->leftSlot(); break;
+        case 4: _t->rightSlot(); break;
+        case 5: _t->upSlot(); break;
+        case 6: _t->downSlot(); break;
+        case 7: _t->frontSlot(); break;
+        case 8: _t->backSlot(); break;
         default: ;
         }
     }
@@ -86,9 +102,9 @@ int SpecificWorker::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 9)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 9;
     }
     return _id;
 }

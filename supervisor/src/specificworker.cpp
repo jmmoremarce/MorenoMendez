@@ -80,27 +80,51 @@ void SpecificWorker::compute()
             if(tag.emptyId(actualPared)){
                 actualPared = actualPared + 1;
                 actualPared = actualPared % 4;
-                gotopoint_proxy->stop();
+                try
+                {
+                    gotopoint_proxy->stop();
+                }
+                    catch(const Ice::Exception &e)
+                {
+                    std::cout<<e<<endl;
+                }
                 std::cout<<"SALE DE BUSCAR PARED A GOTO"<<endl;
                 state = State::GOTO;
             }             
             break;
 	     
         case State::BUSCARTAZA :
-            gotopoint_proxy->turn(0.2);
-            if(tag.getVacia() == false && tag.CajasCogidas() == true){
-                gotopoint_proxy->stop();
-                tag.marcarCaja();
-                std::cout<<"SALE DE BUSCAR TAZA A GOTO"<<endl;    
-                state = State::GOTO;
-            } 
-            else{
-                if(tag.emptyId(stopGiro) == true && salidaGiro > 0){ //para que el robot pueda dar una vuelta completa
-                    std::cout<<"SE VA DE PATRULLA"<<endl;
-                    state = State::PATRULLA;
+            try
+            {
+                gotopoint_proxy->turn(0.2);
+
+                if(tag.getVacia() == false && tag.CajasCogidas() == true)
+                {
+                    try
+                    {
+                        gotopoint_proxy->stop();
+                        tag.marcarCaja();
+                        std::cout<<"SALE DE BUSCAR TAZA A GOTO"<<endl;    
+                        state = State::GOTO;
+                    }
+                    catch(const Ice::Exception &e)
+                    {
+                        std::cout<<e<<endl;
+                    }
+                    
+                } 
+                else{
+                    if(tag.emptyId(stopGiro) == true && salidaGiro > 0){ //para que el robot pueda dar una vuelta completa
+                        std::cout<<"SE VA DE PATRULLA"<<endl;
+                        state = State::PATRULLA;
+                    }
+                    if(tag.emptyId(stopGiro) == false && stopGiro > -1)
+                        salidaGiro = salidaGiro + 1;
                 }
-                if(tag.emptyId(stopGiro) == false && stopGiro > -1)
-                    salidaGiro = salidaGiro + 1;
+            }
+            catch(const Ice::Exception &e)
+            {
+                 std::cout<<e<<endl;
             }
             break;   
 	                 
@@ -119,21 +143,35 @@ void SpecificWorker::compute()
              
         case State::WAIT:
             if(Taza == false){
-                if(gotopoint_proxy->atTarget()){
-                    tag.setVacia(true);
-                    std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
-                    Taza = true;
-                    stopGiro = -1;
-                    salidaGiro = 0;
-                    state = State::BUSCARTAZA;
+                try
+                {
+                    if(gotopoint_proxy->atTarget()){
+                        tag.setVacia(true);
+                        std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
+                        Taza = true;
+                        stopGiro = -1;
+                        salidaGiro = 0;
+                        state = State::BUSCARTAZA;
+                    }
+                }
+                catch(const Ice::Exception &e)
+                {
+                    std::cout<<e<<endl;
                 }
             }
             else{
-                if(gotopoint_proxy->atTarget()){
-                    tag.setVacia(true);
-                    Taza = false;
-                    std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
-                    state = State::BUSCARPARED;	
+                try
+                {
+                    if(gotopoint_proxy->atTarget()){
+                        tag.setVacia(true);
+                        Taza = false;
+                        std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
+                        state = State::BUSCARPARED;	
+                    }
+                }
+                catch(const Ice::Exception &e)
+                {
+                    std::cout<<e<<endl;
                 }
             }
             break;
@@ -145,15 +183,29 @@ void SpecificWorker::compute()
                 
         case State::WAIT_PATRULLA:
             if(tag.getVacia() == false && tag.CajasCogidas() == true){
-                gotopoint_proxy->stop();
-                std::cout<<"PATRULLA HA ENCONTRADO TAZA!!!"<<endl;
-                state = State::GOTO;
+                try 
+                {
+                    gotopoint_proxy->stop();
+                    std::cout<<"PATRULLA HA ENCONTRADO TAZA!!!"<<endl;
+                    state = State::GOTO;
+                }
+                catch(const Ice::Exception &e)
+                {
+                    std::cout<<e<<endl;
+                }
             }
-            if(gotopoint_proxy->atTarget()){
-                std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
-                stopGiro = -1;
-                salidaGiro = 0;
-                state = State::BUSCARTAZA;
+            try 
+            {
+                if(gotopoint_proxy->atTarget()){
+                    std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
+                    stopGiro = -1;
+                    salidaGiro = 0;
+                    state = State::BUSCARTAZA;
+                }
+            }
+            catch(const Ice::Exception &e)
+            {
+                std::cout<<e<<endl;
             }
             break;
      }
@@ -169,15 +221,34 @@ void SpecificWorker::compute()
 // 	}
 }
 
-void SpecificWorker::sendGoTo(){
+void SpecificWorker::sendGoTo()
+{
     
     std::pair<float, float> tr = tag.getValores();
     QVec rt = innermodel->transform("world", QVec::vec3(tr.first, 0 , tr.second), "robot");
     
     if(patrulla == true)
-        gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),1.0);
+    {
+        try
+        {
+            gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),1.0);
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
     else
-        gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
+    {
+        try
+        {
+            gotopoint_proxy->go("nodo 1",rt.x(), rt.z(),0.0);
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
 }
 
 

@@ -80,13 +80,6 @@ private:
                 return !vector[id - 11];
             return false;
         }
-        float getValorX(){
-            return valorX;
-        }
-        
-        float getValorY(){
-            return valorY;
-        }
         
 	    bool emptyId(int _id){
             if(id == _id)
