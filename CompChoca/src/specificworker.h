@@ -126,6 +126,7 @@ private:
 	};
 	struct Caja{
         mutable QMutex mutex;
+        bool pick_box[10] = {false, false, false, false, false, false, false, false, false, false};
 	    bool vacia = true; 
 	    float valorX = 0.0;
 	    float valorZ = 0.0; 
@@ -145,6 +146,7 @@ private:
 	    void setEmpty (bool vaciar){
 	      QMutexLocker block(&mutex);	      
 	      vacia=vaciar;
+          id = -1;
 	    }
 	    
         bool isEmpty(){
@@ -164,6 +166,17 @@ private:
             return valorY;
         }
         
+        void marcarBox()
+        {
+            pick_box[id-11] = true;
+        }
+        
+        bool cajaCogida()
+        {
+            if( id > 10)
+                return pick_box[id-11];
+            return false;
+        }
     };
     
     Caja caja;
@@ -173,7 +186,7 @@ private:
     float giro = 0.0;
     bool activo;
     
-    enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, BAJAR_BRAZO};
+    enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, COGER_CAJA, SOLTAR_CAJA, COMPARE};
     enum patrulla {PUNTO_0, PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
     
 //     State state = State::IDLE;
@@ -204,7 +217,10 @@ private:
     void stopBrazo();
     void subirCaja();
     void bajarCaja();
+    
     QVector <QVec> chapu;
+    bool box = false;
+    int disPared = 100;
 };
 
 #endif

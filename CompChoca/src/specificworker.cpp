@@ -42,7 +42,7 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 	innermodel = new InnerModel("/home/robocomp/robocomp/files/innermodel/betaWorldArm.xml");
     
     goHome();
-    sleep(2);
+    sleep(1);
     
     try 
 	{ 
@@ -52,7 +52,6 @@ bool SpecificWorker::setParams(RoboCompCommonBehavior::ParameterList params)
 	catch(const Ice::Exception &e){ std::cout << e << std::endl;}
 	
 	joints << "shoulder_right_1"<<"shoulder_right_2"<<"shoulder_right_3"<<"elbow_right"<<"wrist_right_1"<<"wrist_right_2";
-    listaBoxes << "C11"<<"C12";
 	// Check that these names are in mList
 	motores = QVec::zeros(joints.size());
     
@@ -70,6 +69,7 @@ void SpecificWorker::compute()
         RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
         if(tags.size() > 0)
         {
+            std::cout<<"SE VE UNA CAJA "<<tags[0].id<<endl;
             caja.setCopy(tags[0].id, tags[0].tx, tags[0].ty, tags[0].tz);
 //             std::cout<<"id: "<<tags[0].id<<" valor x: "<< tags[0].tx<<" valor y: "<< tags[0].ty<<" Valor z: "<<tags[0].tz<<endl;
         }
@@ -113,7 +113,7 @@ void SpecificWorker::compute()
             if(ColocarBrazo() == true)
             {
                 stopBrazo();
-                state = State::BAJAR_BRAZO;
+                state = State::COGER_CAJA;
             }
             else
             {
@@ -121,7 +121,7 @@ void SpecificWorker::compute()
             }
             break;
             
-        case State::BAJAR_BRAZO:
+        case State::COGER_CAJA:
             if(ColocarBrazo() == true)
             {
                 downSlot();   
@@ -131,10 +131,37 @@ void SpecificWorker::compute()
             {
                 stopBrazo();
                 Picking_box();
-		subirCaja();
-		bajarCaja();
-		releasing_box();
+                subirCaja();
+                disPared = 600;
+                bajarCaja();
+                releasing_box();
                 state = State::IDLE;
+            }
+            break;
+            
+        case State::SOLTAR_CAJA:
+            bajarCaja();
+            releasing_box();
+            goHome();
+            disPared = 100;
+            state = State::IDLE;
+            break;
+            
+        case State::COMPARE:
+            if(box == true)
+            {
+                state = State::SOLTAR_CAJA;
+            }
+            else
+            {
+                if(caja.isEmpty() == false)
+                {
+                    state = State::COLOCAR_BOX;
+                }
+                else
+                {
+                    state = State::IDLE;
+                }
             }
             break;
     }  
@@ -152,9 +179,9 @@ void SpecificWorker::gotoTarget()
 
     if( obstacle() == true)
     {   // If ther is an obstacle ahead, then transit to BUG
-        if(dist < 100 || caja.isEmpty() == false)
+        if(dist < disPared || caja.isEmpty() == false)
         {  
-            state = State::IDLE;
+            state = State::COMPARE;
             target.setEmpty(true);
             caja.setEmpty(true);
             differentialrobot_proxy->setSpeedBase(0,0); 
@@ -166,9 +193,9 @@ void SpecificWorker::gotoTarget()
         return;
     }
     
-    if(dist < 100 || caja.isEmpty() == false)
+    if(dist < disPared || caja.isEmpty() == false)
     {
-        state = State::IDLE;
+        state = State::COMPARE;
         target.setEmpty(true);
         caja.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
@@ -220,7 +247,7 @@ void SpecificWorker::bug()
         caja.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
         noObstaculo = false;
-        state = State::IDLE;
+        state = State::COMPARE;
         std::cout<<"HA LLEGADO-------- BUG"<<endl;
 	return;
     }
@@ -430,7 +457,8 @@ void SpecificWorker::turn(const float speed)
 
 bool SpecificWorker::atTarget()
 {
-    return target.isEmpty();
+    if(caja.isEmpty() == true)
+    return true;
 }
 
 void SpecificWorker::stop()
@@ -487,7 +515,7 @@ void SpecificWorker::MoverBrazo()
         QVec incs = jacobian.invert() * error;	
         int i = 0;
 	
-	chapu.append(incs);
+        chapu.append(incs);
 	
         for(auto m: joints)
         {
@@ -519,40 +547,39 @@ void SpecificWorker::Picking_box()
 	  jointmotor_proxy->getAllMotorState(mMap);
 	  for(auto m: mMap)
 	  {
-            RoboCompJointMotor::MotorGoalPosition mg;
-            if(m.first == "finger_right_1")
-                mg = { -0.6, 1.0, m.first };
-            if(m.first == "finger_right_2")
-                mg = { 0.6, 1.0, m.first };
+        RoboCompJointMotor::MotorGoalPosition mg;
+        if(m.first == "finger_right_1")
+            mg = { -0.6, 1.0, m.first };
+        if(m.first == "finger_right_2")
+            mg = { 0.6, 1.0, m.first };
 	    jointmotor_proxy->setPosition(mg);
 	  }
 	  sleep(1);
 	}
 	catch(const Ice::Exception &e)
-	{	std::cout << e.what() << std::endl;}	
+	{	std::cout << e.what() << std::endl;}
 }
 
 
 void SpecificWorker::releasing_box()
 {
-  
     RoboCompJointMotor::MotorStateMap mMap;
 	try
 	{
 	  jointmotor_proxy->getAllMotorState(mMap);
 	  for(auto m: mMap)
 	  {
-            RoboCompJointMotor::MotorGoalPosition mg;
-            if(m.first == "finger_right_1")
-                mg = { 0.0, 1.0, m.first };
-            if(m.first == "finger_right_2")
-                mg = { -0.0, 1.0, m.first };
+        RoboCompJointMotor::MotorGoalPosition mg;
+        if(m.first == "finger_right_1")
+            mg = { 0.0, 1.0, m.first };
+        if(m.first == "finger_right_2")
+            mg = { -0.0, 1.0, m.first };
 	    jointmotor_proxy->setPosition(mg);
 	  }
 	  sleep(1);
 	}
 	catch(const Ice::Exception &e)
-	{	std::cout << e.what() << std::endl;}	 
+	{	std::cout << e.what() << std::endl;}
 }
 
 
@@ -606,8 +633,6 @@ void SpecificWorker::bajarCaja()
     stopBrazo();
     std::cout <<"CHAPU EN ACCION!!!!!!!!!!!"<< std::endl;
 }
-
-
 
 void SpecificWorker::goHome()
 {

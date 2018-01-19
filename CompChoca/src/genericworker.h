@@ -34,6 +34,7 @@
 #include <Laser.h>
 #include <RCISMousePicker.h>
 
+#include <IceStorm/IceStorm.h>
 
 
 #define CHECK_PERIOD 5000
@@ -71,10 +72,11 @@ public:
 	QMutex *mutex;
 	
 
-	LaserPrx laser_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
+	LaserPrx laser_proxy;
 	JointMotorPrx jointmotor_proxy;
 	GetAprilTagsPrx getapriltags_proxy;
+// 	IceStorm::TopicManagerPrx topicmanager_proxy;
 
 	virtual void Picking_box() = 0;
 	virtual void releasing_box() = 0;
@@ -89,8 +91,13 @@ protected:
 	QTimer timer;
 	int Period;
 
+	QTimer storm_timer;
+	int storm_period;
+
 public slots:
 	virtual void compute() = 0;
+// 	void check_storm();
+
 signals:
 	void kill();
 };

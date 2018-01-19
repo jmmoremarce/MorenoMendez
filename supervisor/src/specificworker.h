@@ -56,9 +56,11 @@ private:
         int id = -1;
         float valorX = 0.0;
         float valorY = 0.0;
+        int select_id = -1;
         
         
-        void copiaValores(int id_, float x, float y){
+        void copiaValores(int id_, float x, float y)
+        {
             QMutexLocker block (&mutex);
             id = id_;
             valorX = x;
@@ -66,32 +68,46 @@ private:
             vacia = false;
         }
         
-        std::pair<float, float> getValores(){
+        std::pair<float, float> getValores()
+        {
             QMutexLocker block (&mutex);
             return std::make_pair(valorX, valorY);
 	    }
     
-        void marcarCaja(){
+        void marcarCaja()
+        {
             vector[id -11] = true;
+            select_id = id;
         }
         
-	    bool CajasCogidas(){
+        bool idBox_ok()
+        {
+            if(select_id == id)
+                return true;
+            return false;
+        }
+        
+	    bool CajasCogidas()
+        {
             if(id > 10)
                 return !vector[id - 11];
             return false;
         }
         
-	    bool emptyId(int _id){
+	    bool emptyId(int _id)
+        {
             if(id == _id)
                 return true;
             return false;
         }
         
-	    bool getVacia(){
+	    bool getVacia()
+        {
             return vacia;
         }
         
-        void setVacia(bool v){
+        void setVacia(bool v)
+        {
             vacia = false;
         }
     };
@@ -99,7 +115,7 @@ private:
     Tag tag;
     InnerModel *innermodel;
     
-    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO, PATRULLA, WAIT_PATRULLA};
+    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO, PATRULLA, WAIT_PATRULLA, PICKING_BOX, RELEASE_BOX};
     State state = State::BUSCARTAZA;
     
     bool Taza = true;

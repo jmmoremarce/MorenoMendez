@@ -151,7 +151,8 @@ void SpecificWorker::compute()
                         Taza = true;
                         stopGiro = -1;
                         salidaGiro = 0;
-                        state = State::BUSCARTAZA;
+                        
+                        state = State::PICKING_BOX;
                     }
                 }
                 catch(const Ice::Exception &e)
@@ -162,11 +163,19 @@ void SpecificWorker::compute()
             else{
                 try
                 {
-                    if(gotopoint_proxy->atTarget()){
+                    if(gotopoint_proxy->atTarget() == true){
                         tag.setVacia(true);
                         Taza = false;
                         std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
                         state = State::BUSCARPARED;	
+                    }
+                    else
+                    {
+                        
+                        if(tag.idBox_ok() == true)
+                        {
+                            sendGoTo();
+                        }
                     }
                 }
                 catch(const Ice::Exception &e)
@@ -194,21 +203,32 @@ void SpecificWorker::compute()
                     std::cout<<e<<endl;
                 }
             }
-            try 
+            else
             {
-                if(gotopoint_proxy->atTarget()){
-                    std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
-                    stopGiro = -1;
-                    salidaGiro = 0;
-                    state = State::BUSCARTAZA;
+                try 
+                {
+                    if(gotopoint_proxy->atTarget()){
+                        std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
+                        stopGiro = -1;
+                        salidaGiro = 0;
+                        state = State::BUSCARTAZA;
+                    }
+                }
+                catch(const Ice::Exception &e)
+                {
+                    std::cout<<e<<endl;
                 }
             }
-            catch(const Ice::Exception &e)
-            {
-                std::cout<<e<<endl;
-            }
+            break;
+            
+            case State::PICKING_BOX:
+                
+            break;
+            
+            case State::RELEASE_BOX:
             break;
      }
+
 // 	try
 // 	{
 // 		camera_proxy->getYImage(0,img, cState, bState);
