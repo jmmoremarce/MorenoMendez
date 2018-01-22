@@ -69,7 +69,6 @@ void SpecificWorker::compute()
         RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
         if(tags.size() > 0)
         {
-            std::cout<<"SE VE UNA CAJA "<<tags[0].id<<endl;
             caja.setCopy(tags[0].id, tags[0].tx, tags[0].ty, tags[0].tz);
 //             std::cout<<"id: "<<tags[0].id<<" valor x: "<< tags[0].tx<<" valor y: "<< tags[0].ty<<" Valor z: "<<tags[0].tz<<endl;
         }
@@ -90,8 +89,9 @@ void SpecificWorker::compute()
     switch( state ) 
     {
         case State::IDLE:
-            if ( !target.isEmpty())
+            if (target.isEmpty() == false)
             {
+                std::cout<<"Entra para cambiar estado GOTO"<<endl;
                 target.calcularPuntos(bState.x, bState.z);
                 state = State::GOTO;
             }
@@ -110,9 +110,11 @@ void SpecificWorker::compute()
             break;
             
         case State::COLOCAR_BOX:
+            box = true;
             if(ColocarBrazo() == true)
             {
                 stopBrazo();
+                
                 state = State::COGER_CAJA;
             }
             else
@@ -129,12 +131,14 @@ void SpecificWorker::compute()
             MoverBrazo();
             if(caja.isEmpty() == true)
             {
+                std::cout<<"COJE LA CAJITA ASQUEROSA"<<endl;
                 stopBrazo();
                 Picking_box();
                 subirCaja();
-                disPared = 600;
-                bajarCaja();
-                releasing_box();
+                sleep(1);
+                
+//                 disPared = 600;
+                box = false;
                 state = State::IDLE;
             }
             break;
@@ -143,19 +147,26 @@ void SpecificWorker::compute()
             bajarCaja();
             releasing_box();
             goHome();
-            disPared = 100;
+            sleep(1);
+            std::cout<<"SUELTA LA CAJITA"<<endl;
+            box = false;
+//             disPared = 100;
+            
             state = State::IDLE;
+            
             break;
             
         case State::COMPARE:
-            if(box == true)
+            if(box == true && disPared > 400)
             {
+                ok_goto = false;
                 state = State::SOLTAR_CAJA;
             }
             else
             {
                 if(caja.isEmpty() == false)
                 {
+                    ok_goto = false;
                     state = State::COLOCAR_BOX;
                 }
                 else
@@ -173,37 +184,23 @@ void SpecificWorker::gotoTarget()
     std::pair<float, float> tr = target.getValores();
     QVec rt = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
     
-    float dist = rt.norm2();
     float ang  = atan2(rt.x(), rt.z());
     float adv;
 
     if( obstacle() == true)
     {   // If ther is an obstacle ahead, then transit to BUG
-        if(dist < disPared || caja.isEmpty() == false)
-        {  
-            state = State::COMPARE;
-            target.setEmpty(true);
-            caja.setEmpty(true);
-            differentialrobot_proxy->setSpeedBase(0,0); 
-	    std::cout<<"HA LLEGADO"<<endl;
+        if(gotoEnd() == true)
             return;
-        }
+        
         state = State::BUG;
 	
         return;
     }
     
-    if(dist < disPared || caja.isEmpty() == false)
-    {
-        state = State::COMPARE;
-        target.setEmpty(true);
-        caja.setEmpty(true);
-        differentialrobot_proxy->setSpeedBase(0,0); 
-	std::cout<<"HA LLEGADO EN EL MENOR DE 100"<<endl;
+    if(gotoEnd() == true)
         return;
-    }
     
-    dist = distObstacle(dist);
+    float dist = distObstacle(rt.norm2());
     
     if ( fabs(ang) > 0.05 )
         adv = 0;
@@ -231,26 +228,13 @@ void SpecificWorker::bug()
         std::cout<<e<<endl;
     }
     
-    
-    std::pair<float, float> tr = target.getValores();
-    QVec rt = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
-    
     std::sort(laser.begin(),laser.end(),[](auto a, auto b){return a.dist<b.dist;});
-       
-    float dist = rt.norm2();
+
     bool noObstaculo = true;
         
-    if(dist < 400)
-    {
-        giro = 0.0;
-        target.setEmpty(true);
-        caja.setEmpty(true);
-        differentialrobot_proxy->setSpeedBase(0,0); 
-        noObstaculo = false;
-        state = State::COMPARE;
-        std::cout<<"HA LLEGADO-------- BUG"<<endl;
-	return;
-    }
+    if( gotoEnd() == true)
+        return;
+    
     if(giro == 0.0)
     {
         if( laser[20].angle > 0 )
@@ -293,6 +277,24 @@ void SpecificWorker::bug()
         state = State::IDLE;
         return;
     }
+}
+
+bool SpecificWorker::gotoEnd()
+{
+    std::pair<float, float> tr = target.getValores();
+    QVec rt = innermodel->transform("robot", QVec::vec3(tr.first, 0 , tr.second), "world");
+    
+    float dist = rt.norm2();
+    
+    if(dist < disPared || caja.isEmpty() == false)
+    {
+        target.setEmpty(true);
+        caja.setEmpty(true);
+        differentialrobot_proxy->setSpeedBase(0,0); 
+        state = State::COMPARE;
+        return true;
+    }
+    return false;
 }
 
 bool SpecificWorker::salida()
@@ -338,7 +340,9 @@ float SpecificWorker::distObstacle(float dist)
 
     if(laser[20].dist < dist)
         return laser[20].dist;
-    return dist;
+    
+    float aux = dist / 4;
+    return (aux * 3);
 }
 
 bool SpecificWorker::obstacle()
@@ -447,18 +451,40 @@ void SpecificWorker::go(const string& nodo, const float x, const float y, const 
         state = State::PATRULLA;
     }
     else
-        target.setCopy(x , y);
+    {
+        if(ok_goto == true)
+            target.setCopy(x , y);
+    }
 }
 
 void SpecificWorker::turn(const float speed)
 {
+    if(box == false)
+        disPared = 100;
+    if(box == true)
+        disPared = 600;
+    
+    ok_goto = true;
+    
     differentialrobot_proxy->setSpeedBase(0,speed);
 }
 
 bool SpecificWorker::atTarget()
 {
-    if(caja.isEmpty() == true)
-    return true;
+    if(caja.isEmpty() == true && target.isEmpty() == true)
+    {
+        std::cout<<"SE VA PARA EL SUPERVISOR, YA PUEDE MOVERSE"<<endl;
+        if(box == true)
+        {
+            return false;
+        }
+        else
+        {
+            box = true;
+            return true;
+        }
+    }
+    return false;
 }
 
 void SpecificWorker::stop()
@@ -472,7 +498,6 @@ bool SpecificWorker::ColocarBrazo()
 {
     if(abs(caja.getX()) > 10.0)
     {
-        std::cout<<caja.getX()<<endl;
         if(caja.getX() > 0.0)
             rightSlot();
         else
@@ -597,7 +622,6 @@ void SpecificWorker::subirCaja()
 			mg = { innermodel->getJoint(m.first)->home, 1.0, m.first };
 		    jointmotor_proxy->setPosition(mg);
 		}
-		sleep(1);
 	}
 	catch(const Ice::Exception &e)
 	{	std::cout << e.what() << std::endl;}	
@@ -631,7 +655,6 @@ void SpecificWorker::bajarCaja()
     }
     usleep(1000200);
     stopBrazo();
-    std::cout <<"CHAPU EN ACCION!!!!!!!!!!!"<< std::endl;
 }
 
 void SpecificWorker::goHome()
@@ -649,7 +672,6 @@ void SpecificWorker::goHome()
                 mg = { innermodel->getJoint(m.first)->home, 1.0, m.first };
 			jointmotor_proxy->setPosition(mg);
 		}
-		sleep(1);
 	}
 	catch(const Ice::Exception &e)
 	{	std::cout << e.what() << std::endl;}	

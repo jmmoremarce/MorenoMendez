@@ -184,13 +184,16 @@ private:
 	InnerModel *innermodel;
     
     float giro = 0.0;
-    bool activo;
+    QVector <QVec> chapu;
+    bool box = false;
+    int disPared = 100;
+    bool ok_goto = true;
     
     enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, COGER_CAJA, SOLTAR_CAJA, COMPARE};
     enum patrulla {PUNTO_0, PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
     
-//     State state = State::IDLE;
-    State state = State::COLOCAR_BOX;
+    State state = State::IDLE;
+//     State state = State::COLOCAR_BOX;
     patrulla patru = patrulla::PUNTO_0;
 	
     float gaussian(float vr, float vx, float h);
@@ -204,12 +207,12 @@ private:
     float distObstacle(float dist);
     bool salida();
     void Patrulla();
+    bool gotoEnd();
     
-    QStringList joints, listaBoxes;
+    QStringList joints;
 	QVec motores;
     QVec error;
     RoboCompJointMotor::MotorParamsList mList;
-    bool pushedButton = false;
     int const FACTOR = 1;
     
     void MoverBrazo();
@@ -217,10 +220,6 @@ private:
     void stopBrazo();
     void subirCaja();
     void bajarCaja();
-    
-    QVector <QVec> chapu;
-    bool box = false;
-    int disPared = 100;
 };
 
 #endif

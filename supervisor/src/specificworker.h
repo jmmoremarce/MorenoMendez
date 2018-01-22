@@ -90,11 +90,11 @@ private:
 	    bool CajasCogidas()
         {
             if(id > 10)
-                return !vector[id - 11];
+                return vector[id - 11];
             return false;
         }
         
-	    bool emptyId(int _id)
+	    bool equalId(int _id)
         {
             if(id == _id)
                 return true;
@@ -106,26 +106,31 @@ private:
             return vacia;
         }
         
-        void setVacia(bool v)
+        void setVacia(bool empty)
         {
-            vacia = false;
+            vacia = empty;
+            id = -1;
         }
     };
     
     Tag tag;
     InnerModel *innermodel;
     
-    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO, PATRULLA, WAIT_PATRULLA, PICKING_BOX, RELEASE_BOX};
+    enum State {BUSCARPARED,BUSCARTAZA, WAIT, GOTO, PATRULLA, WAIT_PATRULLA};
     State state = State::BUSCARTAZA;
     
     bool Taza = true;
-    bool patrulla = false;
-
-    void sendGoTo();
+    bool patrulla = false; 
     
     int actualPared = 0;
     int stopGiro = -1;
     int salidaGiro = 0;
+    
+    void sendGoTo();
+    void waitPatrulla();
+    void waitGoto();
+    void buscarCaja();
+    void buscarPared();
 };
 
 #endif

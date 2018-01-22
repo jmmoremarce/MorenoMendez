@@ -47,9 +47,30 @@ void SpecificWorker::compute()
     try
     {
         RoboCompGetAprilTags::listaMarcas tags = getapriltags_proxy->checkMarcas();
+        
         if(tags.size() > 0)
         {
-            tag.copiaValores(tags[0].id, tags[0].tx, tags[0].tz);
+            for(auto t: tags)
+            {
+                if(Taza == true && t.id > 10 && tag.getVacia() == true)
+                {
+                    std::cout<<"pone tag vacio"<<endl;
+                    tag.copiaValores(t.id, t.tx, t.tz);
+                    if(tag.CajasCogidas() == true)
+                    {
+                        tag.setVacia(true);
+                    }
+                }
+                else
+                {
+                    if(Taza == true && t.id > 10 && tag.idBox_ok() == true)
+                        tag.copiaValores(t.id, t.tx, t.tz);
+                }
+                
+                if(Taza == false && t.id < 10)
+                    tag.copiaValores(t.id, t.tx, t.tz);
+            }
+            
             if(stopGiro == -1 && tags[0].id < 11)
             {
                 stopGiro = tags[0].id;
@@ -62,6 +83,7 @@ void SpecificWorker::compute()
     }
     
     RoboCompDifferentialRobot::TBaseState bState;
+    
     try
     {
         differentialrobot_proxy->getBaseState(bState);
@@ -76,60 +98,21 @@ void SpecificWorker::compute()
     
      switch( state ) {
         case State::BUSCARPARED:
-            gotopoint_proxy->turn(0.3);
-            if(tag.emptyId(actualPared)){
-                actualPared = actualPared + 1;
-                actualPared = actualPared % 4;
-                try
-                {
-                    gotopoint_proxy->stop();
-                }
-                    catch(const Ice::Exception &e)
-                {
-                    std::cout<<e<<endl;
-                }
-                std::cout<<"SALE DE BUSCAR PARED A GOTO"<<endl;
-                state = State::GOTO;
-            }             
+            
+            buscarPared();
+         
             break;
 	     
-        case State::BUSCARTAZA :
-            try
-            {
-                gotopoint_proxy->turn(0.2);
+        case State::BUSCARTAZA:
+            
+            buscarCaja();
 
-                if(tag.getVacia() == false && tag.CajasCogidas() == true)
-                {
-                    try
-                    {
-                        gotopoint_proxy->stop();
-                        tag.marcarCaja();
-                        std::cout<<"SALE DE BUSCAR TAZA A GOTO"<<endl;    
-                        state = State::GOTO;
-                    }
-                    catch(const Ice::Exception &e)
-                    {
-                        std::cout<<e<<endl;
-                    }
-                    
-                } 
-                else{
-                    if(tag.emptyId(stopGiro) == true && salidaGiro > 0){ //para que el robot pueda dar una vuelta completa
-                        std::cout<<"SE VA DE PATRULLA"<<endl;
-                        state = State::PATRULLA;
-                    }
-                    if(tag.emptyId(stopGiro) == false && stopGiro > -1)
-                        salidaGiro = salidaGiro + 1;
-                }
-            }
-            catch(const Ice::Exception &e)
-            {
-                 std::cout<<e<<endl;
-            }
             break;   
 	                 
         case State::GOTO:
+            
             sendGoTo();
+            
             if(patrulla == true){
                 std::cout<<"GOTO ---- PATRULLA"<<endl;
                 patrulla = false;
@@ -139,93 +122,27 @@ void SpecificWorker::compute()
                 std::cout<<"GOTO"<<endl;
                 state = State::WAIT;
             }
+            
             break;
              
         case State::WAIT:
-            if(Taza == false){
-                try
-                {
-                    if(gotopoint_proxy->atTarget()){
-                        tag.setVacia(true);
-                        std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
-                        Taza = true;
-                        stopGiro = -1;
-                        salidaGiro = 0;
-                        
-                        state = State::PICKING_BOX;
-                    }
-                }
-                catch(const Ice::Exception &e)
-                {
-                    std::cout<<e<<endl;
-                }
-            }
-            else{
-                try
-                {
-                    if(gotopoint_proxy->atTarget() == true){
-                        tag.setVacia(true);
-                        Taza = false;
-                        std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
-                        state = State::BUSCARPARED;	
-                    }
-                    else
-                    {
-                        
-                        if(tag.idBox_ok() == true)
-                        {
-                            sendGoTo();
-                        }
-                    }
-                }
-                catch(const Ice::Exception &e)
-                {
-                    std::cout<<e<<endl;
-                }
-            }
+            
+            waitGoto();
+
             break;
             
         case State::PATRULLA:
+            
             patrulla = true;
+            
             state = State::GOTO;
+            
             break;
                 
         case State::WAIT_PATRULLA:
-            if(tag.getVacia() == false && tag.CajasCogidas() == true){
-                try 
-                {
-                    gotopoint_proxy->stop();
-                    std::cout<<"PATRULLA HA ENCONTRADO TAZA!!!"<<endl;
-                    state = State::GOTO;
-                }
-                catch(const Ice::Exception &e)
-                {
-                    std::cout<<e<<endl;
-                }
-            }
-            else
-            {
-                try 
-                {
-                    if(gotopoint_proxy->atTarget()){
-                        std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
-                        stopGiro = -1;
-                        salidaGiro = 0;
-                        state = State::BUSCARTAZA;
-                    }
-                }
-                catch(const Ice::Exception &e)
-                {
-                    std::cout<<e<<endl;
-                }
-            }
-            break;
             
-            case State::PICKING_BOX:
-                
-            break;
-            
-            case State::RELEASE_BOX:
+            waitPatrulla();
+
             break;
      }
 
@@ -271,10 +188,139 @@ void SpecificWorker::sendGoTo()
     }
 }
 
+void SpecificWorker::waitPatrulla()
+{
+    if(tag.getVacia() == false && tag.CajasCogidas() == false){
+        try 
+        {
+            gotopoint_proxy->stop();
+            std::cout<<"PATRULLA HA ENCONTRADO TAZA!!!"<<endl;
+            state = State::GOTO;
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
+    else
+    {
+        try 
+        {
+            if(gotopoint_proxy->atTarget()){
+                std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
+                stopGiro = -1;
+                salidaGiro = 0;
+                state = State::BUSCARTAZA;
+            }
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
+}
 
+void SpecificWorker::waitGoto()
+{
+    if(Taza == false){
+        try
+        {
+            if(gotopoint_proxy->atTarget() == true){
+                tag.setVacia(true);
+                std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
+                Taza = true;
+                stopGiro = -1;
+                salidaGiro = 0;
+                        
+                state = State::BUSCARTAZA;
+            }
+            if(gotopoint_proxy->atTarget() == false)
+            {
+                sendGoTo();
+            }
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
+    else
+    {
+        try
+        {
+            if(gotopoint_proxy->atTarget() == true)
+            {
+                tag.setVacia(true);
+                Taza = false;
+                std::cout<<"MANDA BUSCAR PARED!!!"<<endl;
+                state = State::BUSCARPARED;	
+            }
+            if(gotopoint_proxy->atTarget() == false)
+            {
+                sendGoTo();
+            }
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+    }
+}
 
+void SpecificWorker::buscarCaja()
+{
+    try
+    {
+        gotopoint_proxy->turn(0.2);
 
+        if(tag.getVacia() == false && tag.CajasCogidas() == false)
+        {
+            try
+            {
+                gotopoint_proxy->stop();
+                tag.marcarCaja();
+                std::cout<<"SALE DE BUSCAR TAZA A GOTO"<<endl;    
+                state = State::GOTO;
+            }
+            catch(const Ice::Exception &e)
+            {
+                std::cout<<e<<endl;
+            }                    
+        } 
+        else
+        {
+            if(tag.equalId(stopGiro) == true && salidaGiro > 0)
+            { //para que el robot pueda dar una vuelta completa
+                std::cout<<"SE VA DE PATRULLA"<<endl;
+                state = State::PATRULLA;
+            }
+            if(tag.equalId(stopGiro) == false && stopGiro > -1)
+                salidaGiro = salidaGiro + 1;
+        }
+    }
+    catch(const Ice::Exception &e)
+    {
+        std::cout<<e<<endl;
+    }
+}
 
-
-
-
+void SpecificWorker::buscarPared()
+{
+    gotopoint_proxy->turn(0.3);
+    
+    if(tag.equalId(actualPared))
+    {
+        actualPared = actualPared + 1;
+        actualPared = actualPared % 4;
+        try
+        {
+            gotopoint_proxy->stop();
+        }
+        catch(const Ice::Exception &e)
+        {
+            std::cout<<e<<endl;
+        }
+        std::cout<<"SALE DE BUSCAR PARED A GOTO"<<endl;
+        state = State::GOTO;
+    }  
+}
