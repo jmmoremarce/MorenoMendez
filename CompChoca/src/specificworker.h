@@ -187,7 +187,9 @@ private:
     QVector <QVec> chapu;
     bool box = false;
     int disPared = 100;
-    bool ok_goto = true;
+    bool ok_goto = false;
+    bool goto_patrulla = false;
+    bool cambio_pared = true;
     
     enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, COGER_CAJA, SOLTAR_CAJA, COMPARE};
     enum patrulla {PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};

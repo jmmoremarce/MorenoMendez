@@ -432,7 +432,7 @@ void SpecificWorker::Patrulla()
             patru = patrulla::PUNTO_3;
             break;
         case patrulla::PUNTO_3:
-            target.setCopy(1450.61, -1425.51);
+            target.setCopy(1600.61, -1425.51);
             patru = patrulla::PUNTO_4;
             break;
         case patrulla::PUNTO_4:
@@ -440,12 +440,14 @@ void SpecificWorker::Patrulla()
             patru = patrulla::PUNTO_1;
             break;
     }
+    goto_patrulla = true;
 }
 
 void SpecificWorker::go(const string& nodo, const float x, const float y, const float alpha)
 {
     if(alpha == 1.0)
     {
+	box = true;
         state = State::PATRULLA;
     }
     else
@@ -458,13 +460,22 @@ void SpecificWorker::go(const string& nodo, const float x, const float y, const 
 void SpecificWorker::turn(const float speed)
 {
     target.setEmpty(true);
-    if(box == false)
+  
+    if(ok_goto == false)
+    {
+      cambio_pared = !cambio_pared;
+      std::cout<<"CAMBIA BOX DE VALOR "<<cambio_pared<<endl;
+    }
+    
+    if(cambio_pared == false)
         disPared = 100;
-    if(box == true)
+    
+    if(cambio_pared == true)
         disPared = 600;
     
     ok_goto = true;
     
+       std::cout<<"PASA POR EL TURN DISPARED:"<<disPared<<endl;
     differentialrobot_proxy->setSpeedBase(0,speed);
 }
 
@@ -477,12 +488,19 @@ bool SpecificWorker::atTarget()
             return false;
         }
         else
-        {
+        { 
 	    std::cout<<"SE VA PARA EL SUPERVISOR, YA PUEDE MOVERSE"<<endl;
-            box = true;
+	    box = true;
             return true;
         }
     }
+    if(caja.isEmpty() == true && target.isEmpty() == true && goto_patrulla == true)
+    {
+        std::cout<<"SE VA PARA EL SUPERVISOR, YA PUEDE MOVERSE DESDE PATRULLA"<<endl;
+	goto_patrulla = false;
+	return true;
+    }
+      
     return false;
 }
 

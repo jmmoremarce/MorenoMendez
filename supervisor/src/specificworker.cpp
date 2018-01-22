@@ -54,10 +54,10 @@ void SpecificWorker::compute()
             {
                 if(Taza == true && t.id > 10 && tag.getVacia() == true)
                 {
-                    std::cout<<"pone tag vacio"<<endl;
                     tag.copiaValores(t.id, t.tx, t.tz);
                     if(tag.CajasCogidas() == true)
                     {
+		      std::cout<<"pone tag vacio"<<endl;
                         tag.setVacia(true);
                     }
                 }
@@ -65,22 +65,33 @@ void SpecificWorker::compute()
                 {
                     if(Taza == true && t.id > 10 && tag.idBox_ok(t.id) == true)
 		    {
+		      std::cout<<"Coge la caja correcta"<<endl;
                         tag.copiaValores(t.id, t.tx, t.tz);
 		    }
                 }
                 
                 if(Taza == false && t.id < 10)
-                    tag.copiaValores(t.id, t.tx, t.tz);
-		
-		if(stopGiro == -1 && t.id < 10)
 		{
-		    stopGiro = t.id;
-		    salidaGiro = 0;
-		    std::cout<<"STOP GIRO: "<<stopGiro<<endl;
+		  std::cout<<"coge la pared"<<endl;
+                    tag.copiaValores(t.id, t.tx, t.tz);
 		}
 		
-		if(Taza == true && salidaGiro != -1 && stopGiro != -1)
-		    tag.copiaValores(t.id, t.tx, t.tz);
+		if( state == State::BUSCARTAZA)
+		{
+		  std::cout<<"ENTRA EN EL ESTADO QUE ES IGUAL"<<endl;
+		  if(stopGiro == -1 && t.id < 10)
+		  {
+		    std::cout<<"coge id pared para patrulla"<<endl;
+		      stopGiro = t.id;
+		      salidaGiro = 0;
+		  }
+		  
+		  if(Taza == true && salidaGiro != -1 && stopGiro != -1)
+		  {
+		    std::cout<<"coge valores ultima condicion"<<endl;
+		      tag.copiaValores(t.id, t.tx, t.tz);
+		  }
+		}
             }
         }
     }
@@ -297,7 +308,6 @@ void SpecificWorker::buscarCaja()
         } 
         else
         {
-	    std::cout<<"STOP GIRO: "<<stopGiro<<endl;
             if(tag.equalId(stopGiro) == true && salidaGiro > 0)
             { //para que el robot pueda dar una vuelta completa
                 std::cout<<"SE VA DE PATRULLA"<<endl;
