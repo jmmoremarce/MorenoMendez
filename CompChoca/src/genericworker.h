@@ -72,10 +72,11 @@ public:
 	QMutex *mutex;
 	
 
-	LaserPrx laser_proxy;
 	DifferentialRobotPrx differentialrobot_proxy;
+	LaserPrx laser_proxy;
 	JointMotorPrx jointmotor_proxy;
 	GetAprilTagsPrx getapriltags_proxy;
+
 
 	virtual void Picking_box() = 0;
 	virtual void releasing_box() = 0;
@@ -95,7 +96,7 @@ protected:
 
 public slots:
 	virtual void compute() = 0;
-	
+
 
 signals:
 	void kill();

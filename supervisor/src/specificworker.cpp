@@ -252,10 +252,10 @@ void SpecificWorker::waitGoto()
                         
                 state = State::BUSCARTAZA;
             }
-            if(gotopoint_proxy->atTarget() == false)
-            {
-                sendGoTo();
-            }
+//             if(gotopoint_proxy->atTarget() == false)
+//             {
+//                 sendGoTo();
+//             }
         }
         catch(const Ice::Exception &e)
         {

@@ -132,6 +132,7 @@ void SpecificWorker::compute()
             if(caja.isEmpty() == true)
             {
                 std::cout<<"COJE LA CAJITA ASQUEROSA"<<endl;
+                usleep(100000);
                 stopBrazo();
                 Picking_box();
                 subirCaja();
@@ -642,36 +643,52 @@ void SpecificWorker::subirCaja()
 	}
 	catch(const Ice::Exception &e)
 	{	std::cout << e.what() << std::endl;}	
+// 	(m.first != "wrist_right_2" &&
 }
 
 
 void SpecificWorker::bajarCaja()
 {
-    RoboCompJointMotor::MotorGoalVelocityList vl;
-    int j = 0;
-    for(auto c: chapu)
-    {
-      QVec incs = chapu[j];
-      int i = 0;
-      for(auto m: joints)
-      {
-	RoboCompJointMotor::MotorGoalVelocity vg{FACTOR*incs[i], 1.0, m.toStdString()};
-	vl.push_back(vg);
-	i++;
-      }
-      chapu.remove(j);
-
-      try
-      {
-	  jointmotor_proxy->setSyncVelocity(vl);
-      }
-      catch(const Ice::Exception &e)
-      {
-	  std::cout<<e<<endl;
-      }
-    }
-    usleep(1000200);
-    stopBrazo();
+//     RoboCompJointMotor::MotorGoalVelocityList vl;
+//     RoboCompJointMotor::MotorGoalPosition mg = { 1.4, 1.0, "wrist_right_2" };
+//     jointmotor_proxy->setPosition(mg);
+//     int j = 0;
+//     for(auto c: chapu)
+//     {
+//       QVec incs = chapu[j];
+//       int i = 0;
+//       for(auto m: joints)
+//       {
+// 	RoboCompJointMotor::MotorGoalVelocity vg{FACTOR*incs[i], 1.0, m.toStdString()};
+// 	vl.push_back(vg);
+// 	i++;
+//       }
+//       chapu.remove(j);
+// 
+//       try
+//       {
+// 	  jointmotor_proxy->setSyncVelocity(vl);
+//       }
+//       catch(const Ice::Exception &e)
+//       {
+// 	  std::cout<<e<<endl;
+//       }
+//     }
+//     usleep(1000500);
+//     stopBrazo();
+    differentialrobot_proxy->setSpeedBase(0, 0);
+      	RoboCompJointMotor::MotorGoalPosition shoulder_right_2;
+	
+	shoulder_right_2.name = "shoulder_right_2";
+	shoulder_right_2.position = -0.35;
+	shoulder_right_2.maxSpeed = 0.5;
+	
+	
+	jointmotor_proxy->setPosition(shoulder_right_2);
+    sleep(3);
+    RoboCompJointMotor::MotorGoalPosition mg = { 1.4, 1.0, "wrist_right_2" };
+    jointmotor_proxy->setPosition(mg);
+    sleep(1);
 }
 
 void SpecificWorker::goHome()
