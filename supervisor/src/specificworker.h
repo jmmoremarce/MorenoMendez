@@ -52,7 +52,8 @@ private:
 	struct Tag {
         mutable QMutex mutex;
         bool vacia = true;
-        bool vector[10]={false,false,false,false,false,false,false,false,false,false};
+//         bool vector[10]={true,true,true,true,true,true,true,true,true,true};
+	bool vector[10]={false,false,false,false,false,false,false,false,false,false};
         int id = -1;
         float valorX = 0.0;
         float valorY = 0.0;
@@ -80,28 +81,28 @@ private:
             select_id = id;
         }
         
-        bool idBox_ok()
+        bool idBox_ok(int id_caja)
         {
-            if(select_id == id)
+            if(select_id == id_caja)
                 return true;
             return false;
         }
         
-	    bool CajasCogidas()
+	bool CajasCogidas()
         {
             if(id > 10)
                 return vector[id - 11];
             return false;
         }
         
-	    bool equalId(int _id)
+	bool equalId(int _id)
         {
             if(id == _id)
                 return true;
             return false;
         }
         
-	    bool getVacia()
+	bool getVacia()
         {
             return vacia;
         }
@@ -111,6 +112,13 @@ private:
             vacia = empty;
             id = -1;
         }
+        
+        bool isBox()
+	{
+	  if(id > 10)
+	    return true;
+	  return false;
+	}
     };
     
     Tag tag;

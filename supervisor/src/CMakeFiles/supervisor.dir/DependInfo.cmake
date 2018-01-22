@@ -4,19 +4,19 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/CommonBehavior.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/DifferentialRobot.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/GetAprilTags.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/GotoPoint.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/commonbehaviorI.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericmonitor.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/genericworker.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericworker.cpp.o"
-  "/home/robocomp/robocomp/classes/qlog/qlog.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/robocomp/robocomp/classes/qlog/qlog.cpp.o"
-  "/home/robocomp/robocomp/classes/rapplication/rapplication.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/robocomp/robocomp/classes/rapplication/rapplication.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/main.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/main.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificmonitor.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/specificworker.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificworker.cpp.o"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/supervisor_automoc.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/CommonBehavior.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/DifferentialRobot.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/GetAprilTags.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/GotoPoint.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/commonbehaviorI.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/commonbehaviorI.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericmonitor.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericmonitor.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/genericworker.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/genericworker.cpp.o"
+  "/home/salabeta/robocomp/classes/qlog/qlog.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/salabeta/robocomp/classes/qlog/qlog.cpp.o"
+  "/home/salabeta/robocomp/classes/rapplication/rapplication.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/home/salabeta/robocomp/classes/rapplication/rapplication.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/main.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/main.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificmonitor.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificmonitor.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/specificworker.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/specificworker.cpp.o"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/supervisor_automoc.cpp" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CMakeFiles/supervisor.dir/supervisor_automoc.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 
@@ -42,18 +42,18 @@ set(CMAKE_CXX_TARGET_INCLUDE_PATH
   "/opt/robocomp/include"
   "/classes"
   "."
-  "/home/josemi/robocomp/classes"
-  "/home/josemi/robocomp/libs"
-  "/home/josemi/robocomp/interfaces"
+  "/home/salabeta/robocomp/classes"
+  "/home/salabeta/robocomp/libs"
+  "/home/salabeta/robocomp/interfaces"
   "/include"
   )
 
 # Pairs of files generated by the same build rule.
 set(CMAKE_MULTIPLE_OUTPUT_PAIRS
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.h" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.h" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.h" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.cpp"
-  "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.h" "/home/robocomp/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.h" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/CommonBehavior.cpp"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.h" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/DifferentialRobot.cpp"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.h" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GetAprilTags.cpp"
+  "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.h" "/home/salabeta/robocomp/components/MorenoMendez/supervisor/src/GotoPoint.cpp"
   )
 
 

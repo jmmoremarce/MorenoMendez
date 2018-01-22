@@ -2,9 +2,9 @@ CommonBehavior.Endpoints=tcp -p 1
 
 
 # Proxies for required interfaces
+GetAprilTagsProxy = getapriltags:tcp -h localhost -p 0
 DifferentialRobotProxy = differentialrobot:tcp -h localhost -p 0
 GotoPointProxy = gotopoint:tcp -h localhost -p 0
-GetAprilTagsProxy = getapriltags:tcp -h localhost -p 0
 
 
 

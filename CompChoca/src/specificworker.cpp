@@ -167,6 +167,7 @@ void SpecificWorker::compute()
                 if(caja.isEmpty() == false)
                 {
                     ok_goto = false;
+		    target.setEmpty(true);
                     state = State::COLOCAR_BOX;
                 }
                 else
@@ -201,6 +202,7 @@ void SpecificWorker::gotoTarget()
         return;
     
     float dist = distObstacle(rt.norm2());
+    
     
     if ( fabs(ang) > 0.05 )
         adv = 0;
@@ -289,7 +291,7 @@ bool SpecificWorker::gotoEnd()
     if(dist < disPared || caja.isEmpty() == false)
     {
         target.setEmpty(true);
-        caja.setEmpty(true);
+//         caja.setEmpty(true);
         differentialrobot_proxy->setSpeedBase(0,0); 
         state = State::COMPARE;
         return true;
@@ -421,10 +423,6 @@ void SpecificWorker::Patrulla()
     state = State::IDLE;
     switch(patru)
     {
-        case patrulla::PUNTO_0:
-            target.setCopy(0.0, 0.0);
-            patru = patrulla::PUNTO_1;
-            break;
         case patrulla::PUNTO_1:
             target.setCopy(-1178.8, 1084.05);
             patru = patrulla::PUNTO_2;
@@ -439,7 +437,7 @@ void SpecificWorker::Patrulla()
             break;
         case patrulla::PUNTO_4:
             target.setCopy(1336.79, 1626.18);
-            patru = patrulla::PUNTO_0;
+            patru = patrulla::PUNTO_1;
             break;
     }
 }
@@ -459,6 +457,7 @@ void SpecificWorker::go(const string& nodo, const float x, const float y, const 
 
 void SpecificWorker::turn(const float speed)
 {
+    target.setEmpty(true);
     if(box == false)
         disPared = 100;
     if(box == true)
@@ -471,15 +470,15 @@ void SpecificWorker::turn(const float speed)
 
 bool SpecificWorker::atTarget()
 {
-    if(caja.isEmpty() == true && target.isEmpty() == true)
+    if(caja.isEmpty() == true && target.isEmpty() == true && ok_goto == false)
     {
-        std::cout<<"SE VA PARA EL SUPERVISOR, YA PUEDE MOVERSE"<<endl;
         if(box == true)
         {
             return false;
         }
         else
         {
+	    std::cout<<"SE VA PARA EL SUPERVISOR, YA PUEDE MOVERSE"<<endl;
             box = true;
             return true;
         }

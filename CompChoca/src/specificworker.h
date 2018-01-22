@@ -190,11 +190,11 @@ private:
     bool ok_goto = true;
     
     enum State {IDLE, GOTO, BUG, PATRULLA, COLOCAR_BOX, COGER_CAJA, SOLTAR_CAJA, COMPARE};
-    enum patrulla {PUNTO_0, PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
+    enum patrulla {PUNTO_1, PUNTO_2, PUNTO_3, PUNTO_4};
     
     State state = State::IDLE;
 //     State state = State::COLOCAR_BOX;
-    patrulla patru = patrulla::PUNTO_0;
+    patrulla patru = patrulla::PUNTO_1;
 	
     float gaussian(float vr, float vx, float h);
 	float sigmoid(float d);

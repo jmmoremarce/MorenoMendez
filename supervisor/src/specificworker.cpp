@@ -63,17 +63,24 @@ void SpecificWorker::compute()
                 }
                 else
                 {
-                    if(Taza == true && t.id > 10 && tag.idBox_ok() == true)
+                    if(Taza == true && t.id > 10 && tag.idBox_ok(t.id) == true)
+		    {
                         tag.copiaValores(t.id, t.tx, t.tz);
+		    }
                 }
                 
                 if(Taza == false && t.id < 10)
                     tag.copiaValores(t.id, t.tx, t.tz);
-            }
-            
-            if(stopGiro == -1 && tags[0].id < 11)
-            {
-                stopGiro = tags[0].id;
+		
+		if(stopGiro == -1 && t.id < 10)
+		{
+		    stopGiro = t.id;
+		    salidaGiro = 0;
+		    std::cout<<"STOP GIRO: "<<stopGiro<<endl;
+		}
+		
+		if(Taza == true && salidaGiro != -1 && stopGiro != -1)
+		    tag.copiaValores(t.id, t.tx, t.tz);
             }
         }
     }
@@ -126,7 +133,7 @@ void SpecificWorker::compute()
             break;
              
         case State::WAIT:
-            
+           
             waitGoto();
 
             break;
@@ -190,7 +197,7 @@ void SpecificWorker::sendGoTo()
 
 void SpecificWorker::waitPatrulla()
 {
-    if(tag.getVacia() == false && tag.CajasCogidas() == false){
+    if(tag.getVacia() == false && tag.CajasCogidas() == false && tag.isBox() == true){
         try 
         {
             gotopoint_proxy->stop();
@@ -209,7 +216,7 @@ void SpecificWorker::waitPatrulla()
             if(gotopoint_proxy->atTarget()){
                 std::cout<<"MANDA A BUSCAR TAZA TRAS PATRULLA!!!"<<endl;
                 stopGiro = -1;
-                salidaGiro = 0;
+                salidaGiro = -1;
                 state = State::BUSCARTAZA;
             }
         }
@@ -230,7 +237,7 @@ void SpecificWorker::waitGoto()
                 std::cout<<"MANDA A BUSCAR TAZA!!!"<<endl;
                 Taza = true;
                 stopGiro = -1;
-                salidaGiro = 0;
+                salidaGiro = -1;
                         
                 state = State::BUSCARTAZA;
             }
@@ -273,10 +280,11 @@ void SpecificWorker::buscarCaja()
     {
         gotopoint_proxy->turn(0.2);
 
-        if(tag.getVacia() == false && tag.CajasCogidas() == false)
+        if(tag.getVacia() == false && tag.CajasCogidas() == false && tag.isBox() == true)
         {
             try
             {
+		stopGiro = -1;
                 gotopoint_proxy->stop();
                 tag.marcarCaja();
                 std::cout<<"SALE DE BUSCAR TAZA A GOTO"<<endl;    
@@ -289,6 +297,7 @@ void SpecificWorker::buscarCaja()
         } 
         else
         {
+	    std::cout<<"STOP GIRO: "<<stopGiro<<endl;
             if(tag.equalId(stopGiro) == true && salidaGiro > 0)
             { //para que el robot pueda dar una vuelta completa
                 std::cout<<"SE VA DE PATRULLA"<<endl;
